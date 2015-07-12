@@ -1,4 +1,4 @@
-package com.kitty.model;
+package com.canguang.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

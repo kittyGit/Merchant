@@ -1,4 +1,4 @@
-package com.kitty.service.impl;
+package com.canguang.service.impl;
 
 import java.text.MessageFormat;
 
@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kitty.dao.IUserDao;
-import com.kitty.model.User;
-import com.kitty.service.IUserService;
+import com.canguang.dao.IUserDao;
+import com.canguang.model.User;
+import com.canguang.service.IUserService;
 
 /**
  * 可以用@component，但@Service更加清晰

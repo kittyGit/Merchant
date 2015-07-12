@@ -1,4 +1,4 @@
-package com.kitty.controller;
+package com.canguang.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kitty.service.IUserService;
+import com.canguang.service.IUserService;
 
 @Controller
 @RequestMapping("/user")

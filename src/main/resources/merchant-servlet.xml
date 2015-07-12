@@ -13,11 +13,13 @@
 
 	<mvc:annotation-driven />
 	
-	<context:component-scan base-package='com.kitty.controller' />
+	<context:component-scan base-package='com.canguang.controller' />
 	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
+		<!-- ModelAndView加上前缀 -->
+		<property name="prefix" value="/pages/" />
+		<!-- ModelAndView加上后缀 -->
 		<property name="suffix" value=".jsp" />
 	</bean>
 

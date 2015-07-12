@@ -1,6 +1,6 @@
-package com.kitty.dao;
+package com.canguang.dao;
 
-import com.kitty.model.User;
+import com.canguang.model.User;
 
 public interface IUserDao {
 

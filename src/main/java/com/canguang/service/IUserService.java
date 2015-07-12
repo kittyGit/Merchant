@@ -1,4 +1,4 @@
-package com.kitty.service;
+package com.canguang.service;
 
 public interface IUserService {
 

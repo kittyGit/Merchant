@@ -1,4 +1,4 @@
-package com.kitty.dao.impl;
+package com.canguang.dao.impl;
 
 import java.text.MessageFormat;
 
@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kitty.dao.IUserDao;
-import com.kitty.model.User;
+import com.canguang.dao.IUserDao;
+import com.canguang.model.User;
 
 /**
  * 可以用@component，但@Repository更加清晰
