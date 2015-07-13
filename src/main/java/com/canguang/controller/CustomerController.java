@@ -1,13 +1,17 @@
 package com.canguang.controller;
 
+<<<<<<< HEAD
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+=======
+>>>>>>> 1de497530cb9029c314a51efaacd75736514b959
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
 import com.canguang.dto.CustomerDto;
 
 @Controller
@@ -35,4 +39,17 @@ public class CustomerController {
 
 	}
 
+=======
+@Controller
+@RequestMapping("/customer")
+public class CustomerController {
+
+	@RequestMapping(method = RequestMethod.GET, value = "/registerInput.action")
+	ModelAndView login(@RequestParam("merchantCode") String merchantCode) {
+
+		ModelAndView mv = new ModelAndView("register");
+
+		return mv;
+	}
+>>>>>>> 1de497530cb9029c314a51efaacd75736514b959
 }

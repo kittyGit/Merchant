@@ -9,7 +9,9 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 
 	<!-- 访问图片/js脚本/css -->
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/image/**" location="/image/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
 
 	<mvc:annotation-driven />
 	
