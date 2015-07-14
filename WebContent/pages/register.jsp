@@ -35,10 +35,10 @@
 	<div class="top">
 		<div class="top-content">
 			<div class="top-left">
-				<a href="http://www.heshidai.com/">合时代-为您创造更多价值！</a>
+				<a href="http://www.heshidai.com/">餐广传媒欢迎你</a>
 			</div>
 			<div class="top-right">
-				你好，<span>吴桥良</span><a href="sysuser_updatePwdInit.action.html">修改密码</a><a
+			<a href="sysuser_updatePwdInit.action.html">修改密码</a><a
 					href="http://merchant.heshidai.com/logout.action">退出</a>
 			</div>
 		</div>
@@ -50,7 +50,7 @@
 		<div class="header-content">
 			<div class="logo">
 				<img src="../images/logo.png" width="222" height="40" alt="合时代-商家后台"
-					title="合时代-商家后台" />
+					title="餐广传媒-商家后台" />
 			</div>
 			<ul class="nav-box">
 
@@ -86,25 +86,25 @@
 					<tr>
 						<td align="right" width="35%"><label for="customerName">用户名：</label></td>
 						<td width="65%"><input type="text" id="customerName"
-							name=""
+							name="customerName"
 							class="validate[required,minSize[4],maxSize[20]] text-input" /></td>
 					</tr>
 					<tr>
 						<td align="right"><label for="customerName">手机号：</label></td>
-						<td width="65%"><input type="text" id="customerName"
-							name=""
+						<td width="65%"><input type="text" id="customerPhoneNumber"
+							name="customerPhoneNumber"
 							class="validate[required,minSize[4],maxSize[20]] text-input" /></td>
 					</tr>
 					<tr>
 						<td align="right"><label for="password">密码：</label></td>
-						<td><input type="password" id="password"
-							name=""
+						<td><input type="password" id="customerPwd"
+							name="customerPwd"
 							class="validate[required,equals[password],minSize[6],maxSize[20]] text-input" /></td>
 					</tr>
 					<tr>
 						<td align="right"><label for="comfirmpassword">确认密码：</label></td>
-						<td><input type="password" id="comfirmpassword"
-							name=""
+						<td><input type="password" id="ConfirmPwd"
+							name="ConfirmPwd"
 							class="validate[required,equals[password],minSize[6],maxSize[20]] text-input" /></td>
 					</tr>
 					<tr>
@@ -137,8 +137,8 @@
 
 	<!--页脚-->
 	<div class="foot">
-		<p>版权所有：深圳合时代金融服务有限公司 Heshidai.com 粤ICP备13059473号</p>
-		<p>地址：深圳市福田区深南中路6011号NEO大厦A座42楼</p>
+		<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP备13059473号</p>
+		<p>地址：深圳市福田区深南中路</p>
 	</div>
 
 </body>
