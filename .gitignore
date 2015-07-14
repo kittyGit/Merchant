@@ -3,8 +3,4 @@
 .project
 .classpath
 /.metadata
-.prefs
-.pollicy
-.prop
-.access
-.pass
+/Servers/
