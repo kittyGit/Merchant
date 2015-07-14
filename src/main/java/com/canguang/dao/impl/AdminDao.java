@@ -27,8 +27,8 @@ public class AdminDao implements IAdminDao {
 	public Admin saveAdmin(Admin admin) {
 		
 		Session session=getCurrentSession();
-		session.save(admin);
-		return admin;
+		
+		return (Admin) session.save(admin);
 	}
 
 	@Override

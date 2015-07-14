@@ -30,16 +30,16 @@ public class Merchant {
 	private String merchantName;
 
 	@Column(nullable = false)
-	private String mAddress;
+	private String merchantAddress;
 
 	@Column(nullable = false)
 	private boolean isCoupon;
 
-	@Column(nullable = true)
-	private Integer price;
-
 	@Column(nullable = false)
-	private Integer phoneNumber;
+	private String phoneNumber;
+	
+	@Column(nullable = true)
+	private String price;
 
 	@Column(nullable = false)
 	private Date creationTime;
@@ -47,11 +47,34 @@ public class Merchant {
 	@Column(nullable = false)
 	private String creator;
 
-	@Column(nullable = false)
-	private Date LastAlterTime;
+	@Column(nullable = true)
+	private Date lastAlterTime;
 
-	@Column(nullable = false)
-	private String mender;
+	@Column(nullable = true)
+	private String merchantMender;
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getMerchantAddress() {
+		return merchantAddress;
+	}
+
+	public void setMerchantAddress(String merchantAddress) {
+		this.merchantAddress = merchantAddress;
+	}
 
 	public Integer getMerchantId() {
 		return merchantId;
@@ -69,36 +92,12 @@ public class Merchant {
 		this.merchantName = merchantName;
 	}
 
-	public String getmAddress() {
-		return mAddress;
-	}
-
-	public void setmAddress(String mAddress) {
-		this.mAddress = mAddress;
-	}
-
 	public boolean isCoupon() {
 		return isCoupon;
 	}
 
 	public void setCoupon(boolean isCoupon) {
 		this.isCoupon = isCoupon;
-	}
-
-	public Integer getPrice() {
-		return price;
-	}
-
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-
-	public Integer getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(Integer phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 
 	public Date getCreationTime() {
@@ -117,19 +116,27 @@ public class Merchant {
 		this.creator = creator;
 	}
 
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	public Date getLastAlterTime() {
-		return LastAlterTime;
+		return lastAlterTime;
 	}
 
 	public void setLastAlterTime(Date lastAlterTime) {
-		LastAlterTime = lastAlterTime;
+		this.lastAlterTime = lastAlterTime;
 	}
 
-	public String getMender() {
-		return mender;
+	public String getMerchantMender() {
+		return merchantMender;
 	}
 
-	public void setMender(String mender) {
-		this.mender = mender;
+	public void setMerchantMender(String merchantMender) {
+		this.merchantMender = merchantMender;
 	}
+
 }

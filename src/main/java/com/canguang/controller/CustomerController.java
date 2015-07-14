@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.canguang.model.Customer;
-import com.canguang.service.impl.CustomerService;
+import com.canguang.service.ICustomerService;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
 	
 	@Autowired
-	private CustomerService customerservice;
+	private ICustomerService customerservice;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/registerInput.action")
 	ModelAndView login(@RequestParam("merchantCode") String merchantCode) {

@@ -5,29 +5,28 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.canguang.dao.ICustomerDao;
-import com.canguang.model.Customer;
+import com.canguang.dao.IMerchantDao;
+import com.canguang.model.Merchant;
 
 @Repository
-public class CustomerDao implements ICustomerDao {
-
+public class MerchantDao implements IMerchantDao {
+	
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	
 	/**
-	 * 获取session
+	 * 获取Session
 	 * @return
 	 */
-	protected Session getCurrentSession() {
+	protected Session getCurrentSession(){
 		return sessionFactory.getCurrentSession();
 	}
 
 	@Override
-	public Customer saveCustomer(Customer customer) {
-
-		Session session=getCurrentSession();
-		session.save(customer);
-		return  customer;
+	public Merchant saveMerchant(Merchant merchant) {
+		Session session =getCurrentSession();
+		session.save(merchant);
+		return merchant ;
 	}
 
 }

@@ -7,15 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="showAdmin.action" method="post">
+	<form action="showMerchant.action" method="post">
 		<table>
 			<tr>
 				<td>店名：<input type="text" name="name" /></td>
 				<td>地址：<input type="text" name="address" /></td>
 				<td>联系电话：<input type="text" name="phoneNumber" /></td>
-				<td>是否使用优惠券：<input type="radio" name="coupon"/>是
-				</td>
+				<td>是否使用优惠券：<input type="radio" name="coupon"/>是</td>
 				<td><input type="radio" name="coupon"/>否</td>
+				<td>优惠价格：<input type="text" name="price" /></td>
+				<td>创建者：<input type="text" name="creator" /></td>
 				<td>
 				<input type="submit" value="提交"/>
 				</td>
