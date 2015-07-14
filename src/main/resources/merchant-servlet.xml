@@ -15,7 +15,7 @@
 
 	<mvc:annotation-driven />
 	
-	<context:component-scan base-package='com.canguang.controller' />
+	<context:component-scan base-package="com.canguang.controller" />
 	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

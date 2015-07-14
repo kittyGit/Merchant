@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-store" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
-<title>合时代-商家后台-首页</title>
+<title>餐广传媒-商家后台-首页</title>
 <link href="https://www.heshidai.com/favicon.ico" type="image/x-icon"
 	rel="shortcut icon" />
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -49,7 +49,7 @@
 	<div class="header">
 		<div class="header-content">
 			<div class="logo">
-				<img src="../images/logo.png" width="222" height="40" alt="合时代-商家后台"
+				<img src="../images/logo.png" width="222" height="40" alt="餐广传媒-商家后台"
 					title="餐广传媒-商家后台" />
 			</div>
 			<ul class="nav-box">
