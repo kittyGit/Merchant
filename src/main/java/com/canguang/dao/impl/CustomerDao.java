@@ -16,6 +16,7 @@ public class CustomerDao implements ICustomerDao {
 
 	/**
 	 * 获取session
+	 * 
 	 * @return
 	 */
 	protected Session getCurrentSession() {
@@ -23,11 +24,9 @@ public class CustomerDao implements ICustomerDao {
 	}
 
 	@Override
-	public Customer saveCustomer(Customer customer) {
-
-		Session session=getCurrentSession();
-		session.save(customer);
-		return  customer;
+	public Integer saveCustomer(Customer customer) {
+		Session session = getCurrentSession();
+		return (Integer) session.save(customer);
 	}
 
 }

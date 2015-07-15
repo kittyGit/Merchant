@@ -1,6 +1,5 @@
 package com.canguang.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,44 +25,39 @@ public class MerchantController {
 	 * @param admin
 	 * @return
 	 */
-	@RequestMapping(value = "/merchant.action")
-	ModelAndView addAdminInput() {
+	@RequestMapping(value = "/addMerchantInput.action")
+	ModelAndView addMerchantInput() {
 		ModelAndView mvc = new ModelAndView("addMerchant");
 		return mvc;
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/showMerchant.action")
-	ModelAndView addAdmin(@RequestParam("name") String merchantName, @RequestParam("address") String address,
-			@RequestParam("phoneNumber") String phoneNumber, @RequestParam("coupon") boolean coupon,
+	@RequestMapping(method = RequestMethod.POST, value = "/addMerchant.action")
+	ModelAndView addMerchant(@RequestParam("name") String merchantName,
+			@RequestParam("address") String address,
+			@RequestParam("phoneNumber") String phoneNumber,
+			@RequestParam("coupon") boolean coupon,
 			@RequestParam("price") String price,
 			@RequestParam("creator") String creator) {
+
 		ModelAndView mvc = null;
 
 		// 获取当前日期
 		Date creationTime = new Date();
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-		df.format(creationTime);
 
-		String code = "6";
 		Merchant merchant = new Merchant();
 		merchant.setMerchantName(merchantName);
 		merchant.setMerchantAddress(address);
 		merchant.setPhoneNumber(phoneNumber);
 		merchant.setCreator(creator);
 		merchant.setCreationTime(creationTime);
-		merchant.setCode(code);
 		if (coupon) {
 			merchant.setCoupon(true);
 			merchant.setPrice(price);
-		} else {
-			merchant.setCoupon(false);
-			merchant.setPrice(null);
 		}
 
-		if (merchantservice.saveMerchant(merchant,code)) {
+		if (merchantservice.saveMerchant(merchant)) {
 			mvc = new ModelAndView("index");
-		}else{
-			
+		} else {
 			mvc = new ModelAndView("addMerchant");
 		}
 

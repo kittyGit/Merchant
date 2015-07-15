@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="showMerchant.action" method="post">
+	<form action="addMerchant.action" method="post">
 		<table>
 			<tr>
 				<td>店名：<input type="text" name="name" /></td>

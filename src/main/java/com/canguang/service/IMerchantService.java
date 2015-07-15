@@ -9,6 +9,5 @@ public interface IMerchantService {
 	 * @param merchant
 	 * @return
 	 */
-	boolean saveMerchant(Merchant merchant,String code);
-
+	boolean saveMerchant(Merchant merchant);
 }

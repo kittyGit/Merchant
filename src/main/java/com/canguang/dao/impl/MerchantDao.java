@@ -10,24 +10,28 @@ import com.canguang.model.Merchant;
 
 @Repository
 public class MerchantDao implements IMerchantDao {
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	/**
 	 * 获取Session
+	 * 
 	 * @return
 	 */
-	protected Session getCurrentSession(){
+	protected Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
 	}
 
 	@Override
-	public Merchant saveMerchant(Merchant merchant,String code) {
-		Session session =getCurrentSession();
-		merchant.setCode(code);
-		session.save(merchant);
-		return merchant ;
+	public Integer saveMerchant(Merchant merchant) {
+		Session session = getCurrentSession();
+		return (Integer) session.save(merchant);
+	}
+
+	@Override
+	public Merchant findByCode(String merchantCode) {
+		return null;
 	}
 
 }
