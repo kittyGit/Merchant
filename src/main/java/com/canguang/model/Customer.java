@@ -54,7 +54,7 @@ public class Customer {
 	private Integer coupon;
 
 	@Column(nullable = true)
-	private Integer price;
+	private String price;
 
 	@Column(nullable = false)
 	private CouponStatus couponStatus;
@@ -62,51 +62,34 @@ public class Customer {
 	@Column(nullable = false)
 	private boolean isValidated;
 
-	@Column(nullable = false)
-	private Date creationTime;
+	public Customer() {
 
-	@Column(nullable = false)
-	private String creator;
-
-	@Column(nullable = false)
-	private Date LastAlterTime;
-
-	@Column(nullable = false)
-	private String mender;
-
-	
-	public Customer(){
-		
 	}
-    public Customer(String customerName,String customerPwd,String confirmPwd,
-    		String phoneNumber,Date registerTime,String registerAddress,
-    		Integer level,Integer coupon ,Integer price,
-    		CouponStatus couponStatus,boolean isValidated,Date creationTime,
-    		String creator,Date LastAlterTime,String mender){
-    	this.customerName=customerName;
-    	this.customerPwd=customerPwd;
-    	this.confirmPwd=confirmPwd;
-    	this.phoneNumber=phoneNumber;
-    	this.registerTime=registerTime;
-    	this.registerAddress=registerAddress;
-    	this.level=level;
-    	this.coupon=coupon;
-    	this.price=price;
-    	this.couponStatus=couponStatus;
-    	this.isValidated=isValidated;
-    	this.creationTime=creationTime;
-    	this.creator=creator;
-    	this.LastAlterTime=LastAlterTime;
-    	this.mender=mender;
+
+	public Customer(String customerName, String customerPwd, String confirmPwd, String phoneNumber, Date registerTime,
+			String registerAddress, Integer level, Integer coupon, String price, CouponStatus couponStatus,
+			boolean isValidated) {
+		this.customerName = customerName;
+		this.customerPwd = customerPwd;
+		this.confirmPwd = confirmPwd;
+		this.phoneNumber = phoneNumber;
+		this.registerTime = registerTime;
+		this.registerAddress = registerAddress;
+		this.level = level;
+		this.coupon = coupon;
+		this.price = price;
+		this.couponStatus = couponStatus;
+		this.isValidated = isValidated;
 	}
+
 	public String getConfirmPwd() {
 		return confirmPwd;
 	}
+
 	public void setConfirmPwd(String confirmPwd) {
 		this.confirmPwd = confirmPwd;
 	}
 
-    
 	public Integer getCustomerId() {
 		return customerId;
 	}
@@ -171,11 +154,11 @@ public class Customer {
 		this.coupon = coupon;
 	}
 
-	public Integer getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 
@@ -185,38 +168,6 @@ public class Customer {
 
 	public void setValidated(boolean isValidated) {
 		this.isValidated = isValidated;
-	}
-
-	public Date getCreationTime() {
-		return creationTime;
-	}
-
-	public void setCreationTime(Date creationTime) {
-		this.creationTime = creationTime;
-	}
-
-	public String getCreator() {
-		return creator;
-	}
-
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
-
-	public Date getLastAlterTime() {
-		return LastAlterTime;
-	}
-
-	public void setLastAlterTime(Date lastAlterTime) {
-		LastAlterTime = lastAlterTime;
-	}
-
-	public String getMender() {
-		return mender;
-	}
-
-	public void setMender(String mender) {
-		this.mender = mender;
 	}
 
 	public Merchant getMerchant() {

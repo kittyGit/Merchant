@@ -34,25 +34,23 @@ public class MerchantController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/showMerchant.action")
 	ModelAndView addAdmin(@RequestParam("name") String merchantName, @RequestParam("address") String address,
-			@RequestParam("phoneNumber") String phoneNumber,
-			@RequestParam("coupon") boolean coupon,@RequestParam("price")  String price,@RequestParam("creator")  String creator) {
+			@RequestParam("phoneNumber") String phoneNumber, @RequestParam("coupon") boolean coupon,
+			@RequestParam("price") String price,
+			@RequestParam("creator") String creator) {
 		ModelAndView mvc = null;
-		
-		//获取当前日期
-		Date creationTime=new Date();
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-		df.format(creationTime);
-		
-		String code="3";
 
+		// 获取当前日期
+		Date creationTime = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
+		df.format(creationTime);
+
+		String code = "6";
 		Merchant merchant = new Merchant();
 		merchant.setMerchantName(merchantName);
 		merchant.setMerchantAddress(address);
 		merchant.setPhoneNumber(phoneNumber);
 		merchant.setCreator(creator);
 		merchant.setCreationTime(creationTime);
-		merchant.setLastAlterTime(null);
-		merchant.setMerchantMender(null);
 		merchant.setCode(code);
 		if (coupon) {
 			merchant.setCoupon(true);
@@ -62,11 +60,14 @@ public class MerchantController {
 			merchant.setPrice(null);
 		}
 
-		if (merchantservice.saveMerchant(merchant)) {
-			mvc = new ModelAndView("redirect:addMerchantY");
+		if (merchantservice.saveMerchant(merchant,code)) {
+			mvc = new ModelAndView("index");
+		}else{
+			
+			mvc = new ModelAndView("addMerchant");
 		}
-		mvc = new ModelAndView("redirect:addMerchantN");
 
 		return mvc;
 	}
+
 }

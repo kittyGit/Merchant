@@ -37,7 +37,7 @@ public class Merchant {
 
 	@Column(nullable = false)
 	private String phoneNumber;
-	
+
 	@Column(nullable = true)
 	private String price;
 
@@ -47,11 +47,13 @@ public class Merchant {
 	@Column(nullable = false)
 	private String creator;
 
-	@Column(nullable = true)
-	private Date lastAlterTime;
+	public String getCode() {
+		return code;
+	}
 
-	@Column(nullable = true)
-	private String merchantMender;
+	public void setCode(String code) {
+		this.code = code;
+	}
 
 	public String getPrice() {
 		return price;
@@ -59,13 +61,6 @@ public class Merchant {
 
 	public void setPrice(String price) {
 		this.price = price;
-	}
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
 	}
 
 	public String getMerchantAddress() {
@@ -122,21 +117,6 @@ public class Merchant {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-	public Date getLastAlterTime() {
-		return lastAlterTime;
-	}
-
-	public void setLastAlterTime(Date lastAlterTime) {
-		this.lastAlterTime = lastAlterTime;
-	}
-
-	public String getMerchantMender() {
-		return merchantMender;
-	}
-
-	public void setMerchantMender(String merchantMender) {
-		this.merchantMender = merchantMender;
 	}
 
 }

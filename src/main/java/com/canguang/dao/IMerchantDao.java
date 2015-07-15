@@ -9,6 +9,7 @@ public interface IMerchantDao {
 	 * @param merchant
 	 * @return
 	 */
-	Merchant saveMerchant(Merchant merchant);
+	Merchant saveMerchant(Merchant merchant,String code);
+
 
 }

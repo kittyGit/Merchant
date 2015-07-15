@@ -37,10 +37,6 @@
 			<div class="top-left">
 				<a href="http://www.heshidai.com/">餐广传媒欢迎你</a>
 			</div>
-			<div class="top-right">
-			<a href="sysuser_updatePwdInit.action.html">修改密码</a><a
-					href="http://merchant.heshidai.com/logout.action">退出</a>
-			</div>
 		</div>
 	</div>
 	<!--页头-->
@@ -49,25 +45,12 @@
 	<div class="header">
 		<div class="header-content">
 			<div class="logo">
-				<img src="../images/logo.png" width="222" height="40" alt="餐广传媒-商家后台"
-					title="餐广传媒-商家后台" />
+				<img src="../images/logo.png" width="222" height="40"
+					alt="餐广传媒-商家后台" title="餐广传媒-商家后台" />
+				<div>欢迎注册</div>
 			</div>
-			<ul class="nav-box">
-
-
-				<li id="header-nav-customer"><a
-					href="http://merchant.heshidai.com/customer/customer_list.action">会员</a></li>
-				<li id="header-nav-couponlist"><a
-					href="http://merchant.heshidai.com/coupon/coupon_order_list.action">交易</a></li>
-				<li id="header-nav-index"><a
-					href="http://merchant.heshidai.com/coupon/coupon_order_index.action">首页</a></li>
-			</ul>
 		</div>
 	</div>
-
-
-
-
 
 	<link rel="stylesheet"
 		href="../js/jQuery-Validation-Engine-master/css/validationEngine.jquery.css">
@@ -76,8 +59,7 @@
 	<!--内容-->
 	<div class="content-box">
 		<div class="merchants-content">
-			<form id="updatePwdForm" name="form1"
-				action="" method="post">
+			<form id="updatePwdForm" name="form1" action="register.action" method="post">
 				<center>
 					<h1></h1>
 				</center>
@@ -86,8 +68,7 @@
 					<tr>
 						<td align="right" width="35%"><label for="customerName">用户名：</label></td>
 						<td width="65%"><input type="text" id="customerName"
-							name="customerName"
-							class="validate[required,minSize[4],maxSize[20]] text-input" /></td>
+							name="customerName" /></td>
 					</tr>
 					<tr>
 						<td align="right"><label for="customerName">手机号：</label></td>
@@ -98,14 +79,15 @@
 					<tr>
 						<td align="right"><label for="password">密码：</label></td>
 						<td><input type="password" id="customerPwd"
-							name="customerPwd"
-							class="validate[required,equals[password],minSize[6],maxSize[20]] text-input" /></td>
+							name="customerPwd" /></td>
 					</tr>
 					<tr>
 						<td align="right"><label for="comfirmpassword">确认密码：</label></td>
-						<td><input type="password" id="ConfirmPwd"
-							name="ConfirmPwd"
-							class="validate[required,equals[password],minSize[6],maxSize[20]] text-input" /></td>
+						<td><input type="password" id="ConfirmPwd" name="confirmPwd" /></td>
+					</tr>
+					<tr>
+						<td align="right"><label for="comfirmpassword">手机获取验证码：</label></td>
+						<td><input type="password" id="isValidated" name="isValidated" /></td>
 					</tr>
 					<tr>
 						<td align="right"></td>

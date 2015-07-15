@@ -16,9 +16,8 @@ public class MerchantService implements IMerchantService {
 	private IMerchantDao merchantDao;
 
 	@Override
-	public boolean saveMerchant(Merchant merchant) {
-
-		Merchant isMerchant = merchantDao.saveMerchant(merchant);
+	public boolean saveMerchant(Merchant merchant,String code) {
+		Merchant isMerchant = merchantDao.saveMerchant(merchant,code);
 		if (isMerchant != null) {
 			return true;
 		} else {

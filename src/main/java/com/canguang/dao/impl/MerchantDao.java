@@ -23,8 +23,9 @@ public class MerchantDao implements IMerchantDao {
 	}
 
 	@Override
-	public Merchant saveMerchant(Merchant merchant) {
+	public Merchant saveMerchant(Merchant merchant,String code) {
 		Session session =getCurrentSession();
+		merchant.setCode(code);
 		session.save(merchant);
 		return merchant ;
 	}
