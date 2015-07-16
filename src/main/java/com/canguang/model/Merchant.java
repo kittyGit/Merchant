@@ -30,16 +30,28 @@ public class Merchant {
 	private String merchantName;
 
 	@Column(nullable = false)
+<<<<<<< HEAD
 	private String mAddress;
+=======
+	private String merchantAddress;
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 
 	@Column(nullable = false)
 	private boolean isCoupon;
 
+<<<<<<< HEAD
 	@Column(nullable = true)
 	private Integer price;
 
 	@Column(nullable = false)
 	private Integer phoneNumber;
+=======
+	@Column(nullable = false)
+	private String phoneNumber;
+
+	@Column(nullable = true)
+	private String price;
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 
 	@Column(nullable = false)
 	private Date creationTime;
@@ -47,11 +59,37 @@ public class Merchant {
 	@Column(nullable = false)
 	private String creator;
 
+<<<<<<< HEAD
 	@Column(nullable = false)
 	private Date LastAlterTime;
 
 	@Column(nullable = false)
 	private String mender;
+=======
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getMerchantAddress() {
+		return merchantAddress;
+	}
+
+	public void setMerchantAddress(String merchantAddress) {
+		this.merchantAddress = merchantAddress;
+	}
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 
 	public Integer getMerchantId() {
 		return merchantId;
@@ -69,6 +107,7 @@ public class Merchant {
 		this.merchantName = merchantName;
 	}
 
+<<<<<<< HEAD
 	public String getmAddress() {
 		return mAddress;
 	}
@@ -77,6 +116,8 @@ public class Merchant {
 		this.mAddress = mAddress;
 	}
 
+=======
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 	public boolean isCoupon() {
 		return isCoupon;
 	}
@@ -85,6 +126,7 @@ public class Merchant {
 		this.isCoupon = isCoupon;
 	}
 
+<<<<<<< HEAD
 	public Integer getPrice() {
 		return price;
 	}
@@ -101,6 +143,8 @@ public class Merchant {
 		this.phoneNumber = phoneNumber;
 	}
 
+=======
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 	public Date getCreationTime() {
 		return creationTime;
 	}
@@ -117,6 +161,7 @@ public class Merchant {
 		this.creator = creator;
 	}
 
+<<<<<<< HEAD
 	public Date getLastAlterTime() {
 		return LastAlterTime;
 	}
@@ -132,4 +177,14 @@ public class Merchant {
 	public void setMender(String mender) {
 		this.mender = mender;
 	}
+=======
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 }

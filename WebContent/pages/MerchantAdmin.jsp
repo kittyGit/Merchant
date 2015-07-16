@@ -1,15 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-  gggg
-=======
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -65,7 +72,7 @@
 			</div>
 			<ul class="nav-box">
 
-				<li id="header-nav-customer"><a href="addMerchant.jsp">商家登录</a></li>
+				
 				<li id="header-nav-customer"><a
 					href="http://merchant.heshidai.com/customer/customer_list.action">会员</a></li>
 				<li id="header-nav-couponlist"><a
@@ -75,10 +82,6 @@
 			</ul>
 		</div>
 	</div>
-
-
-
-
 
 	<link rel="stylesheet"
 		href="../js/jQuery-Validation-Engine-master/css/validationEngine.jquery.css">
@@ -98,13 +101,16 @@
 	</script>
 	<script src="../js/item.js"></script>
 
-
 	<!--页脚-->
 	<div class="foot">
 		<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP备13059473号</p>
 		<p>地址：深圳市福田区深南中路</p>
 	</div>
 
->>>>>>> ea52b9487616970665c519dbd57c388a2171883b
+</body>
+</html>
+</body>
+</html>
+
 </body>
 </html>

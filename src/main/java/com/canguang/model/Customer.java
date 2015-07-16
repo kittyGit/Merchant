@@ -24,11 +24,19 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer customerId;
+<<<<<<< HEAD
 	
 	@ManyToOne 
 	@JoinColumn(name="merchantId", nullable=false)
 	private Merchant merchant;
 	
+=======
+
+	@ManyToOne
+	@JoinColumn(name = "merchantId", nullable = false)
+	private Merchant merchant;
+
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 	@Column(nullable = false)
 	private String customerName;
 
@@ -36,6 +44,12 @@ public class Customer {
 	private String customerPwd;
 
 	@Column(nullable = false)
+<<<<<<< HEAD
+=======
+	private String confirmPwd;
+
+	@Column(nullable = false)
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 	private String phoneNumber;
 
 	@Column(nullable = false)
@@ -51,7 +65,11 @@ public class Customer {
 	private Integer coupon;
 
 	@Column(nullable = true)
+<<<<<<< HEAD
 	private Integer price;
+=======
+	private String price;
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 
 	@Column(nullable = false)
 	private CouponStatus couponStatus;
@@ -59,6 +77,7 @@ public class Customer {
 	@Column(nullable = false)
 	private boolean isValidated;
 
+<<<<<<< HEAD
 	@Column(nullable = false)
 	private boolean isPhoneNumer;
 
@@ -73,6 +92,35 @@ public class Customer {
 
 	@Column(nullable = false)
 	private String mender;
+=======
+	public Customer() {
+
+	}
+
+	public Customer(String customerName, String customerPwd, String confirmPwd, String phoneNumber, Date registerTime,
+			String registerAddress, Integer level, Integer coupon, String price, CouponStatus couponStatus,
+			boolean isValidated) {
+		this.customerName = customerName;
+		this.customerPwd = customerPwd;
+		this.confirmPwd = confirmPwd;
+		this.phoneNumber = phoneNumber;
+		this.registerTime = registerTime;
+		this.registerAddress = registerAddress;
+		this.level = level;
+		this.coupon = coupon;
+		this.price = price;
+		this.couponStatus = couponStatus;
+		this.isValidated = isValidated;
+	}
+
+	public String getConfirmPwd() {
+		return confirmPwd;
+	}
+
+	public void setConfirmPwd(String confirmPwd) {
+		this.confirmPwd = confirmPwd;
+	}
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 
 	public Integer getCustomerId() {
 		return customerId;
@@ -138,11 +186,19 @@ public class Customer {
 		this.coupon = coupon;
 	}
 
+<<<<<<< HEAD
 	public Integer getPrice() {
 		return price;
 	}
 
 	public void setPrice(Integer price) {
+=======
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 		this.price = price;
 	}
 
@@ -154,6 +210,7 @@ public class Customer {
 		this.isValidated = isValidated;
 	}
 
+<<<<<<< HEAD
 	public boolean isPhoneNumer() {
 		return isPhoneNumer;
 	}
@@ -194,6 +251,8 @@ public class Customer {
 		this.mender = mender;
 	}
 
+=======
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 	public Merchant getMerchant() {
 		return merchant;
 	}

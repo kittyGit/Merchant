@@ -12,6 +12,7 @@ import com.canguang.model.Customer;
 public class CustomerDao implements ICustomerDao {
 
 	@Autowired
+<<<<<<< HEAD
 	private SessionFactory factory;
 
 	protected Session getCurrentSession() {
@@ -30,6 +31,23 @@ public class CustomerDao implements ICustomerDao {
 	public Customer register(String customerName, String pwd,
 			String phoneNumber, String merchantCode) {
 		return null;
+=======
+	private SessionFactory sessionFactory;
+
+	/**
+	 * 获取session
+	 * 
+	 * @return
+	 */
+	protected Session getCurrentSession() {
+		return sessionFactory.getCurrentSession();
+	}
+
+	@Override
+	public Integer saveCustomer(Customer customer) {
+		Session session = getCurrentSession();
+		return (Integer) session.save(customer);
+>>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 	}
 
 }
