@@ -3,20 +3,22 @@ package com.canguang.dao;
 import com.canguang.model.Admin;
 
 public interface IAdminDao {
-	
+
 	/**
-	 * 保存商家的管理员
-	 * @param admin
-	 * @return
-	 */
-	Admin saveAdmin(Admin admin);
-	
-	/**
-	 * 商家登錄
+	 * 商家管理员登录
 	 * @param adminName 
 	 * @param adminPwd
 	 * @return
 	 */
-	Admin login(String adminName,String adminPwd);
+	Admin merchantLogin(String adminName,String adminPwd);
+	
+	
+	/**
+	 * 餐广传媒管理员
+	 * @param adminName
+	 * @param adminPwd
+	 * @return
+	 */
+	Admin superLogin(String adminName,String adminPwd);
 	
 }

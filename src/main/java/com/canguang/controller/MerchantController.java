@@ -14,6 +14,7 @@ import com.canguang.service.IMerchantService;
 
 @Controller
 @RequestMapping("/merchant")
+
 public class MerchantController {
 
 	@Autowired
@@ -32,35 +33,33 @@ public class MerchantController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/addMerchant.action")
-	ModelAndView addMerchant(@RequestParam("name") String merchantName,
-			@RequestParam("address") String address,
-			@RequestParam("phoneNumber") String phoneNumber,
-			@RequestParam("coupon") boolean coupon,
-			@RequestParam("price") String price,
-			@RequestParam("creator") String creator) {
+	ModelAndView addMerchant(@RequestParam("name") String merchantName, @RequestParam("address") String address,
+			@RequestParam("phoneNumber") String phoneNumber, @RequestParam("coupon") boolean coupon,
+			@RequestParam("price") String price, @RequestParam("creator") String creator)
+				 {
 
 		ModelAndView mvc = null;
 
 		// 获取当前日期
 		Date creationTime = new Date();
 
-		Merchant merchant = new Merchant();
-		merchant.setMerchantName(merchantName);
-		merchant.setMerchantAddress(address);
-		merchant.setPhoneNumber(phoneNumber);
-		merchant.setCreator(creator);
-		merchant.setCreationTime(creationTime);
+		Merchant newMerchant = new Merchant();
+		newMerchant.setMerchantName(merchantName);
+		newMerchant.setMerchantAddress(address);
+		newMerchant.setPhoneNumber(phoneNumber);
+		newMerchant.setCreator(creator);
+		newMerchant.setCreationTime(creationTime);
 		if (coupon) {
-			merchant.setCoupon(true);
-			merchant.setPrice(price);
+			newMerchant.setCoupon(true);
+			newMerchant.setPrice(price);
 		}
 
-		if (merchantservice.saveMerchant(merchant)) {
+		if (merchantservice.saveMerchant(newMerchant)) {
 			mvc = new ModelAndView("index");
 		} else {
 			mvc = new ModelAndView("addMerchant");
-		}
 
+		}
 		return mvc;
 	}
 

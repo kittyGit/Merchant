@@ -1,5 +1,6 @@
 package com.canguang.dao.impl;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,10 @@ public class MerchantDao implements IMerchantDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+	Session session = null;
 
 	/**
-	 * 获取Session
+	 * 获取Session  
 	 * 
 	 * @return
 	 */
@@ -25,13 +27,26 @@ public class MerchantDao implements IMerchantDao {
 
 	@Override
 	public Integer saveMerchant(Merchant merchant) {
-		Session session = getCurrentSession();
+		session = getCurrentSession();
 		return (Integer) session.save(merchant);
 	}
 
 	@Override
 	public Merchant findByCode(String merchantCode) {
-		return null;
+		session = getCurrentSession();
+		Query query=session.createQuery("from Merchant where merchantCode=:merchantCode");
+		query.setString("merchantCode", merchantCode);
+		Merchant merchant=(Merchant) query.uniqueResult();
+		return merchant;
+	}
+
+	@Override
+	public Merchant findById(Integer MerchantId) {
+		session = getCurrentSession();
+		Query query=session.createQuery("from Merchant where MerchantId=:MerchantId");
+		query.setInteger("MerchantId", MerchantId);
+		Merchant merchant=(Merchant) query.uniqueResult();
+		return merchant;
 	}
 
 }

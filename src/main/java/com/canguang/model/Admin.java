@@ -26,7 +26,7 @@ public class Admin {
 	private Integer adminId;
 	
 	@OneToOne
-	@JoinColumn(name="merchantId", unique=true, nullable=false)
+	@JoinColumn(name="merchantId", unique=true, nullable=true)
 	private Merchant merchant;
 
 	@Column(nullable = false)
@@ -39,14 +39,24 @@ public class Admin {
 	private Date creationTime;
 	
 	@Column(nullable=false)
-	private String creator;
+	private boolean isSuperAdmin;
 	
-	@Column(nullable=false)
-	private Date LastAlterTime;
-	
-	@Column(nullable=false)
-	private String mender;
-	
+	public Merchant getMerchant() {
+		return merchant;
+	}
+
+	public void setMerchant(Merchant merchant) {
+		this.merchant = merchant;
+	}
+
+	public boolean isSuperAdmin() {
+		return isSuperAdmin;
+	}
+
+	public void setSuperAdmin(boolean isSuperAdmin) {
+		this.isSuperAdmin = isSuperAdmin;
+	}
+
 	public Date getCreationTime() {
 		return creationTime;
 	}
@@ -55,30 +65,6 @@ public class Admin {
 		this.creationTime = creationTime;
 	}
 
-	public String getCreator() {
-		return creator;
-	}
-
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
-
-	public Date getLastAlterTime() {
-		return LastAlterTime;
-	}
-
-	public void setLastAlterTime(Date lastAlterTime) {
-		LastAlterTime = lastAlterTime;
-	}
-
-	public String getMender() {
-		return mender;
-	}
-
-	public void setMender(String mender) {
-		this.mender = mender;
-	}
-	
 	public Integer getAdminId() {
 		return adminId;
 	}

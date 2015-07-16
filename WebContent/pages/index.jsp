@@ -74,9 +74,6 @@
 	<input type="hidden" id="header-nav-id" value="header-nav-setup" />
 
 	<!--内容-->
-   
-		src="../js/jQuery-Validation-Engine-master/js/languages/jquery.validationEngine-zh_CN-20141106003.js"
-		type="text/javascript"></script>
 	<script
 		src="../js/jQuery-Validation-Engine-master/js/jquery.validationEngine.js"
 		type="text/javascript"></script>

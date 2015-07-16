@@ -10,4 +10,17 @@ public interface IMerchantService {
 	 * @return
 	 */
 	boolean saveMerchant(Merchant merchant);
+	/**
+	 * 根据merchantCode查找商家
+	 * @param merchantCode
+	 * @return
+	 */
+	 boolean findByCode(String merchantCode);
+	 
+		/**
+		 * 根据MerchatId查找商家
+		 * @param MerchantId
+		 * @return
+		 */
+	boolean  findById(Integer MerchantId);
 }

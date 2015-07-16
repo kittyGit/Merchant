@@ -37,7 +37,7 @@
                  <p>介绍内容</p>
             </div>
             <div class="mainD" id="mainD">
-                <form method="post"  id="loginform" action="Login">
+                <form method="post"  id="loginform" action="login.action">
                     <div class="msg"></div>
                     <table border="0" cellpadding="0" cellspacing="0">
                         <tr>

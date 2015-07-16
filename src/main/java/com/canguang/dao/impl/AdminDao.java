@@ -24,17 +24,19 @@ public class AdminDao implements IAdminDao {
 	}
 
 	@Override
-	public Admin saveAdmin(Admin admin) {
-		
-		Session session=getCurrentSession();
-		
-		return (Admin) session.save(admin);
+	public Admin merchantLogin(String adminName, String adminPwd) {
+		Session session =getCurrentSession();
+		Query query=session.createQuery("from Admin where adminName=:adminName,adminPwd=:adminPwd");
+		query.setString(1, adminName);
+		query.setString(2, adminPwd);
+		Admin admin=(Admin) query.uniqueResult();
+		return admin;
 	}
 
 	@Override
-	public Admin login(String adminName, String adminPwd) {
+	public Admin superLogin(String adminName, String adminPwd) {
 		Session session =getCurrentSession();
-		Query query=session.createQuery("select * from Admin where adminName=:adminName,adminPwd=:adminPwd");
+		Query query=session.createQuery("from Admin where adminName=:adminName,adminPwd=:adminPwd");
 		query.setString(1, adminName);
 		query.setString(2, adminPwd);
 		Admin admin=(Admin) query.uniqueResult();
