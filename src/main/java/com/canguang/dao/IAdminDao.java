@@ -3,11 +3,9 @@ package com.canguang.dao;
 import com.canguang.model.Admin;
 
 public interface IAdminDao {
-<<<<<<< HEAD
 	
 	Admin login(String userName,String pwd);
 
-=======
 
 	/**
 	 * 商家管理员登录
@@ -26,5 +24,4 @@ public interface IAdminDao {
 	 */
 	Admin superLogin(String adminName,String adminPwd);
 	
->>>>>>> ea52b9487616970665c519dbd57c388a2171883b
 }
