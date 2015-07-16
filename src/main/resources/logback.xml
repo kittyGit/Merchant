@@ -10,7 +10,12 @@
 
 	<logger name="org.apache.struts2" level="info" />
 	<logger name="com.opensymphony.xwork2" level="info" />
+
 	<logger name="org.hibernate" level="info" />
+	<logger name="org.hibernate.SQL" level="debug" />
+	<logger name="org.hibernate.type.descriptor.sql.BasicBinder"
+		level="trace" />
+
 	<logger name="org.springframework" level="info" />
 
 	<root level="debug">

@@ -24,13 +24,14 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/adminLogin.action")
-	ModelAndView adminLogin(@RequestParam String adminName, String adminPwd) {
+	ModelAndView adminLogin(@RequestParam("adminName") String adminName,
+			@RequestParam("adminName") String adminPwd) {
 
-		ModelAndView mvc = new ModelAndView("AdminLogin");
+		ModelAndView mvc = new ModelAndView("adminLogin");
 		if (adminService.login(adminName, adminPwd)) {
-			mvc = new ModelAndView("Admin");
+			mvc = new ModelAndView("admin");
 		} else {
-			mvc = new ModelAndView("AdminLogin");
+			mvc = new ModelAndView("adminLogin");
 		}
 		return mvc;
 
