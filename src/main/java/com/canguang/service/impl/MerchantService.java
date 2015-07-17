@@ -16,8 +16,6 @@ public class MerchantService implements IMerchantService {
 
 	@Autowired
 	private IMerchantDao merchantDao;
-	@Autowired
-	private Merchant merchant;
 
 	@Override
 	public boolean saveMerchant(Merchant merchant) {
@@ -34,7 +32,7 @@ public class MerchantService implements IMerchantService {
 
 	@Override
 	public boolean findByCode(String merchantCode) {
-		merchant = merchantDao.findByCode(merchantCode);
+		Merchant merchant = merchantDao.findByCode(merchantCode);
 		if (merchant != null) {
 			return true;
 		}
@@ -43,7 +41,7 @@ public class MerchantService implements IMerchantService {
 
 	@Override
 	public boolean findById(Integer MerchantId) {
-		merchant = merchantDao.findById(MerchantId);
+		Merchant merchant = merchantDao.findById(MerchantId);
 		if (merchant != null) {
 			return true;
 		}

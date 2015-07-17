@@ -14,4 +14,13 @@ public interface ICustomerService {
 	 * @return
 	 */
 	boolean saveCustomer(Customer customer, String merchantCode);
+	
+    /**
+     * 查找所有的用户注册的信息
+     * @param customers
+     * @return
+     */
+    boolean findAll();
+    
+
 }

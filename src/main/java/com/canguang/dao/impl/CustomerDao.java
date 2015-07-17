@@ -1,5 +1,8 @@
 package com.canguang.dao.impl;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +36,28 @@ public class CustomerDao implements ICustomerDao {
 	}
 
 	@Override
-	public Customer saveCustomer(Customer customer) {
+	public Integer saveCustomer(Customer customer) {
 		Session session = getCurrentSession();
-		customer =(Customer) session.save(customer);
-		return customer;
+		return (Integer) session.save(customer);
+	}
+
+	@Override
+	public List<Customer> findAll() {
+		return null;
+	}
+
+	@Override
+	public List<Customer> findByPhoneNumber(String phoneNumber) {
+		Session session=getCurrentSession();
+		Query query=session.createQuery("from Customer where phoneNumber=:phoneNumer");
+		query.setString("phoneNumber", phoneNumber);
+		return null;
+	}
+
+	@Override
+	public List<Customer> findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

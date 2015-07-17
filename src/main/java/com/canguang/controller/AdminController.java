@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.canguang.model.Admin;
 import com.canguang.service.IAdminService;
 
 @Controller
@@ -23,15 +24,14 @@ public class AdminController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/login.action")
-	ModelAndView merchantLogin(@RequestParam("adminName") String adminName,
-			@RequestParam("adminPwd") String adminPwd) {
+	ModelAndView login(@RequestParam("adminName") String adminName, @RequestParam("adminPwd") String adminPwd) {
 
 		ModelAndView mvc = null;
-		 if (adminService.merchanLogin(adminName,adminPwd)) {
-		 mvc = new ModelAndView("MerchantAdmin");
-		 } else if (adminService.superLogin(adminName,adminPwd)) {
-		 mvc = new ModelAndView("canguangAdmin");
-		 }
+
+		if (adminService.login(adminName, adminPwd)) {
+			mvc = new ModelAndView("MerchantAdmin");
+		}
+		mvc = new ModelAndView("canGuangAdmin");
 
 		return mvc;
 	}

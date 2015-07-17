@@ -43,11 +43,11 @@
                         <tr>
                         <input type="hidden" name="opr" value="login"  />
                             <th width="60" height="36px">用户名</th>
-                            <td colspan="2"><input id="loginName" type="text" name="user.loginName" value="${user.loginName}" class="txt" style="width:150px;" maxlength="18" date-lable="用户名" data-validator="required" /></td>
+                            <td colspan="2"><input id="loginName" type="text" name="adminName"  class="txt" style="width:150px;" maxlength="18" date-lable="用户名" data-validator="required" /></td>
                         </tr>
                         <tr>
                             <th height="36px">密  码</th>
-                            <td colspan="2"><input id="loginPwd"  type="password" name="user.loginPwd" class="txt" style="width:150px;"  maxlength="18" date-lable="用户密码" data-validator="required" /></td>
+                            <td colspan="2"><input id="loginPwd"  type="password" name="adminPwd" class="txt" style="width:150px;"  maxlength="18" date-lable="用户密码" data-validator="required" /></td>
                         </tr>
                         <tr>
                             <td height="46" valign="bottom"></td>

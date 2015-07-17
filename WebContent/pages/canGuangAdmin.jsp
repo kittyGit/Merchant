@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+
+"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="keywords" content="合时代-商家后台" />
 <meta name="description"
-	content="合时代(www.heshidai.com)-网络投资专业首选,是国内首批由第三方做资金托管账户的P2P网络金融平台,提供网络借贷、小额贷款等线上投资理财,方便快捷,高收益低风险,100%本金利息担保." />
+	content="合时代(www.heshidai.com)-网络投资专业首选,是国内首批
+
+由第三方做资金托管账户的P2P网络金融平台,提供网络借贷、小额贷款等线上
+
+投资理财,方便快捷,高收益低风险,100%本金利息担保." />
 <meta http-equiv="Cache-Control" content="no-store" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -20,12 +23,16 @@
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
 <link type="text/css" href="../css/merchants-20141224001024.css"
 	rel="stylesheet" />
-<link type="text/css" href="../js/jquery-ui-1.11.2.custom/jquery-ui.css"
-	rel="stylesheet" />
+<link type="text/css"
+	href="../js/jquery-ui-1.11.2.custom/jquery-
+
+ui.css" rel="stylesheet" />
 <link href="../js/jquery-treetable-master/css/jquery.treetable.css"
 	rel="stylesheet" type="text/css" />
 <link
-	href="../js/jquery-treetable-master/css/jquery.treetable.theme.default.css"
+	href="../js/jquery-treetable-
+
+master/css/jquery.treetable.theme.default.css"
 	rel="stylesheet" type="text/css" />
 <script src="../js/jquery-1.11.1.min.js" type="text/javascript"></script>
 <script src="../js/select.js"></script>
@@ -38,7 +45,7 @@
 	<div class="top">
 		<div class="top-content">
 			<div class="top-left">
-				<a href="http://www.heshidai.com/">餐广传媒欢迎你</a>
+				<a href="http://www.heshidai.com/">餐 广传媒欢迎你</a>
 			</div>
 			<div class="top-right">
 				<a href="sysuser_updatePwdInit.action.html">修改密码</a><a
@@ -57,24 +64,28 @@
 			</div>
 			<ul class="nav-box">
 
-				<li id="header-nav-customer"><a href="login.jsp">商家登录</a></li>
-				<li id="header-nav-customer"><a
-					href="http://merchant.heshidai.com/customer/customer_list.action">会员</a></li>
-				<li id="header-nav-couponlist"><a
-					href="http://merchant.heshidai.com/coupon/coupon_order_list.action">交易</a></li>
-				<li id="header-nav-index"><a
-					href="http://merchant.heshidai.com/coupon/coupon_order_index.action">首页</a></li>
+				<li id="header"><a href="addMerchant.jsp">商家管理</a></li>
+				<li id="header"><a href="">会员</a></li>
+				<li id="header"><a href="">交易</a></li>
+				<li id="header"><a href="index.jsp">首页</a></li>
 			</ul>
 		</div>
 	</div>
+	<div class="table-topradius"></div>
+	<table border="0" cellpadding="0" cellspacing="0" class="table-a">
+		<tr>
+			<th>优惠编码</th>
+			<th>手机号码</th>
+			<th>消费门店</th>
+			<th>消费时间</th>
+			<th>使用特权</th>
+		</tr>
 
+	</table>
 
+	<input type="hidden" id="header-nav-id" value="header-nav-
 
-
-
-	<link rel="stylesheet"
-		href="../js/jQuery-Validation-Engine-master/css/validationEngine.jquery.css">
-	<input type="hidden" id="header-nav-id" value="header-nav-setup" />
+setup" />
 
 	<!--内容-->
 	<script
@@ -90,11 +101,11 @@
 	</script>
 	<script src="../js/item.js"></script>
 
-
 	<!--页脚-->
 	<div class="foot">
-		<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP备13059473号</p>
+		<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP 备13059473号</p>
 		<p>地址：深圳市福田区深南中路</p>
 	</div>
+
 </body>
 </html>

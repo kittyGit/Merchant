@@ -32,17 +32,14 @@ public class CustomerController {
 			@RequestParam("customerPwd") String customerPwd,
 			@RequestParam("confirmPwd") String confirmPwd,
 			@RequestParam("customerPwd") String merchantCode) {
-
-		/**
-		 * 当前时间
-		 */
-		Date registerTime = new Date();
-
+		
+		
 		Customer customer = new Customer();
 		customer.setCustomerName(customerName);
 		customer.setPhoneNumber(phoneNumber);
 		customer.setCustomerPwd(customerPwd);
 		customer.setConfirmPwd(confirmPwd);
+		Date registerTime = new Date();
 		customer.setRegisterTime(registerTime);
 		customer.setLevel(0);
 		customer.setValidated(true);
@@ -57,7 +54,6 @@ public class CustomerController {
 		} else {
 			mv = new ModelAndView("register");
 		}
-
 		return mv;
 	}
 }
