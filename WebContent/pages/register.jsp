@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,18 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	<sf:form action="register.action">
-		<sf:hidden path="merchantCode"/>
-		<sf:input  path="customerName" />
-		<sf:password path="customerPwd"/>
-		<input type="submit">
-	</sf:form>
-=======
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="keywords" content="合时代-商家后台" />
@@ -139,7 +126,5 @@
 		<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP备13059473号</p>
 		<p>地址：深圳市福田区深南中路</p>
 	</div>
-
->>>>>>> 1de497530cb9029c314a51efaacd75736514b959
 </body>
 </html>

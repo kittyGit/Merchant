@@ -37,15 +37,14 @@ public class CustomerService implements ICustomerService {
 				customer.setPrice(merchant.getPrice());
 				customer.setCouponStatus(CouponStatus.UNUSED);
 			}
-
-			Integer id = customerDao.saveCustomer(customer);
-			if (id != null && id > 0) {
-				return true;
-			} else {
-				return false;
-			}
+//
+//			Integer id = customerDao.saveCustomer(customer);
+//			if (id != null && id > 0) {
+//				return true;
+//			} else {
+//				return false;
+//			}
 		}
-		
 		return false;
 	}
 

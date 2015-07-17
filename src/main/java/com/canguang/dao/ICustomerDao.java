@@ -2,18 +2,20 @@ package com.canguang.dao;
 
 import com.canguang.model.Customer;
 
-<<<<<<< HEAD
 public interface ICustomerDao {
 
+	/**
+	 * 通过customerId 查找用户
+	 * @param id
+	 * @return
+	 */
 	Customer findByCustomerId(Integer id);
+	/**
+	 * 保存用户
+	 * @param customer
+	 * @return
+	 */
 
-	Customer register(String customerName, String pwd, String phoneNumber,
-			String merchantCode);
-=======
-
-public interface ICustomerDao {
-
-	Integer saveCustomer(Customer customer);
->>>>>>> ea52b9487616970665c519dbd57c388a2171883b
+	Customer saveCustomer(Customer customer);
 
 }
