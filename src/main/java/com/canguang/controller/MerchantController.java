@@ -26,9 +26,9 @@ public class MerchantController {
 	 * @param admin
 	 * @return
 	 */
-	@RequestMapping(value = "/managerMerchant.action")
-	ModelAndView managerMerchant() {
-		ModelAndView mvc = new ModelAndView("managerMerchant");
+	@RequestMapping(value = "/manageMerchant.action")
+	ModelAndView manageMerchant() {
+		ModelAndView mvc = new ModelAndView("manageMerchant");
 		return mvc;
 	}
 
@@ -65,7 +65,7 @@ public class MerchantController {
 		if (merchantService.saveMerchant(newMerchant)) {
 			mvc = new ModelAndView("index");
 		} else {
-			mvc = new ModelAndView("managerMerchant");
+			mvc = new ModelAndView("manageMerchant");
 
 		}
 		return mvc;
@@ -73,30 +73,32 @@ public class MerchantController {
 
 	/**
 	 * 查询商家
+	 * 
 	 * @param name
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/queryMerchant.action")
 	ModelAndView queryMerchant(@RequestParam("name") String name) {
-		ModelAndView mvc =new ModelAndView("managerMerchant"); ;
-		List<Merchant> merchants=merchantService.findByName(name);
-		mvc.addObject("merchants",merchants);
+		ModelAndView mvc = new ModelAndView("manageMerchant");
+		;
+		List<Merchant> merchants = merchantService.findByName(name);
+		mvc.addObject("merchants", merchants);
 		return mvc;
 	}
 
-	@RequestMapping(method=RequestMethod.GET,value="/addStoreInput.action")
-	ModelAndView addStoreInput(@RequestParam("merchantId") Integer merchantId){
-		ModelAndView mvc=new ModelAndView("addStore");
-		mvc.addObject("merchantId",merchantId);
+	@RequestMapping(method = RequestMethod.GET, value = "/addStoreInput.action")
+	ModelAndView addStoreInput(@RequestParam("merchantId") Integer merchantId) {
+		ModelAndView mvc = new ModelAndView("addStore");
+		mvc.addObject("merchantId", merchantId);
 		return mvc;
 	}
-	
-	@RequestMapping(method=RequestMethod.GET,value="/addStore.action")
-	ModelAndView  addStrore(@RequestParam("merchantId") Integer merchantId,
-			@RequestParam("storeName") String storeName){
-		ModelAndView mvc=new ModelAndView("managerMerchant");
-	
-		return  mvc;
+
+	@RequestMapping(method = RequestMethod.GET, value = "/addStore.action")
+	ModelAndView addStrore(@RequestParam("merchantId") Integer merchantId,
+			@RequestParam("storeName") String storeName) {
+		ModelAndView mvc = new ModelAndView("manageMerchant");
+
+		return mvc;
 	}
-	
+
 }
