@@ -37,9 +37,6 @@ public class Customer {
 	private String customerPwd;
 
 	@Column(nullable = false)
-	private String confirmPwd;
-
-	@Column(nullable = false)
 	private String phoneNumber;
 
 	@Column(nullable = false)
@@ -62,9 +59,24 @@ public class Customer {
 
 	@Column(nullable = false)
 	private boolean isValidated;
+	
+	public Customer() {}
+	
+	public Customer(String customerName, String customerPwd, String phoneNumber, Date registerTime,
+			String registerAddress, Integer level, Integer coupon, String price, CouponStatus couponStatus,
+			boolean isValidated) {
+		this.customerName = customerName;
+		this.customerPwd = customerPwd;
+		this.phoneNumber = phoneNumber;
+		this.registerTime = registerTime;
+		this.registerAddress = registerAddress;
+		this.level = level;
+		this.coupon = coupon;
+		this.price = price;
+		this.couponStatus = couponStatus;
+		this.isValidated = isValidated;
+	}
 
-	@Column(nullable = false)
-	private Date creationTime;
 	
 	public Integer getCustomerId() {
 		return customerId;
@@ -96,14 +108,6 @@ public class Customer {
 
 	public void setCustomerPwd(String customerPwd) {
 		this.customerPwd = customerPwd;
-	}
-
-	public String getConfirmPwd() {
-		return confirmPwd;
-	}
-
-	public void setConfirmPwd(String confirmPwd) {
-		this.confirmPwd = confirmPwd;
 	}
 
 	public String getPhoneNumber() {
@@ -169,33 +173,4 @@ public class Customer {
 	public void setValidated(boolean isValidated) {
 		this.isValidated = isValidated;
 	}
-
-	public Date getCreationTime() {
-		return creationTime;
-	}
-
-	public void setCreationTime(Date creationTime) {
-		this.creationTime = creationTime;
-	}
-
-	public Customer() {
-
-	}
-
-	public Customer(String customerName, String customerPwd, String confirmPwd, String phoneNumber, Date registerTime,
-			String registerAddress, Integer level, Integer coupon, String price, CouponStatus couponStatus,
-			boolean isValidated) {
-		this.customerName = customerName;
-		this.customerPwd = customerPwd;
-		this.confirmPwd = confirmPwd;
-		this.phoneNumber = phoneNumber;
-		this.registerTime = registerTime;
-		this.registerAddress = registerAddress;
-		this.level = level;
-		this.coupon = coupon;
-		this.price = price;
-		this.couponStatus = couponStatus;
-		this.isValidated = isValidated;
-	}
-
 }

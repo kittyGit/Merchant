@@ -1,5 +1,7 @@
 package com.canguang.dao;
 
+import java.util.List;
+
 import com.canguang.model.Merchant;
 
 public interface IMerchantDao {
@@ -11,6 +13,7 @@ public interface IMerchantDao {
 	 * @return mysql自动生成的Id
 	 */
 	Integer saveMerchant(Merchant merchant);
+
 	/**
 	 * 根据merchantCode查找商家
 	 * 
@@ -18,10 +21,27 @@ public interface IMerchantDao {
 	 * @return
 	 */
 	Merchant findByCode(String merchantCode);
+
 	/**
 	 * 根据MerchatId查找商家
+	 * 
 	 * @param MerchantId
 	 * @return
 	 */
-	Merchant findById(Integer MerchantId);
+	Merchant findById(Integer merchantId);
+
+	/**
+	 * name模糊查找
+	 * 
+	 * @param name
+	 * @return
+	 */
+	List<Merchant> findByNameLike(String name);
+
+	/**
+	 * 查找所有商家
+	 * 
+	 * @return
+	 */
+	List<Merchant> findAll();
 }

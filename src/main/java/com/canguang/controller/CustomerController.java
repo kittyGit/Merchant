@@ -20,25 +20,27 @@ public class CustomerController {
 	private ICustomerService customerservice;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/registerInput.action")
-	ModelAndView registerInput(@RequestParam("merchantCode") String merchantCode) {
+	ModelAndView registerInput(
+			@RequestParam("merchantCode") String merchantCode,
+			@RequestParam("storeCode") String storeCode) {
 
 		ModelAndView mv = new ModelAndView("register");
-
+		// 等价于request.setAttribute("merchantCode", merchantCode);
+		mv.addObject("merchantCode", merchantCode);
+		mv.addObject("storeCode",storeCode);
 		return mv;
 	}
+
 	@RequestMapping(method = RequestMethod.POST, value = "/register.action")
 	ModelAndView register(@RequestParam("customerName") String customerName,
 			@RequestParam("customerPhoneNumber") String phoneNumber,
 			@RequestParam("customerPwd") String customerPwd,
-			@RequestParam("confirmPwd") String confirmPwd,
-			@RequestParam("customerPwd") String merchantCode) {
-		
-		
+			@RequestParam("merchantCode") String merchantCode) {
+
 		Customer customer = new Customer();
 		customer.setCustomerName(customerName);
 		customer.setPhoneNumber(phoneNumber);
 		customer.setCustomerPwd(customerPwd);
-		customer.setConfirmPwd(confirmPwd);
 		Date registerTime = new Date();
 		customer.setRegisterTime(registerTime);
 		customer.setLevel(0);

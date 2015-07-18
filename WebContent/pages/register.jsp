@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -63,7 +63,10 @@
 	<!--内容-->
 	<div class="content-box">
 		<div class="merchants-content">
-			<form id="updatePwdForm" name="form1" action="register.action" method="post">
+			<form id="updatePwdForm" name="form1" action="register.action"
+				method="post">
+				<input type="hidden" name="merchantCode" value="${merchantCode}" />
+				<input type="hidden" name="storeCode" value=" ${storeCode} " />
 				<center>
 					<h1></h1>
 				</center>
@@ -75,23 +78,21 @@
 							name="customerName" /></td>
 					</tr>
 					<tr>
-						<td align="right"><label for="customerName">手机号：</label></td>
+						<td align="right"><label for="customerPhoneNumber">手机号：</label></td>
 						<td width="65%"><input type="text" id="customerPhoneNumber"
 							name="customerPhoneNumber"
 							class="validate[required,minSize[4],maxSize[20]] text-input" /></td>
 					</tr>
 					<tr>
-						<td align="right"><label for="password">密码：</label></td>
+						<td align="right"><label for="customerPwd">密码：</label></td>
 						<td><input type="password" id="customerPwd"
 							name="customerPwd" /></td>
 					</tr>
 					<tr>
-						<td align="right"><label for="comfirmpassword">确认密码：</label></td>
-						<td><input type="password" id="ConfirmPwd" name="confirmPwd" /></td>
-					</tr>
-					<tr>
-						<td align="right"><label for="comfirmpassword">手机获取验证码：</label></td>
-						<td><input type="password" id="isValidated" name="isValidated" /></td>
+						<td align="right"><label for="validatedCode">手机验证码：</label></td>
+						<td><input type="text" id="validatedCode"
+							name="validatedCode" />
+							<button style="border: 1px;">获取验证码</button></td>
 					</tr>
 					<tr>
 						<td align="right"></td>

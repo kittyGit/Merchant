@@ -31,8 +31,7 @@ public class CustomerService implements ICustomerService {
 
 		if (merchant != null) {
 			customer.setMerchant(merchant);
-			customer.setRegisterAddress(merchant.getMerchantAddress());
-			if (merchant.isCoupon()) {
+			if (merchant.isHasCoupon()) {
 				customer.setCoupon(0);
 				customer.setPrice(merchant.getPrice());
 				customer.setCouponStatus(CouponStatus.UNUSED);

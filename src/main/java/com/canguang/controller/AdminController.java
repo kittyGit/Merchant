@@ -24,14 +24,21 @@ public class AdminController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/login.action")
-	ModelAndView login(@RequestParam("adminName") String adminName, @RequestParam("adminPwd") String adminPwd) {
+	ModelAndView login(@RequestParam("adminName") String adminName,
+			@RequestParam("adminPwd") String adminPwd) {
 
 		ModelAndView mvc = null;
 
-		if (adminService.login(adminName, adminPwd)) {
-			mvc = new ModelAndView("MerchantAdmin");
+		Admin admin = adminService.login(adminName, adminPwd);
+		if (admin != null) {
+			if (admin.getMerchant() != null) {
+				mvc = new ModelAndView("merchantAdmin");
+			} else {
+				mvc = new ModelAndView("canGuangAdmin");
+			}
+		} else {
+			mvc = new ModelAndView("login");
 		}
-		mvc = new ModelAndView("canGuangAdmin");
 
 		return mvc;
 	}

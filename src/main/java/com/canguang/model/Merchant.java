@@ -1,12 +1,14 @@
 package com.canguang.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -18,7 +20,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Merchants")
 public class Merchant {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer merchantId;
@@ -30,10 +31,7 @@ public class Merchant {
 	private String merchantName;
 
 	@Column(nullable = false)
-	private String merchantAddress;
-
-	@Column(nullable = false)
-	private boolean isCoupon;
+	private boolean hasCoupon;
 
 	@Column(nullable = false)
 	private String phoneNumber;
@@ -44,15 +42,15 @@ public class Merchant {
 	@Column(nullable = false)
 	private Date creationTime;
 	
-	@Column(nullable = false)
-	private String  creator;
-
-	public String getCreator() {
-		return creator;
+	@OneToMany(mappedBy="merchant")
+	private List<Store> stores;
+	
+	public List<Store> getStores() {
+		return stores;
 	}
 
-	public void setCreator(String creator) {
-		this.creator = creator;
+	public void setStores(List<Store> stores) {
+		this.stores = stores;
 	}
 
 	public Integer getMerchantId() {
@@ -79,22 +77,6 @@ public class Merchant {
 		this.merchantName = merchantName;
 	}
 
-	public String getMerchantAddress() {
-		return merchantAddress;
-	}
-
-	public void setMerchantAddress(String merchantAddress) {
-		this.merchantAddress = merchantAddress;
-	}
-
-	public boolean isCoupon() {
-		return isCoupon;
-	}
-
-	public void setCoupon(boolean isCoupon) {
-		this.isCoupon = isCoupon;
-	}
-
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -118,5 +100,11 @@ public class Merchant {
 	public void setCreationTime(Date creationTime) {
 		this.creationTime = creationTime;
 	}
+	public boolean isHasCoupon() {
+		return hasCoupon;
+	}
 
+	public void setHasCoupon(boolean hasCoupon) {
+		this.hasCoupon = hasCoupon;
+	}
 }

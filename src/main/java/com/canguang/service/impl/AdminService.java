@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.canguang.dao.IAdminDao;
+import com.canguang.model.Admin;
 import com.canguang.service.IAdminService;
 
 @Service
@@ -16,12 +17,10 @@ public class AdminService implements IAdminService {
 	private IAdminDao adminDao;
 
 	@Override
-	public boolean login(String adminName, String adminPwd) {
+	public Admin login(String adminName, String adminPwd) {
 
-		if (adminDao.login(adminName, adminPwd) != null) {
-			return true;
-		}
-		return false;
+		Admin admin = adminDao.login(adminName, adminPwd);
+		return admin;
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.canguang.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +15,10 @@ import com.canguang.service.IMerchantService;
 
 @Controller
 @RequestMapping("/merchant")
-
 public class MerchantController {
 
 	@Autowired
-	private IMerchantService merchantservice;
+	private IMerchantService merchantService;
 
 	/**
 	 * 添加商家管理员
@@ -26,41 +26,77 @@ public class MerchantController {
 	 * @param admin
 	 * @return
 	 */
-	@RequestMapping(value = "/addMerchantInput.action")
-	ModelAndView addMerchantInput() {
-		ModelAndView mvc = new ModelAndView("addMerchant");
+	@RequestMapping(value = "/managerMerchant.action")
+	ModelAndView managerMerchant() {
+		ModelAndView mvc = new ModelAndView("managerMerchant");
 		return mvc;
 	}
 
+	/**
+	 * 添加商家
+	 * 
+	 * @param merchantName
+	 *            商家
+	 * @param phoneNumber
+	 *            练习方式
+	 * @param coupon
+	 *            是否使用优惠券
+	 * @param price
+	 *            优惠价格
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/addMerchant.action")
-	ModelAndView addMerchant(@RequestParam("name") String merchantName, @RequestParam("address") String address,
-			@RequestParam("phoneNumber") String phoneNumber, @RequestParam("coupon") boolean coupon,
-			@RequestParam("price") String price, @RequestParam("creator") String creator)
-				 {
+	ModelAndView addMerchant(@RequestParam("name") String merchantName,
+			@RequestParam("phoneNumber") String phoneNumber,
+			@RequestParam("coupon") boolean coupon,
+			@RequestParam("price") String price) {
 
 		ModelAndView mvc = null;
-
-		// 获取当前日期
-		Date creationTime = new Date();
-
 		Merchant newMerchant = new Merchant();
 		newMerchant.setMerchantName(merchantName);
-		newMerchant.setMerchantAddress(address);
 		newMerchant.setPhoneNumber(phoneNumber);
-		newMerchant.setCreator(creator);
+		Date creationTime = new Date();
 		newMerchant.setCreationTime(creationTime);
 		if (coupon) {
-			newMerchant.setCoupon(true);
+			newMerchant.setHasCoupon(true);
 			newMerchant.setPrice(price);
 		}
 
-		if (merchantservice.saveMerchant(newMerchant)) {
+		if (merchantService.saveMerchant(newMerchant)) {
 			mvc = new ModelAndView("index");
 		} else {
-			mvc = new ModelAndView("addMerchant");
+			mvc = new ModelAndView("managerMerchant");
 
 		}
 		return mvc;
 	}
 
+	/**
+	 * 查询商家
+	 * @param name
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.POST, value = "/queryMerchant.action")
+	ModelAndView queryMerchant(@RequestParam("name") String name) {
+		ModelAndView mvc =new ModelAndView("managerMerchant"); ;
+		List<Merchant> merchants=merchantService.findByName(name);
+		mvc.addObject("merchants",merchants);
+		return mvc;
+	}
+
+	@RequestMapping(method=RequestMethod.GET,value="/addStoreInput.action")
+	ModelAndView addStoreInput(@RequestParam("merchantId") Integer merchantId){
+		ModelAndView mvc=new ModelAndView("addStore");
+		mvc.addObject("merchantId",merchantId);
+		return mvc;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET,value="/addStore.action")
+	ModelAndView  addStrore(@RequestParam("merchantId") Integer merchantId,
+			@RequestParam("storeName") String storeName){
+		ModelAndView mvc=new ModelAndView("managerMerchant");
+	
+		return  mvc;
+	}
+	
 }

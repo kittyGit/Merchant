@@ -1,5 +1,7 @@
 package com.canguang.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,10 +16,9 @@ public class MerchantDao implements IMerchantDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	Session session = null;
 
 	/**
-	 * 获取Session  
+	 * 获取Session
 	 * 
 	 * @return
 	 */
@@ -27,26 +28,48 @@ public class MerchantDao implements IMerchantDao {
 
 	@Override
 	public Integer saveMerchant(Merchant merchant) {
-		session = getCurrentSession();
+		Session session = getCurrentSession();
 		return (Integer) session.save(merchant);
 	}
 
 	@Override
 	public Merchant findByCode(String merchantCode) {
-		session = getCurrentSession();
-		Query query=session.createQuery("from Merchant where merchantCode=:merchantCode");
+		Session session = getCurrentSession();
+		Query query = session
+				.createQuery("from Merchant where code=:merchantCode");
 		query.setString("merchantCode", merchantCode);
-		Merchant merchant=(Merchant) query.uniqueResult();
+		Merchant merchant = (Merchant) query.uniqueResult();
 		return merchant;
 	}
 
 	@Override
-	public Merchant findById(Integer MerchantId) {
-		session = getCurrentSession();
-		Query query=session.createQuery("from Merchant where MerchantId=:MerchantId");
-		query.setInteger("MerchantId", MerchantId);
-		Merchant merchant=(Merchant) query.uniqueResult();
+	public Merchant findById(Integer merchantId) {
+		Session session = getCurrentSession();
+		Query query = session
+				.createQuery("from Merchant where merchantId=:merchantId");
+		query.setInteger("MerchantId", merchantId);
+		Merchant merchant = (Merchant) query.uniqueResult();
 		return merchant;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Merchant> findByNameLike(String name) {
+		Session session = getCurrentSession();
+		Query query = session
+				.createQuery("from Merchant where merchantName like :name");
+		query.setString("name", "%" + name + "%");
+		List<Merchant> merchants = (List<Merchant>) query.list();
+		return merchants;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Merchant> findAll() {
+		Session session = getCurrentSession();
+		Query query = session.createQuery("from Merchant ");
+		List<Merchant> merchants = (List<Merchant>) query.list();
+		return merchants;
 	}
 
 }

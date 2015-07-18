@@ -1,5 +1,7 @@
 package com.canguang.service;
 
+import com.canguang.model.Admin;
+
 public interface IAdminService {
 
 	/**
@@ -8,6 +10,6 @@ public interface IAdminService {
 	 * @return 商家管理員
 	 */
 
-    boolean login(String adminName,String adminPwd);
+    Admin login(String adminName,String adminPwd);
     
 }
