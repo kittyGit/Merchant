@@ -305,13 +305,19 @@ select {
 	font-weight: bold;
 }
 
+/*canguang*/
 /*登录*/
 .login {
-	width: 260px;
+	width: 320px;
 	margin: 70px auto 0;
 	border: 1px solid #e3e3e3;
 	background: #f0f0f0;
 	padding: 33px 39px 23px;
+}
+
+/*canguang*/
+#loginform {
+	padding-left: 36px;
 }
 
 .login h1 {
@@ -322,7 +328,8 @@ select {
 	padding-bottom: 20px
 }
 
-.username, .pswd {
+/*canguang*/
+.username, .pswd, .phoneNumber, .imageCode, .vCode {
 	position: relative;
 	width: 260px;
 	height: 34px;
@@ -336,7 +343,7 @@ select {
 	cursor: text;
 	padding: 5px 0 5px 0;
 	line-height: 24px;
-	background: url(../images/input_icon.png) no-repeat 0 0 #fff;
+	background: url(../images/reg_user.png) no-repeat 0 0 #fff;
 	color: #808080;
 	font-family: "微软雅黑";
 	outline: none;
@@ -360,6 +367,57 @@ select {
 	background-position: 0 0;
 }
 
+/*餐广*/
+.phoneNumber {
+	width: 258px;
+	height: 24px;
+	cursor: text;
+	padding: 5px 0 5px 0;
+	line-height: 24px;
+	background: url(../images/reg_user.png) no-repeat 0 0 #fff;
+	color: #808080;
+	font-family: "微软雅黑";
+	outline: none;
+	font-size: 15px;
+}
+
+/*餐广*/
+.phoneNumber {
+    background-position: 0 -64px;
+}
+/*餐广*/
+.imageCode {
+	width: 258px;
+	height: 24px;
+	cursor: text;
+	padding: 5px 0 5px 0;
+	line-height: 24px;
+	background: url(../images/reg_user.png) no-repeat 0 0 #fff;
+	color: #808080;
+	font-family: "微软雅黑";
+	outline: none;
+	font-size: 15px;
+}
+
+/*餐广*/
+.imageCode {
+    background-position: 0 -92px;
+}
+/*餐广*/
+.vCode {
+	width: 258px;
+	height: 24px;
+	cursor: text;
+	padding: 5px 0 5px 0;
+	line-height: 24px;
+	background: url("../images/reg_user_02.png") no-repeat 0 4px #fff;
+	color: #808080;
+	font-family: "微软雅黑";
+	outline: none;
+	font-size: 15px;
+	margin: 20px 0 8px;
+}
+
 .pswd input, .pswd label {
 	position: absolute;
 	top: 0;
@@ -369,7 +427,7 @@ select {
 	padding: 5px 2px 5px 42px;
 	line-height: 24px;
 	z-index: 10;
-	background: url(../images/input_icon.png) no-repeat 0 0 #fff;
+	background: url(../images/reg_user.png) no-repeat 0 0 #fff;
 	color: #808080;
 	font-family: "微软雅黑";
 	outline: none;
