@@ -47,7 +47,7 @@ public class MerchantDao implements IMerchantDao {
 		Session session = getCurrentSession();
 		Query query = session
 				.createQuery("from Merchant where merchantId=:merchantId");
-		query.setInteger("MerchantId", merchantId);
+		query.setInteger("merchantId", merchantId);
 		Merchant merchant = (Merchant) query.uniqueResult();
 		return merchant;
 	}
@@ -68,7 +68,7 @@ public class MerchantDao implements IMerchantDao {
 	public List<Merchant> findAll() {
 		Session session = getCurrentSession();
 		Query query = session.createQuery("from Merchant ");
-		List<Merchant> merchants = (List<Merchant>) query.list();
+		List<Merchant> merchants =query.list();
 		return merchants;
 	}
 

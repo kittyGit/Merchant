@@ -10,7 +10,7 @@
 <form action="addStore.action" method="post">
 
    <input type="hidden" name="merchantId" value="${merchantId}"/>
-   <inpput type="text" name="storeName" />
+   商家名字：<input type="text" name="storeName" />
    <input type="submit" value="提交"/>
 
 </form>

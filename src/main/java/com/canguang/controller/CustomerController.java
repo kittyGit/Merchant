@@ -1,6 +1,7 @@
 package com.canguang.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,11 @@ public class CustomerController {
 		return mv;
 	}
 
+
+	/**
+	 * 保存註冊用戶
+	 */
+
 	@RequestMapping(method = RequestMethod.POST, value = "/register.action")
 	ModelAndView register(@RequestParam("customerName") String customerName,
 			@RequestParam("customerPhoneNumber") String phoneNumber,
@@ -45,10 +51,6 @@ public class CustomerController {
 		customer.setRegisterTime(registerTime);
 		customer.setLevel(0);
 		customer.setValidated(true);
-
-		/**
-		 * 保存註冊用戶
-		 */
 		boolean success = customerservice.saveCustomer(customer, merchantCode);
 		ModelAndView mv = null;
 		if (success) {
@@ -58,4 +60,5 @@ public class CustomerController {
 		}
 		return mv;
 	}
+	
 }

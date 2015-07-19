@@ -64,7 +64,7 @@ master/css/jquery.treetable.theme.default.css"
 			</div>
 			<ul class="nav-box">
 
-				<li id="header"><a href="merchant.action">商家管理</a></li>
+				<li id="header"><a href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
 				<li id="header"><a href="">会员</a></li>
 				<li id="header"><a href="">交易</a></li>
 				<li id="header"><a href="index.jsp">首页</a></li>

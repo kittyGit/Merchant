@@ -57,7 +57,7 @@
 			</div>
 			<ul class="nav-box">
 
-				<li id="header-nav-customer"><a href="login.jsp">商家登录</a></li>
+				<li id="header-nav-customer"><a href="login.action">商家登录</a></li>
 				<li id="header-nav-customer"><a
 					href="http://merchant.heshidai.com/customer/customer_list.action">会员</a></li>
 				<li id="header-nav-couponlist"><a

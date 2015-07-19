@@ -1,5 +1,6 @@
 package com.canguang.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -41,23 +42,60 @@ public class CustomerDao implements ICustomerDao {
 		return (Integer) session.save(customer);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Customer> findAll() {
-		return null;
+		Session session = getCurrentSession();
+		Query query = session.createQuery(" from Customer");
+		List<Customer> customers = query.list();
+		return customers;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Customer> findByPhoneNumber(String phoneNumber) {
-		Session session=getCurrentSession();
-		Query query=session.createQuery("from Customer where phoneNumber=:phoneNumer");
+		Session session = getCurrentSession();
+		Query query = session
+				.createQuery("from Customer where phoneNumber=:phoneNumer");
 		query.setString("phoneNumber", phoneNumber);
-		return null;
+		List<Customer> customers = (List<Customer>) query.list();
+		return customers;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Customer> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = getCurrentSession();
+		Query query = session
+				.createQuery("from Customer where customerName=:name");
+		query.setString("name", name);
+		List<Customer> customers = (List<Customer>) query.list();
+		return customers;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Customer> findByTime(Date registerTime) {
+		Session session = getCurrentSession();
+		Query query = session
+				.createQuery("from Customer where registerTime=:registerTime");
+		query.setDate("registerTime", registerTime);
+		List<Customer> customers = query.list();
+		return customers;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Customer> findByNumerAndNameAndTime(String phoneNumber,
+			String name, Date registerTime) {
+		Session session = getCurrentSession();
+		Query query = session
+				.createQuery("from Customer where phoneNumber=:phoneNumber and customerName=:name and registerTime=:registerTime");
+		query.setDate("registerTime", registerTime);
+		query.setString("name", name);
+		query.setString("phoneNumber", phoneNumber);
+		List<Customer> customers = query.list();
+		return customers;
 	}
 
 }

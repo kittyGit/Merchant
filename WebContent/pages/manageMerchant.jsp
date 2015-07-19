@@ -19,7 +19,7 @@
 						<input id="checked" type="radio" name="coupon" />否
 					</td>
 					<td>优惠价格：<input type="text" name="price" /></td>
-					<td><input type="submit" value="提交" /></td>
+					<td><input type="submit" value="添加" /></td>
 				</tr>
 			</table>
 

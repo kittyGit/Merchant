@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.canguang.model.Merchant;
+import com.canguang.model.Store;
 import com.canguang.service.IMerchantService;
+import com.canguang.service.IStoreService;
 
 @Controller
 @RequestMapping("/merchant")
@@ -20,12 +22,9 @@ public class MerchantController {
 	@Autowired
 	private IMerchantService merchantService;
 
-	/**
-	 * 添加商家管理员
-	 * 
-	 * @param admin
-	 * @return
-	 */
+	@Autowired
+	private IStoreService storeService;
+
 	@RequestMapping(value = "/manageMerchant.action")
 	ModelAndView manageMerchant() {
 		ModelAndView mvc = new ModelAndView("manageMerchant");
@@ -38,7 +37,7 @@ public class MerchantController {
 	 * @param merchantName
 	 *            商家
 	 * @param phoneNumber
-	 *            练习方式
+	 *            联系方式
 	 * @param coupon
 	 *            是否使用优惠券
 	 * @param price
@@ -86,6 +85,13 @@ public class MerchantController {
 		return mvc;
 	}
 
+	/**
+	 * 添加店面
+	 * 
+	 * @param merchantId
+	 * @param storeName
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/addStoreInput.action")
 	ModelAndView addStoreInput(@RequestParam("merchantId") Integer merchantId) {
 		ModelAndView mvc = new ModelAndView("addStore");
@@ -93,10 +99,18 @@ public class MerchantController {
 		return mvc;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/addStore.action")
+	@RequestMapping(method = RequestMethod.POST, value = "/addStore.action")
 	ModelAndView addStrore(@RequestParam("merchantId") Integer merchantId,
 			@RequestParam("storeName") String storeName) {
-		ModelAndView mvc = new ModelAndView("manageMerchant");
+		ModelAndView mvc = null;
+		Store store = new Store();
+		store.setStoreName(storeName);
+		
+		if (storeService.saveStore(store, merchantId)) {
+			mvc = new ModelAndView("manageMerchant");
+		}else{
+			mvc=new ModelAndView("addStore");
+		}
 
 		return mvc;
 	}

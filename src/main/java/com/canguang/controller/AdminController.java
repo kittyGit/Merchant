@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.canguang.model.Admin;
 import com.canguang.service.IAdminService;
+import com.canguang.service.ICustomerService;
 
 @Controller
 @RequestMapping("/admin")
@@ -16,6 +17,8 @@ public class AdminController {
 
 	@Autowired
 	private IAdminService adminService;
+	@Autowired
+	private ICustomerService customerservice;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/loginInput.action")
 	ModelAndView loginInput() {
@@ -42,5 +45,14 @@ public class AdminController {
 
 		return mvc;
 	}
-
+	/**
+	 * 查询会员
+	 * @return
+	 */
+	@RequestMapping(method=RequestMethod.GET,value="/queryCustomer.action")
+	ModelAndView querys(){
+		ModelAndView mvc=new ModelAndView("merchantAdmin");
+		return mvc;
+	}
+		
 }

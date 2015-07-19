@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-   shgosaighsagihioahgsaighsoiahioasgdhioashgoisahgiosdahgoisdhgisoadhgisaghiosa
+注册成功！
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -56,17 +57,34 @@
 
 				
 				<li id="header-nav-customer"><a
-					href="http://merchant.heshidai.com/customer/customer_list.action">会员</a></li>
+					href="queryCustomer.action">会员</a></li>
 				<li id="header-nav-couponlist"><a
-					href="http://merchant.heshidai.com/coupon/coupon_order_list.action">交易</a></li>
+					href="">交易</a></li>
 				<li id="header-nav-index"><a
-					href="http://merchant.heshidai.com/coupon/coupon_order_index.action">首页</a></li>
+					href="">首页</a></li>
 			</ul>
+		</div>
+		<div>
+		<table border="2">
+			<tr>
+				<td>手机号码</td>
+				<td>注册时间</td>
+				<td>注册门店</td>
+				<td>会员等级</td>
+			</tr>
+			<c:forEach items="${customerAll}" var="customer">
+				<tr>
+					<td>${customer.phoneNumber}</td>
+					<td>${customer.registerTime}</td>
+					<td>${customer.registerAddress}</td>
+					<td>${customer.level}</td>
+				</tr>
+			</c:forEach>
+		</table>
+		
 		</div>
 	</div>
 
-	<link rel="stylesheet"
-		href="../js/jQuery-Validation-Engine-master/css/validationEngine.jquery.css">
 	<input type="hidden" id="header-nav-id" value="header-nav-setup" />
 
 	<!--内容-->
@@ -89,7 +107,5 @@
 		<p>地址：深圳市福田区深南中路</p>
 	</div>
 
-</body>
-</html>
 </body>
 </html>

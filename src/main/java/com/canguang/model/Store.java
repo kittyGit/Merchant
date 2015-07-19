@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 /**
  * 商家店面信息
+ * 
  * @author Administrator
  *
  */
@@ -18,18 +19,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "stores")
 public class Store {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer storeId;
-	 
+
 	@ManyToOne
-	@JoinColumn(name = "merchantId", unique = true, nullable = true)
+	@JoinColumn(name = "merchantId", unique = false, nullable = true)
 	private Merchant merchant;
-	
+
 	@Column(nullable = false)
 	private String storeCode;
-	
+
 	@Column(nullable = false)
 	private String storeName;
 

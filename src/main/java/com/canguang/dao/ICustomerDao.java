@@ -1,5 +1,6 @@
 package com.canguang.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.canguang.model.Customer;
@@ -43,4 +44,19 @@ public interface ICustomerDao {
 	 * @return
 	 */
 	List<Customer> findByName(String name);
+	
+	/**
+	 * 通过注册时间查找用户信息
+	 * @param time 注册时间
+	 * @return
+	 */
+	List<Customer> findByTime(Date registerTime);
+	/**
+	 * 通过名字，号码，注册时间查找商家
+	 * @param phoneNumber 手机号码
+	 * @param name 店面名字
+	 * @param registerTime 注册时间
+	 * @return
+	 */
+	List<Customer> findByNumerAndNameAndTime(String phoneNumber,String name,Date registerTime);
  }

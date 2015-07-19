@@ -1,5 +1,8 @@
 package com.canguang.service.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,11 +51,34 @@ public class CustomerService implements ICustomerService {
 	}
 
 	@Override
-	public boolean findAll() {
-		if(customerDao.findAll()!=null){
-			return true;
-		}
-		return false;
+	public List<Customer> findAll() {
+		List<Customer> customers = customerDao.findAll();
+		return customers;
+	}
+
+	@Override
+	public List<Customer> findByPhoneNumber(String phoneNumber) {
+		List<Customer> customers=customerDao.findByPhoneNumber(phoneNumber);
+		return customers;
+	}
+
+	@Override
+	public List<Customer> findByName(String name) {
+		List<Customer> customers=customerDao.findByName(name);
+		return customers;
+	}
+
+	@Override
+	public List<Customer> findByTime(Date registerTime) {
+		List<Customer> customers=customerDao.findByTime(registerTime);
+		return customers;
+	}
+
+	@Override
+	public List<Customer> findByNumerAndNameAndTime(String phoneNumber,
+			String name, Date registerTime) {
+		List<Customer> customers=customerDao.findByNumerAndNameAndTime(phoneNumber, name, registerTime);
+		return customers;
 	}
 
 }
