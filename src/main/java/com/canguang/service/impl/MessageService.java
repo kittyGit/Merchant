@@ -16,6 +16,9 @@ public class MessageService implements IMessageService {
 	@Autowired
 	private IMessageSender messageSender;
 
+	/**
+	 * 生成并發送驗證碼
+	 */
 	@Override
 	public String generateAndSendVerifyCode(String username, String phoneNo) {
 

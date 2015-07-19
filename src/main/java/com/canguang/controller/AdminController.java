@@ -1,5 +1,7 @@
 package com.canguang.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +30,7 @@ public class AdminController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/login.action")
 	ModelAndView login(@RequestParam("adminName") String adminName,
-			@RequestParam("adminPwd") String adminPwd) {
+			@RequestParam("adminPwd") String adminPwd,HttpSession session) {
 
 		ModelAndView mvc = null;
 
@@ -39,6 +41,7 @@ public class AdminController {
 			} else {
 				mvc = new ModelAndView("canGuangAdmin");
 			}
+			session.setAttribute("admin", admin);
 		} else {
 			mvc = new ModelAndView("login");
 		}

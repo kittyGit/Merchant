@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
 
 	<!-- 引用property文件 -->
-	<context:property-placeholder location="classpath:hibernate-mysql.properties" />
+	<context:property-placeholder location="classpath:hibernate-mysql.properties" ignore-unresolvable="true" />
 
 	<!-- Hibernate SessionFactory -->
 	<bean id="sessionFactory"
