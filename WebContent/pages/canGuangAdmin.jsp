@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
 
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -42,70 +43,78 @@ master/css/jquery.treetable.theme.default.css"
 </head>
 <body>
 	<!--顶部-->
-	<div class="top">
-		<div class="top-content">
-			<div class="top-left">
-				<a href="http://www.heshidai.com/">餐 广传媒欢迎你</a>
-			</div>
-			<div class="top-right">
-				<a href="sysuser_updatePwdInit.action.html">修改密码</a><a
-					href="http://merchant.heshidai.com/logout.action">退出</a>
+	<form action="canGuangAdmin.action" method="post">
+		<div class="top">
+			<div class="top-content">
+				<div class="top-left">
+					<a href="http://www.heshidai.com/">餐 广传媒欢迎你</a>
+				</div>
+				<div class="top-right">
+					<a href="sysuser_updatePwdInit.action.html">修改密码</a><a
+						href="http://merchant.heshidai.com/logout.action">退出</a>
+				</div>
 			</div>
 		</div>
-	</div>
-	<!--页头-->
+		<!--页头-->
 
 
-	<div class="header">
-		<div class="header-content">
-			<div class="logo">
-				<img src="../images/logo.png" width="222" height="40"
-					alt="餐广传媒-商家后台" title="餐广传媒-商家后台" />
+		<div class="header">
+			<div class="header-content">
+				<div class="logo">
+					<img src="../images/logo.png" width="222" height="40"
+						alt="餐广传媒-商家后台" title="餐广传媒-商家后台" />
+				</div>
+				<ul class="nav-box">
+
+					<li id="header"><a
+						href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
+					<li id="header"><a
+						href="<%=request.getContextPath()%>/admin/showVip.action">会员</a></li>
+					<li id="header"><a href="">交易</a></li>
+					<li id="header"><a href="">首页</a></li>
+				</ul>
 			</div>
-			<ul class="nav-box">
-
-				<li id="header"><a href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
-				<li id="header"><a href="">会员</a></li>
-				<li id="header"><a href="">交易</a></li>
-				<li id="header"><a href="index.jsp">首页</a></li>
-			</ul>
 		</div>
-	</div>
-	<div class="table-topradius"></div>
-	<table border="0" cellpadding="0" cellspacing="0" class="table-a">
-		<tr>
-			<th>优惠编码</th>
-			<th>手机号码</th>
-			<th>消费门店</th>
-			<th>消费时间</th>
-			<th>使用特权</th>
-		</tr>
-
-	</table>
-
-	<input type="hidden" id="header-nav-id" value="header-nav-
+		<table border="0" cellpadding="0" cellspacing="0" class="table-a">
+			<tr>
+				<th>优惠编码</th>
+				<th>手机号码</th>
+				<th>消费门店</th>
+				<th>消费时间</th>
+				<th>消费特权</th>
+			</tr>
+			<c:forEach items="${customers}" var="customer">
+				<tr>
+					<td>${customer.phoneNumber}</td>
+					<td>${customer.registerTime}</td>
+					<td>${customer.registerAddress}</td>
+					<td>${customer.level}</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<input type="hidden" id="header-nav-id" value="header-nav-
 
 setup" />
 
-	<!--内容-->
-	<script
-		src="../js/jQuery-Validation-Engine-master/js/jquery.validationEngine.js"
-		type="text/javascript"></script>
-	<script type="text/javascript">
-		$("#updatePwdForm").validationEngine({
-			scroll : false,
-			maxErrorsPerField : 1,
-			promptPosition : "centerRight",
-			showOneMessage : true
-		});
-	</script>
-	<script src="../js/item.js"></script>
+		<!--内容-->
+		<script
+			src="../js/jQuery-Validation-Engine-master/js/jquery.validationEngine.js"
+			type="text/javascript"></script>
+		<script type="text/javascript">
+			$("#updatePwdForm").validationEngine({
+				scroll : false,
+				maxErrorsPerField : 1,
+				promptPosition : "centerRight",
+				showOneMessage : true
+			});
+		</script>
+		<script src="../js/item.js"></script>
 
-	<!--页脚-->
-	<div class="foot">
-		<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP 备13059473号</p>
-		<p>地址：深圳市福田区深南中路</p>
-	</div>
-
+		<!--页脚-->
+		<div class="foot">
+			<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP 备13059473号</p>
+			<p>地址：深圳市福田区深南中路</p>
+		</div>
+	</form>
 </body>
 </html>

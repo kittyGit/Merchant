@@ -1,7 +1,6 @@
 package com.canguang.controller;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +38,7 @@ public class CustomerController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/register.action")
 	ModelAndView register(@RequestParam("customerName") String customerName,
-			@RequestParam("customerPhoneNumber") String phoneNumber,
+			@RequestParam("phoneNumber") String phoneNumber,
 			@RequestParam("customerPwd") String customerPwd,
 			@RequestParam("merchantCode") String merchantCode) {
 
@@ -54,7 +53,7 @@ public class CustomerController {
 		boolean success = customerservice.saveCustomer(customer, merchantCode);
 		ModelAndView mv = null;
 		if (success) {
-			mv = new ModelAndView("index");
+			mv = new ModelAndView("registerResult");
 		} else {
 			mv = new ModelAndView("register");
 		}

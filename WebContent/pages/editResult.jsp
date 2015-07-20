@@ -7,12 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="addStore.action" method="post">
-
-   <input type="hidden" name="merchantId" value="${merchantId}"/>
-       店面名字：<input type="text" name="storeName" />
-   <input type="submit" value="提交"/>
-
-</form>
+    密码修改成功
 </body>
 </html>

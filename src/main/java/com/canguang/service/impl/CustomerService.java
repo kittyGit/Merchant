@@ -34,6 +34,7 @@ public class CustomerService implements ICustomerService {
 
 		if (merchant != null) {
 			customer.setMerchant(merchant);
+			customer.setRegisterAddress(merchant.getMerchantName());
 			if (merchant.isHasCoupon()) {
 				customer.setCoupon(0);
 				customer.setPrice(merchant.getPrice());
@@ -58,26 +59,25 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public List<Customer> findByPhoneNumber(String phoneNumber) {
-		List<Customer> customers=customerDao.findByPhoneNumber(phoneNumber);
+		List<Customer> customers = customerDao.findByPhoneNumber(phoneNumber);
 		return customers;
 	}
 
 	@Override
 	public List<Customer> findByName(String name) {
-		List<Customer> customers=customerDao.findByName(name);
+		List<Customer> customers = customerDao.findByName(name);
 		return customers;
 	}
 
 	@Override
 	public List<Customer> findByTime(Date registerTime) {
-		List<Customer> customers=customerDao.findByTime(registerTime);
+		List<Customer> customers = customerDao.findByTime(registerTime);
 		return customers;
 	}
 
 	@Override
-	public List<Customer> findByNumerAndNameAndTime(String phoneNumber,
-			String name, Date registerTime) {
-		List<Customer> customers=customerDao.findByNumerAndNameAndTime(phoneNumber, name, registerTime);
+	public List<Customer> findByNumerAndNameAndTime(String phoneNumber, String name, Date registerTime) {
+		List<Customer> customers = customerDao.findByNumerAndNameAndTime(phoneNumber, name, registerTime);
 		return customers;
 	}
 

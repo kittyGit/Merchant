@@ -20,23 +20,20 @@ public class LoginFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain filter) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filter)
+			throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse resq = (HttpServletResponse) response;
 		HttpSession session = httpRequest.getSession();
-		System.out.println("-------------isLogin--------------------"
-				+ session.getAttribute("admin"));
+		System.out.println("-------------isLogin--------------------" + session.getAttribute("admin"));
 		if (session.getAttribute("admin") != null
-				|| httpRequest.getRequestURI().equals(
-						httpRequest.getContextPath()
-								+ "/admin/loginInput.action")
-				|| httpRequest.getRequestURI().equals(
-						httpRequest.getContextPath() + "/admin/login.action")) {
+				|| httpRequest.getRequestURI().equals(httpRequest.getContextPath() + "/admin/loginInput.action")
+				|| httpRequest.getRequestURI().equals(httpRequest.getContextPath() + "/admin/login.action")
+				|| httpRequest.getRequestURI().equals(httpRequest.getContextPath() + "/customer/registerInput.action")
+				|| httpRequest.getRequestURI().equals(httpRequest.getContextPath() + "/customer/register.action")) {
 			filter.doFilter(request, response);
 		} else {
-			resq.sendRedirect(httpRequest.getContextPath()
-					+ "/admin/loginInput.action");
+			resq.sendRedirect(httpRequest.getContextPath() + "/admin/loginInput.action");
 
 		}
 	}

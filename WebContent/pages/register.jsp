@@ -53,7 +53,7 @@
 	<!--内容-->
 
 	<div class="login">
-		<form action="/login.action" id="loginform" method="post">
+		<form action="register.action" id="loginform" method="post">
 			<input type="hidden" name="merchantCode" value="${merchantCode}" />
 			<input type="hidden" name="storeCode" value="${storeCode}" />
 			<div class="username">
@@ -71,22 +71,11 @@
 					autocomplete="off" name="customerPwd" placeholder="密码"
 					maxlength="20" value="" tabindex="3" />
 			</div>
-			<div class="pswd">
-				<input class="input-password" type="password" id="login_password"
-					autocomplete="off" name="reCustomerPwd" placeholder="重复密码"
-					maxlength="20" value="" tabindex="4" />
-			</div>
-			<div class="imageCode">
-				<input type="text" id="imageCode" name="imageCode"
-					placeholder="图形验证码" class="input-name" maxlength="20" value=""
-					tabindex="5" />
-			</div>
 			<div class="vCode">
-				<input type="text" id="vCode" name="vCode"
-					placeholder="手机验证码" class="input-name" maxlength="20" value=""
-					tabindex="6" />
+				<input type="text" id="vCode" name="vCode" placeholder="手机验证码"
+					class="input-name" maxlength="20" value="" tabindex="6" />
 			</div>
-			<input id="loginbtn" class="login-button" value="注册" type="button"
+			<input id="loginbtn" class="login-button" value="注册" type="submit"
 				tabindex="7" />
 			<div class="login-ts">
 				<p>您输入的账户或密码有误，请重新输入！</p>
