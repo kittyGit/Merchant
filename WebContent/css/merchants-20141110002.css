@@ -329,7 +329,7 @@ select {
 }
 
 /*canguang*/
-.username, .pswd, .phoneNumber, .imageCode, .vCode {
+.username, .pswd, .phoneNumber, .vCode {
 	position: relative;
 	width: 260px;
 	height: 34px;
@@ -383,39 +383,40 @@ select {
 
 /*餐广*/
 .phoneNumber {
-    background-position: 0 -64px;
-}
-/*餐广*/
-.imageCode {
-	width: 258px;
-	height: 24px;
-	cursor: text;
-	padding: 5px 0 5px 0;
-	line-height: 24px;
-	background: url(../images/reg_user.png) no-repeat 0 0 #fff;
-	color: #808080;
-	font-family: "微软雅黑";
-	outline: none;
-	font-size: 15px;
-}
-
-/*餐广*/
-.imageCode {
-    background-position: 0 -92px;
+	background-position: 0 -64px;
 }
 /*餐广*/
 .vCode {
-	width: 258px;
-	height: 24px;
+	background: #fff url("../images/reg_user_02.png") no-repeat scroll 0 4px;
+	color: #808080;
 	cursor: text;
-	padding: 5px 0 5px 0;
+	float: left;
+	font-family: "微软雅黑";
+	font-size: 15px;
+	height: 24px;
 	line-height: 24px;
-	background: url("../images/reg_user_02.png") no-repeat 0 4px #fff;
+	margin: 17px 0 8px;
+	outline: medium none;
+	padding: 5px 0;
+	width: 145px;
+}
+
+.sendVcode {
+	float: left;
+	margin: 17px 0 0;
+}
+
+.input-vCode {
+	background: #fff none repeat scroll 0 0;
 	color: #808080;
 	font-family: "微软雅黑";
-	outline: none;
 	font-size: 15px;
-	margin: 20px 0 8px;
+	height: 24px;
+	line-height: 24px;
+	margin-left: 42px;
+	outline: medium none;
+	width: 100px;
+	z-index: 10;
 }
 
 .pswd input, .pswd label {
@@ -1312,4 +1313,19 @@ ul.tag_options li.open_selected {
 
 .ie6_7 a:hover {
 	text-decoration: underline;
+}
+
+/* 餐广 */
+.login .btn_vcode {
+	background: #77c4f8 none repeat scroll 0 0;
+	border-radius: 1px;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	float: right;
+	height: 35px;
+	line-height: 36px;
+	margin-left: 3px;
+	text-align: center;
+	width: 110px;
 }

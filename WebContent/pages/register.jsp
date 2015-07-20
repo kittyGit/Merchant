@@ -73,10 +73,13 @@
 			</div>
 			<div class="vCode">
 				<input type="text" id="vCode" name="vCode" placeholder="手机验证码"
-					class="input-name" maxlength="20" value="" tabindex="6" />
+					class="input-vCode" maxlength="20" value="" tabindex="4" />
+			</div>
+			<div class="sendVcode">
+				<span tabindex="5" onclick="javascript:sendVcode();" id="a_sendVcode" class="btn_vcode">获取手机验证码</span>
 			</div>
 			<input id="loginbtn" class="login-button" value="注册" type="submit"
-				tabindex="7" />
+				tabindex="6" />
 			<div class="login-ts">
 				<p>您输入的账户或密码有误，请重新输入！</p>
 			</div>

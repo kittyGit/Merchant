@@ -14,26 +14,40 @@ import javax.servlet.http.HttpSession;
 
 public class LoginFilter implements Filter {
 
-	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		System.out.println("init");
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filter)
-			throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response,
+			FilterChain filter) throws IOException, ServletException {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse resq = (HttpServletResponse) response;
 		HttpSession session = httpRequest.getSession();
-		System.out.println("-------------isLogin--------------------" + session.getAttribute("admin"));
+
+		/*
+		 * 如果商家已经登录，则放行
+		 */
 		if (session.getAttribute("admin") != null
-				|| httpRequest.getRequestURI().equals(httpRequest.getContextPath() + "/admin/loginInput.action")
-				|| httpRequest.getRequestURI().equals(httpRequest.getContextPath() + "/admin/login.action")
-				|| httpRequest.getRequestURI().equals(httpRequest.getContextPath() + "/customer/registerInput.action")
-				|| httpRequest.getRequestURI().equals(httpRequest.getContextPath() + "/customer/register.action")) {
+				|| httpRequest.getRequestURI().equals(
+						httpRequest.getContextPath()
+								+ "/admin/loginInput.action")
+				|| httpRequest.getRequestURI().equals(
+						httpRequest.getContextPath() + "/admin/login.action")
+				|| httpRequest.getRequestURI().startsWith(
+						httpRequest.getContextPath() + "/customer/")
+				|| httpRequest.getRequestURI().startsWith(
+						httpRequest.getContextPath() + "/css/")
+				|| httpRequest.getRequestURI().startsWith(
+						httpRequest.getContextPath() + "/images/")
+				|| httpRequest.getRequestURI().startsWith(
+						httpRequest.getContextPath() + "/js/")) {
 			filter.doFilter(request, response);
 		} else {
-			resq.sendRedirect(httpRequest.getContextPath() + "/admin/loginInput.action");
+			/*
+			 * 否则转到商家登录界面
+			 */
+			resq.sendRedirect(httpRequest.getContextPath()
+					+ "/admin/loginInput.action");
 
 		}
 	}
