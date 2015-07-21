@@ -75,9 +75,8 @@ public class CustomerController {
 		/*
 		 * 生成验证码
 		 */
-		/*String verifyCode = messageService.generateAndSendVerifyCode(username,
-				phoneNumber);*/
-		String verifyCode = "123";
+		String verifyCode = messageService.generateAndSendVerifyCode(username,
+				phoneNumber);
 		/*
 		 * 验证码发送成功
 		 */
