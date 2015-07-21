@@ -1,9 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+
+"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="keywords" content="合时代-商家后台" />
+<meta name="description"
+	content="合时代(www.heshidai.com)-网络投资专业首选,是国内首批
+
+由第三方做资金托管账户的P2P网络金融平台,提供网络借贷、小额贷款等线上
+
+投资理财,方便快捷,高收益低风险,100%本金利息担保." />
+<meta http-equiv="Cache-Control" content="no-store" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <title>餐广传媒-商家后台-首页</title>
 <link href="https://www.heshidai.com/favicon.ico" type="image/x-icon"
 	rel="shortcut icon" />
@@ -25,10 +39,11 @@ master/css/jquery.treetable.theme.default.css"
 <script src="../js/select.js"></script>
 <script src="../js/js-merchants-20141113008.js" type="text/javascript"></script>
 <script src="../js/pagination-20141119001.js" type="text/javascript"></script>
-</head>
 
-<!--顶部-->
-	<form action="queryMerchant.action" method="post">
+</head>
+<body>
+	<!--顶部-->
+	<form action="canGuangAdmin.action" method="post">
 		<div class="top">
 			<div class="top-content">
 				<div class="top-left">
@@ -41,6 +56,8 @@ master/css/jquery.treetable.theme.default.css"
 			</div>
 		</div>
 		<!--页头-->
+
+
 		<div class="header">
 			<div class="header-content">
 				<div class="logo">
@@ -54,48 +71,40 @@ master/css/jquery.treetable.theme.default.css"
 					<li id="header"><a
 						href="">会员</a></li>
 					<li id="header"><a href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
-					<li id="header"><a href="">首页</a></li>
+					<li id="header"><a href="<%=request.getContextPath()%>/admin/login.action">首页</a></li>
 				</ul>
 			</div>
 		</div>
 		<table>
-				<tr>
-					<td>店名：<input type="text" name="name" /></td>
-					<td>联系电话：<input type="text" name="phoneNumber" /></td>
-					<td>是否使用优惠券：<input id="checked" type="radio" name="coupon" />是
-						<input id="checked" type="radio" name="coupon" />否
-					</td>
-					<td>优惠价格：<input type="text" name="price" /></td>
-					<td><input type="submit" value="添加" /></td>
-				</tr>
-			</table>
-
-		</form>
-
-	<div>
-		<form action="queryMerchant.action" method="post">
-			商家：<input type="text" name="name" /> <input type="submit" value="查询" />
-		</form>
-	</div>
+			<tr>
+				<td>手机号码:<input type="text" name="phoneNumber" /></td>
+				<td><input type="submit" name="query" value="查詢" /></td>
+				<!--  <td>消费门店:<input type="text" name="customerAddress" /></td>
+				<td>注册时间:<input type="text" name="registerTimer" /></td>
+				<td><input type="submit" name="download" value="下載" /></td>-->
+			</tr>
+		</table>
 		<table border="0" cellpadding="0" cellspacing="0" class="table-a">
 			<tr>
-				<td>商家</td>
-				<td>优惠券</td>
-				<td>编码</td>
-				<td>添加店面</td>
+				<th>手机号码</th>
+				<th>消费时间</th>
+				<th>消费门店</th>
+				<th>等级</th>
+				<th>消费特权</th>
 			</tr>
-			<c:forEach items="${merchants}" var="merchant">
+			<c:forEach items="${customerExchanges}" var="customer">
 				<tr>
-					<td>${merchant.merchantName}</td>
-					<td>${merchant.hasCoupon}</td>
-					<td>${merchant.code}</td>
-					<td><a href="addStoreInput.action?merchantId=${merchant.merchantId}">添加店面</a></td>
+					<td>${customer.phoneNumber}</td>
+					<td>${customer.registerTime}</td>
+					<td>${customer.registerAddress}</td>
+					<td>${customer.level}</td>
+					<td>${customer.price}</td>
 				</tr>
 			</c:forEach>
 		</table>
-		
-		
-		<input type="hidden" id="header-nav-id" value="header-nav-setup" />
+		<input type="hidden" id="header-nav-id" value="header-nav-
+
+setup" />
 
 		<!--内容-->
 		<script
@@ -116,5 +125,6 @@ master/css/jquery.treetable.theme.default.css"
 			<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP 备13059473号</p>
 			<p>地址：深圳市福田区深南中路</p>
 		</div>
+	</form>
 </body>
 </html>

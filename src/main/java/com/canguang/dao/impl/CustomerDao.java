@@ -55,8 +55,7 @@ public class CustomerDao implements ICustomerDao {
 	@Override
 	public List<Customer> findByPhoneNumber(String phoneNumber) {
 		Session session = getCurrentSession();
-		Query query = session
-				.createQuery("from Customer where phoneNumber=:phoneNumer");
+		Query query = session.createQuery("from Customer where phoneNumber=:phoneNumber");
 		query.setString("phoneNumber", phoneNumber);
 		List<Customer> customers = (List<Customer>) query.list();
 		return customers;
@@ -64,11 +63,10 @@ public class CustomerDao implements ICustomerDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Customer> findByName(String name) {
+	public List<Customer> findByAddress(String registerAddress) {
 		Session session = getCurrentSession();
-		Query query = session
-				.createQuery("from Customer where customerName=:name");
-		query.setString("name", name);
+		Query query = session.createQuery("from Customer where registerAddress=:registerAddress");
+		query.setString("registerAddress", registerAddress);
 		List<Customer> customers = (List<Customer>) query.list();
 		return customers;
 	}
@@ -77,8 +75,7 @@ public class CustomerDao implements ICustomerDao {
 	@Override
 	public List<Customer> findByTime(Date registerTime) {
 		Session session = getCurrentSession();
-		Query query = session
-				.createQuery("from Customer where registerTime=:registerTime");
+		Query query = session.createQuery("from Customer where registerTime=:registerTime");
 		query.setDate("registerTime", registerTime);
 		List<Customer> customers = query.list();
 		return customers;
@@ -86,13 +83,12 @@ public class CustomerDao implements ICustomerDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Customer> findByNumerAndNameAndTime(String phoneNumber,
-			String name, Date registerTime) {
+	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String registerAddress, Date registerTime) {
 		Session session = getCurrentSession();
-		Query query = session
-				.createQuery("from Customer where phoneNumber=:phoneNumber and customerName=:name and registerTime=:registerTime");
+		Query query = session.createQuery(
+				"from Customer where phoneNumber=:phoneNumber and registerAddress=:registerAddress and registerTime=:registerTime");
 		query.setDate("registerTime", registerTime);
-		query.setString("name", name);
+		query.setString("registerAddress", registerAddress);
 		query.setString("phoneNumber", phoneNumber);
 		List<Customer> customers = query.list();
 		return customers;

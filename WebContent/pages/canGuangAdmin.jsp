@@ -43,7 +43,7 @@ master/css/jquery.treetable.theme.default.css"
 </head>
 <body>
 	<!--顶部-->
-	<form action="canGuangAdmin.action" method="post">
+	<form action="showVerifyCustomer.action" method="post">
 		<div class="top">
 			<div class="top-content">
 				<div class="top-left">
@@ -69,26 +69,34 @@ master/css/jquery.treetable.theme.default.css"
 					<li id="header"><a
 						href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
 					<li id="header"><a
-						href="<%=request.getContextPath()%>/admin/showVip.action">会员</a></li>
-					<li id="header"><a href="">交易</a></li>
-					<li id="header"><a href="">首页</a></li>
+						href="">会员</a></li>
+					<li id="header"><a href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
+					<li id="header"><a href="<%=request.getContextPath()%>/admin/login.action">首页</a></li>
 				</ul>
 			</div>
 		</div>
+		<table>
+			<tr>
+				<td>手机号码:<input type="text" name="phoneNumber" /></td>
+				<td><input type="submit" name="yanzheng" value="验证" /></td>
+			</tr>
+		</table>
 		<table border="0" cellpadding="0" cellspacing="0" class="table-a">
 			<tr>
-				<th>优惠编码</th>
 				<th>手机号码</th>
-				<th>消费门店</th>
 				<th>消费时间</th>
+				<th>消费门店</th>
+				<th>等级</th>
 				<th>消费特权</th>
+				<th>消费时间</th>
 			</tr>
-			<c:forEach items="${customers}" var="customer">
+			<c:forEach items="${customerExchanges}" var="customer">
 				<tr>
 					<td>${customer.phoneNumber}</td>
 					<td>${customer.registerTime}</td>
 					<td>${customer.registerAddress}</td>
 					<td>${customer.level}</td>
+					<td>${customer.price}</td>
 				</tr>
 			</c:forEach>
 		</table>

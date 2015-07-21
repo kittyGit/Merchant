@@ -42,7 +42,7 @@ public interface ICustomerService {
 	 *            店面名字
 	 * @return
 	 */
-	List<Customer> findByName(String name);
+	List<Customer> findByAddress(String registerAddress);
 
 	/**
 	 * 通过注册时间查找用户信息
@@ -64,7 +64,7 @@ public interface ICustomerService {
 	 *            注册时间
 	 * @return
 	 */
-	List<Customer> findByNumerAndNameAndTime(String phoneNumber, String name,
+	List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String name,
 			Date registerTime);
 
 }

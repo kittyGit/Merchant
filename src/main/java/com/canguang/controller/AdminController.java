@@ -1,10 +1,12 @@
 package com.canguang.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,8 +45,6 @@ public class AdminController {
 				mvc = new ModelAndView("merchantAdmin");
 			} else {
 				mvc = new ModelAndView("canGuangAdmin");
-				List<Customer> customers = customerService.findAll();
-				mvc.addObject("customers", customers);
 			}
 			session.setAttribute("admin", admin);
 		} else {
@@ -54,4 +54,56 @@ public class AdminController {
 		return mvc;
 	}
 
+	/**
+	 * 验证用户是否有消费记录
+	 * 
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "/verify.action")
+	ModelAndView verify() {
+
+		ModelAndView mvc = new ModelAndView("canGuangAdmin");
+		return mvc;
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/showVerifyCustomer.action")
+	ModelAndView exchange(@RequestParam("phoneNumber") String phoneNumber) {
+		ModelAndView mvc = new ModelAndView("canGuangAdmin");
+		List<Customer> customerExchanges = customerService.findByPhoneNumber(phoneNumber);
+		mvc.addObject("customerExchanges", customerExchanges);
+		return mvc;
+	}
+
+	/**
+	 * 查询用户交易记录
+	 * 
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "/customerExchange.action")
+	ModelAndView exchangeCustomer() {
+
+		ModelAndView mvc = new ModelAndView("exchange");
+		return mvc;
+	}
+
+	@SuppressWarnings("unused")
+	@RequestMapping(method = RequestMethod.POST, value = "/showExchange.action")
+	ModelAndView customersExchange(@RequestParam("phoneNumber") String phoneNumber,
+			@RequestParam("registerAddress") String registerAddress,
+			@RequestParam("registerTimer") @DateTimeFormat(pattern = "yyyy-MM-dd") Date registerTime) {
+		List<Customer> customerExchanges = null;
+		if (!phoneNumber.equals("") && phoneNumber != null) {
+			customerExchanges = customerService.findByPhoneNumber(phoneNumber);
+		} else if (!registerAddress.equals("") && registerAddress != null) {
+			customerExchanges = customerService.findByAddress(registerAddress);
+		} else if (!registerTime.equals("") && registerTime != null) {
+			customerExchanges = customerService.findByTime(registerTime);
+		} else if (phoneNumber != null && registerAddress != null && registerTime != null) {
+			customerExchanges = customerService.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
+					registerTime);
+		}
+		ModelAndView mvc = new ModelAndView("exchange");
+		mvc.addObject("customerExchanges", customerExchanges);
+		return mvc;
+	}
 }

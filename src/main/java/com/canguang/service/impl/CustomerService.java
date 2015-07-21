@@ -64,8 +64,8 @@ public class CustomerService implements ICustomerService {
 	}
 
 	@Override
-	public List<Customer> findByName(String name) {
-		List<Customer> customers = customerDao.findByName(name);
+	public List<Customer> findByAddress(String registerAddress) {
+		List<Customer> customers = customerDao.findByAddress(registerAddress);
 		return customers;
 	}
 
@@ -76,8 +76,8 @@ public class CustomerService implements ICustomerService {
 	}
 
 	@Override
-	public List<Customer> findByNumerAndNameAndTime(String phoneNumber, String name, Date registerTime) {
-		List<Customer> customers = customerDao.findByNumerAndNameAndTime(phoneNumber, name, registerTime);
+	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String name, Date registerTime) {
+		List<Customer> customers = customerDao.findByNumerAndAddressAndTime(phoneNumber, name, registerTime);
 		return customers;
 	}
 
