@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class LoginFilter implements Filter {
-
+	
 	public void init(FilterConfig filterConfig) throws ServletException {
 	}
 
@@ -27,19 +27,20 @@ public class LoginFilter implements Filter {
 		/*
 		 * 如果商家已经登录，则放行
 		 */
+		String requestUri = httpRequest.getRequestURI();
 		if (session.getAttribute("admin") != null
-				|| httpRequest.getRequestURI().equals(
+				|| requestUri.equals(
 						httpRequest.getContextPath()
 								+ "/admin/loginInput.action")
-				|| httpRequest.getRequestURI().equals(
+				|| requestUri.equals(
 						httpRequest.getContextPath() + "/admin/login.action")
-				|| httpRequest.getRequestURI().startsWith(
-						httpRequest.getContextPath() + "/customer/")
-				|| httpRequest.getRequestURI().startsWith(
+				|| requestUri.startsWith(
+						httpRequest.getContextPath() + "/customer")
+				|| requestUri.startsWith(
 						httpRequest.getContextPath() + "/css/")
-				|| httpRequest.getRequestURI().startsWith(
+				|| requestUri.startsWith(
 						httpRequest.getContextPath() + "/images/")
-				|| httpRequest.getRequestURI().startsWith(
+				|| requestUri.startsWith(
 						httpRequest.getContextPath() + "/js/")) {
 			filter.doFilter(request, response);
 		} else {
@@ -56,5 +57,4 @@ public class LoginFilter implements Filter {
 	public void destroy() {
 
 	}
-
 }
