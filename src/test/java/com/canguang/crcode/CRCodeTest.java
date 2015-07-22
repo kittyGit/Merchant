@@ -26,7 +26,7 @@ public class CRCodeTest {
 		QRCode.from(
 				MessageFormat
 						.format("http://192.168.0.102:8080/Merchant/customer/registerInput.action?merchantCode={0}&storeCode={1}",
-								"123", "1")).to(ImageType.PNG)
+								"eb4fbd46-7e06-4d2e-8411-30e8d027e2b0", "a5cae0e2-b2e5-4a2a-8533-b0cbadfbff04")).to(ImageType.PNG)
 				.withSize(250, 250).withCharset(StandardCharsets.UTF_8.name())
 				.writeTo(fos);
 	}

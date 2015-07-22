@@ -73,23 +73,27 @@ public class CustomerDao implements ICustomerDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Customer> findByTime(Date registerTime) {
+	public List<Customer> findByTime(Date registerTimeStart, Date registerTimeEnd) {
 		Session session = getCurrentSession();
-		Query query = session.createQuery("from Customer where registerTime=:registerTime");
-		query.setDate("registerTime", registerTime);
+		Query query = session.createQuery(
+				"from Customer where registerTime >= :registerTimeStart and registerTime <= :registerTimeEnd");
+		query.setDate("registerTimeStart", registerTimeStart);
+		query.setDate("registerTimeEnd", registerTimeEnd);
 		List<Customer> customers = query.list();
 		return customers;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String registerAddress, Date registerTime) {
+	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String address, Date registerTimeStart,
+			Date registerTimeEnd) {
 		Session session = getCurrentSession();
-		Query query = session.createQuery(
-				"from Customer where phoneNumber=:phoneNumber and registerAddress=:registerAddress and registerTime=:registerTime");
-		query.setDate("registerTime", registerTime);
-		query.setString("registerAddress", registerAddress);
+		Query query = session.createQuery("from Customer where phoneNumber=:phoneNumber and registerAddress= :address "
+				+ "and registerTime >= :registerTimeStart and registerTime <= :registerTimeEnd ");
 		query.setString("phoneNumber", phoneNumber);
+		query.setString("address", address);
+		query.setDate("registerTimeStart", registerTimeStart);
+		query.setDate("registerTimeEnd", registerTimeEnd);
 		List<Customer> customers = query.list();
 		return customers;
 	}

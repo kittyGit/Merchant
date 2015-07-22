@@ -43,7 +43,7 @@ master/css/jquery.treetable.theme.default.css"
 </head>
 <body>
 	<!--顶部-->
-	<form action="canGuangAdmin.action" method="post">
+	
 		<div class="top">
 			<div class="top-content">
 				<div class="top-left">
@@ -69,12 +69,13 @@ master/css/jquery.treetable.theme.default.css"
 					<li id="header"><a
 						href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
 					<li id="header"><a
-						href="">会员</a></li>
+						href="<%=request.getContextPath()%>/admin/vipCustomer.action"">会员</a></li>
 					<li id="header"><a href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
 					<li id="header"><a href="<%=request.getContextPath()%>/admin/login.action">首页</a></li>
 				</ul>
 			</div>
 		</div>
+		<form action="canGuangAdmin.action" method="post">
 		<table>
 			<tr>
 				<td>手机号码:<input type="text" name="phoneNumber" /></td>
@@ -102,6 +103,7 @@ master/css/jquery.treetable.theme.default.css"
 				</tr>
 			</c:forEach>
 		</table>
+		</form>
 		<input type="hidden" id="header-nav-id" value="header-nav-
 
 setup" />
@@ -125,6 +127,6 @@ setup" />
 			<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP 备13059473号</p>
 			<p>地址：深圳市福田区深南中路</p>
 		</div>
-	</form>
+	
 </body>
 </html>

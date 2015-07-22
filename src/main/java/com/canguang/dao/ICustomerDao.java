@@ -56,7 +56,7 @@ public interface ICustomerDao {
 	 *            注册时间
 	 * @return
 	 */
-	List<Customer> findByTime(Date registerTime);
+	List<Customer> findByTime(Date registerTimeStart, Date registerTimeEnd);
 
 	/**
 	 * 通过名字，号码，注册时间 查找用户信息
@@ -69,5 +69,6 @@ public interface ICustomerDao {
 	 *            注册时间
 	 * @return
 	 */
-	List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String registerAddress, Date registerTime);
+	List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String address, Date registerTimeStart,
+			Date registerTimeEnd);
 }

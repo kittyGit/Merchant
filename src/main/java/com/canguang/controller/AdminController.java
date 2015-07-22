@@ -55,7 +55,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 验证用户是否有消费记录
+	 * 验证用户是否有消费记录（首页）
 	 * 
 	 * @return
 	 */
@@ -75,7 +75,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 查询用户交易记录
+	 * 查询用户交易记录(交易页面)
 	 * 
 	 * @return
 	 */
@@ -86,24 +86,43 @@ public class AdminController {
 		return mvc;
 	}
 
-	@SuppressWarnings("unused")
 	@RequestMapping(method = RequestMethod.POST, value = "/showExchange.action")
 	ModelAndView customersExchange(@RequestParam("phoneNumber") String phoneNumber,
 			@RequestParam("registerAddress") String registerAddress,
-			@RequestParam("registerTimer") @DateTimeFormat(pattern = "yyyy-MM-dd") Date registerTime) {
-		List<Customer> customerExchanges = null;
-		if (!phoneNumber.equals("") && phoneNumber != null) {
-			customerExchanges = customerService.findByPhoneNumber(phoneNumber);
-		} else if (!registerAddress.equals("") && registerAddress != null) {
-			customerExchanges = customerService.findByAddress(registerAddress);
-		} else if (!registerTime.equals("") && registerTime != null) {
-			customerExchanges = customerService.findByTime(registerTime);
-		} else if (phoneNumber != null && registerAddress != null && registerTime != null) {
-			customerExchanges = customerService.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
-					registerTime);
-		}
+			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeStart") Date registerTimeStart,
+			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeEnd") Date registerTimeEnd) {
+
 		ModelAndView mvc = new ModelAndView("exchange");
+		List<Customer> customerExchanges = customerService.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
+				registerTimeStart, registerTimeEnd);
+
 		mvc.addObject("customerExchanges", customerExchanges);
+		return mvc;
+	}
+
+	/**
+	 * 查寻会员（会员页面）
+	 * 
+	 * @return
+	 */
+
+	@RequestMapping(method = RequestMethod.GET, value = "/vipCustomer.action")
+	ModelAndView vipCustomer() {
+
+		ModelAndView mvc = new ModelAndView("vip");
+		return mvc;
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/showVip.action")
+	ModelAndView showVip(@RequestParam("phoneNumber") String phoneNumber,
+			@RequestParam("registerAddress") String registerAddress,
+			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeStart") Date registerTimeStart,
+			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeEnd") Date registerTimeEnd) {
+
+		ModelAndView mvc = new ModelAndView("vip");
+		List<Customer> customerVips = customerService.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
+				registerTimeStart, registerTimeEnd);
+		 mvc.addObject("customerVips", customerVips);
 		return mvc;
 	}
 }

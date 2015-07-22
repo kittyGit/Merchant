@@ -43,7 +43,7 @@ master/css/jquery.treetable.theme.default.css"
 </head>
 <body>
 	<!--顶部-->
-	<form action="showVerifyCustomer.action" method="post">
+	
 		<div class="top">
 			<div class="top-content">
 				<div class="top-left">
@@ -69,7 +69,7 @@ master/css/jquery.treetable.theme.default.css"
 					<li id="header"><a
 						href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
 					<li id="header"><a
-						href="">会员</a></li>
+						href="<%=request.getContextPath()%>/admin/vipCustomer.action"">会员</a></li>
 					<li id="header"><a href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
 					<li id="header"><a href="<%=request.getContextPath()%>/admin/login.action">首页</a></li>
 				</ul>
@@ -81,6 +81,7 @@ master/css/jquery.treetable.theme.default.css"
 				<td><input type="submit" name="yanzheng" value="验证" /></td>
 			</tr>
 		</table>
+		<form action="showVerifyCustomer.action" method="post">
 		<table border="0" cellpadding="0" cellspacing="0" class="table-a">
 			<tr>
 				<th>手机号码</th>
@@ -88,7 +89,6 @@ master/css/jquery.treetable.theme.default.css"
 				<th>消费门店</th>
 				<th>等级</th>
 				<th>消费特权</th>
-				<th>消费时间</th>
 			</tr>
 			<c:forEach items="${customerExchanges}" var="customer">
 				<tr>
@@ -100,6 +100,7 @@ master/css/jquery.treetable.theme.default.css"
 				</tr>
 			</c:forEach>
 		</table>
+		</form>
 		<input type="hidden" id="header-nav-id" value="header-nav-
 
 setup" />
@@ -123,6 +124,6 @@ setup" />
 			<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP 备13059473号</p>
 			<p>地址：深圳市福田区深南中路</p>
 		</div>
-	</form>
+	
 </body>
 </html>

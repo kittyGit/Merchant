@@ -58,26 +58,32 @@ public class CustomerService implements ICustomerService {
 	}
 
 	@Override
+	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String Address, Date registerTimeStart,
+			Date registerTimeEnd) {
+		List<Customer> customers = null;
+
+		if (!phoneNumber.equals("") && phoneNumber != null) {
+			customers = customerDao.findByPhoneNumber(phoneNumber);
+		}
+		if (!Address.equals("") && Address != null) {
+			customers = customerDao.findByAddress(Address);
+		}
+		if (!registerTimeStart.equals("") && registerTimeStart != null && !registerTimeStart.equals("")
+				&& registerTimeEnd != null) {
+			customers = customerDao.findByTime(registerTimeStart, registerTimeEnd);
+		}
+		if (!phoneNumber.equals("") && phoneNumber != null && !Address.equals("") && Address != null
+				&& !registerTimeStart.equals("") && registerTimeStart != null) {
+
+			customers = customerDao.findByNumerAndAddressAndTime(phoneNumber, Address, registerTimeStart,
+					registerTimeEnd);
+		}
+		return customers;
+	}
+
+	@Override
 	public List<Customer> findByPhoneNumber(String phoneNumber) {
-		List<Customer> customers = customerDao.findByPhoneNumber(phoneNumber);
-		return customers;
-	}
-
-	@Override
-	public List<Customer> findByAddress(String registerAddress) {
-		List<Customer> customers = customerDao.findByAddress(registerAddress);
-		return customers;
-	}
-
-	@Override
-	public List<Customer> findByTime(Date registerTime) {
-		List<Customer> customers = customerDao.findByTime(registerTime);
-		return customers;
-	}
-
-	@Override
-	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String name, Date registerTime) {
-		List<Customer> customers = customerDao.findByNumerAndAddressAndTime(phoneNumber, name, registerTime);
+		List<Customer> customers=customerDao.findByPhoneNumber(phoneNumber);
 		return customers;
 	}
 

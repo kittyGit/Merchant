@@ -17,7 +17,7 @@
 <meta http-equiv="Cache-Control" content="no-store" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
-<title>餐广传媒-商家后台-交易</title>
+<title>餐广传媒-商家后台-会员</title>
 <link href="https://www.heshidai.com/favicon.ico" type="image/x-icon"
 	rel="shortcut icon" />
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -64,14 +64,14 @@ master/css/jquery.treetable.theme.default.css"
 			<ul class="nav-box">
 				<li id="header"><a
 					href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
-				<li id="header"><a href="<%=request.getContextPath()%>/admin/vipCustomer.action"">会员</a></li>
+				<li id="header"><a href="<%=request.getContextPath()%>/admin/vipCustomer.action">会员</a></li>
 				<li id="header"><a
 					href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
 				<li id="header"><a href="<%=request.getContextPath()%>/admin/login.action">首页</a></li>
 			</ul>
 		</div>
 	</div>
-	<form action="showExchange.action" method="post">
+	<form action="showVip.action" method="post">
 		<table>
 			<tr>
 				<td>手机号码:<input type="text" name="phoneNumber" /></td>
@@ -87,12 +87,11 @@ master/css/jquery.treetable.theme.default.css"
 		<tr>
 			<th>手机号码</th>
 			<th>消费门店</th>
-			<th>消费时间</th>
 			<th>注册时间</th>
-			<th>消费特权</th>
+			<th>等级</th>
 		</tr>
 	</table>
-	<c:forEach items="${customerExchanges}" var="customer">
+	<c:forEach items="${customerVips}" var="customer">
 		<tr>
 			<td>${customer.phoneNumber}</td>
 			<td>${customer.registerAddress}</td>
