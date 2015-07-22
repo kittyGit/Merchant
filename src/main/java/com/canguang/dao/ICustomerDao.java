@@ -32,33 +32,6 @@ public interface ICustomerDao {
 	List<Customer> findAll();
 
 	/**
-	 * 通过手机号码查找用户信息
-	 * 
-	 * @param phoneNumber
-	 *            手机号码
-	 * @return
-	 */
-	List<Customer> findByPhoneNumber(String phoneNumber);
-
-	/**
-	 * 通过店面名字查找用户信息
-	 * 
-	 * @param name
-	 *            店面名字
-	 * @return
-	 */
-	List<Customer> findByAddress(String registerAddress);
-
-	/**
-	 * 通过注册时间查找用户信息
-	 * 
-	 * @param time
-	 *            注册时间
-	 * @return
-	 */
-	List<Customer> findByTime(Date registerTimeStart, Date registerTimeEnd);
-
-	/**
 	 * 通过名字，号码，注册时间 查找用户信息
 	 * 
 	 * @param phoneNumber
