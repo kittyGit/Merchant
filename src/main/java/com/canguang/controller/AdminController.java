@@ -122,7 +122,31 @@ public class AdminController {
 		ModelAndView mvc = new ModelAndView("vip");
 		List<Customer> customerVips = customerService.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
 				registerTimeStart, registerTimeEnd);
-		 mvc.addObject("customerVips", customerVips);
+		mvc.addObject("customerVips", customerVips);
+		return mvc;
+	}
+
+	/**
+	 * 修改密码
+	 * 
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "/editPwdInput.action")
+	ModelAndView editPwdInput(@RequestParam("merchantId") Integer merchantId) {
+		ModelAndView mvc = new ModelAndView("editPwd");
+		mvc.addObject("merchantId", merchantId);
+		return mvc;
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/editPwd.action")
+	ModelAndView editPwd(@RequestParam("oldPwd") String oldPwd, @RequestParam("newPwd") String newPwd,
+			@RequestParam("confirmPwd") String confirmPwd, @RequestParam("merchantId") Integer merchantId) {
+
+		ModelAndView mvc = null;
+		if (adminService.updatePassword(oldPwd, newPwd, confirmPwd, merchantId)) {
+			mvc = new ModelAndView("editPwd");
+		}
+
 		return mvc;
 	}
 }

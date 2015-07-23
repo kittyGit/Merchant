@@ -12,4 +12,12 @@ public interface IAdminDao {
 	 * @return
 	 */
 	Admin login(String adminName, String adminpwd);
+	/**
+	 * 修改密码
+	 * @param oldPwd
+	 * @param newPwd
+	 * @param confirmPwd
+	 * @return
+	 */
+	Admin updatePassword(String oldPwd,String newPwd,String confirmPwd,Integer merchantId);
 }

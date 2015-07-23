@@ -54,7 +54,7 @@ master/css/jquery.treetable.theme.default.css"
 					<li id="header"><a
 						href="">会员</a></li>
 					<li id="header"><a href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
-					<li id="header"><a href="">首页</a></li>
+					<li id="header"><a href="<%=request.getContextPath()%>/admin/verify.action">首页</a></li>
 				</ul>
 			</div>
 		</div>

@@ -7,12 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="" method="post">
+	<form action="editPwd.action" method="post">
+		<input type="hidden" name="merchantId" value="${merchantId}" />
 		<table>
 			<tr>
-				<td><input type="password"/> 原密码</td>
-				<td><input type="password"/> 新密码</td>
-				<td><input type="password"/>确认密码</td>
+				<td>原密码:<input type="password" name="oldPwd" /></td>
+				<td>新密码:<input type="password" name="newPwd" /> </td>
+				<td>确认密码:<input type="password" name="confirmPwd" /></td><tr>
+				<td><input type="submit" name="submit" value="提交" /></td>
 			</tr>
 		</table>
 	</form>

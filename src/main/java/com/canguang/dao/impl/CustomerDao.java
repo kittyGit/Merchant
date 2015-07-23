@@ -60,10 +60,10 @@ public class CustomerDao implements ICustomerDao {
 	@Override
 	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String address, Date registerTimeStart,
 			Date registerTimeEnd) {
+		
 		Session session = getCurrentSession();
-		
 		String hql = "FROM Customer WHERE 1 = 1";
-		
+
 		Map<String, Object> paramMap = new HashMap<>();
 		if (StringUtils.isNotBlank(phoneNumber)) {
 			hql = hql + " AND phoneNumber LIKE :phoneNumber";
@@ -74,7 +74,7 @@ public class CustomerDao implements ICustomerDao {
 			hql = hql + " AND registerAddress LIKE :address";
 			paramMap.put("address", MessageFormat.format("%{0}%", address));
 		}
-		
+
 		if (registerTimeStart != null) {
 			hql = hql + " AND registerTime >= :registerTimeStart";
 			paramMap.put("registerTimeStart", registerTimeStart);
@@ -84,14 +84,14 @@ public class CustomerDao implements ICustomerDao {
 			hql = hql + " AND registerTime <= :registerTimeEnd";
 			paramMap.put("registerTimeEnd", registerTimeEnd);
 		}
-		
+
 		Query query = session.createQuery(hql);
-		for(Entry<String, Object> paramEntry : paramMap.entrySet()) {
+		for (Entry<String, Object> paramEntry : paramMap.entrySet()) {
 			query.setParameter(paramEntry.getKey(), paramEntry.getValue());
 		}
-		
+
 		List<Customer> customers = query.list();
-		
+
 		return customers;
 	}
 

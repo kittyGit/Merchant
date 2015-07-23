@@ -12,4 +12,14 @@ public interface IAdminService {
 
     Admin login(String adminName,String adminPwd);
     
+    /**
+     * 修改密码
+     * @param oldPwd 原密码
+     * @param newPwd 新 密码
+     * @param confirmPwd 确认ID
+     * @param merchantId 绑定管理员
+     * @return
+     */
+    boolean updatePassword(String oldPwd,String newPwd,String confirmPwd,Integer merchantId);
+    
 }

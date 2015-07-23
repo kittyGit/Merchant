@@ -32,7 +32,6 @@ public class CustomerController {
 			@RequestParam("storeCode") String storeCode) {
 
 		ModelAndView mv = new ModelAndView("register");
-		// 等价于request.setAttribute("merchantCode", merchantCode);
 		mv.addObject("merchantCode", merchantCode);
 		mv.addObject("storeCode", storeCode);
 		return mv;

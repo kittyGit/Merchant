@@ -58,32 +58,18 @@ public class CustomerService implements ICustomerService {
 	}
 
 	@Override
-	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String Address, Date registerTimeStart,
+	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String address, Date registerTimeStart,
 			Date registerTimeEnd) {
-		List<Customer> customers = null;
 
-		if (!phoneNumber.equals("") && phoneNumber != null) {
-			customers = customerDao.findByPhoneNumber(phoneNumber);
-		}
-		if (!Address.equals("") && Address != null) {
-			customers = customerDao.findByAddress(Address);
-		}
-		if (!registerTimeStart.equals("") && registerTimeStart != null && !registerTimeStart.equals("")
-				&& registerTimeEnd != null) {
-			customers = customerDao.findByTime(registerTimeStart, registerTimeEnd);
-		}
-		if (!phoneNumber.equals("") && phoneNumber != null && !Address.equals("") && Address != null
-				&& !registerTimeStart.equals("") && registerTimeStart != null) {
-
-			customers = customerDao.findByNumerAndAddressAndTime(phoneNumber, Address, registerTimeStart,
-					registerTimeEnd);
-		}
+		List<Customer> customers = customerDao.findByNumerAndAddressAndTime(phoneNumber, address, registerTimeStart,
+				registerTimeEnd);
 		return customers;
 	}
 
 	@Override
 	public List<Customer> findByPhoneNumber(String phoneNumber) {
-		List<Customer> customers=customerDao.findByPhoneNumber(phoneNumber);
+		// List<Customer> customers=customerDao.findByPhoneNumber(phoneNumber);
+		List<Customer> customers = customerDao.findByNumerAndAddressAndTime(phoneNumber, null, null, null);
 		return customers;
 	}
 

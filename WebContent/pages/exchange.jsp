@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -54,7 +55,6 @@ master/css/jquery.treetable.theme.default.css"
 	</div>
 	<!--页头-->
 
-
 	<div class="header">
 		<div class="header-content">
 			<div class="logo">
@@ -64,10 +64,12 @@ master/css/jquery.treetable.theme.default.css"
 			<ul class="nav-box">
 				<li id="header"><a
 					href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
-				<li id="header"><a href="<%=request.getContextPath()%>/admin/vipCustomer.action"">会员</a></li>
+				<li id="header"><a
+					href="<%=request.getContextPath()%>/admin/vipCustomer.action">会员</a></li>
 				<li id="header"><a
 					href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
-				<li id="header"><a href="<%=request.getContextPath()%>/admin/login.action">首页</a></li>
+				<li id="header"><a
+					href="<%=request.getContextPath()%>/admin/verify.action">首页</a></li>
 			</ul>
 		</div>
 	</div>
@@ -101,6 +103,11 @@ master/css/jquery.treetable.theme.default.css"
 			<td>${customer.price}</td>
 		</tr>
 	</c:forEach>
+	<a href="">首页</a>
+	<a href="${current > 1 ? current - 1 : 1}">上一頁</a>
+	<a
+		href="${current == countPage ? countPage : current + 1}">下一頁</a>
+	<a href="${countPage}">末页</a>
 	<input type="hidden" id="header-nav-id" value="header-nav-
 setup" />
 

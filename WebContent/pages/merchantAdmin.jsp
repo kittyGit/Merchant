@@ -43,75 +43,85 @@ master/css/jquery.treetable.theme.default.css"
 </head>
 <body>
 	<!--顶部-->
-	<form action="merchantAdmin.action" method="post">
-		<div class="top">
-			<div class="top-content">
-				<div class="top-left">
-					<a href="http://www.heshidai.com/">餐 广传媒欢迎你</a>
-				</div>
-				<div class="top-right">
-					<a href="sysuser_updatePwdInit.action.html">修改密码</a><a
-						href="http://merchant.heshidai.com/logout.action">退出</a>
-				</div>
+	<!-- <form action="merchantAdmin.action" method="post"> -->
+	<div class="top">
+		<div class="top-content">
+			<div class="top-left">
+				<a href="http://www.heshidai.com/">餐 广传媒欢迎你</a>
+			</div>
+			<div class="top-right">
+				<a
+					href="<%=request.getContextPath()%>/admin/editPwdInput.action?merchantId=${merchant.merchantId}">修改密码</a><a
+					href="http://merchant.heshidai.com/logout.action">退出</a>
 			</div>
 		</div>
-		<!--页头-->
+	</div>
+	<!--页头-->
 
-
-		<div class="header">
-			<div class="header-content">
-				<div class="logo">
-					<img src="../images/logo.png" width="222" height="40"
-						alt="餐广传媒-商家后台" title="餐广传媒-商家后台" />
-				</div>
-				<ul class="nav-box">
-					<li id="header"><a
-						href="<%=request.getContextPath()%>/admin/showVip.action">会员</a></li>
-					<li id="header"><a href="">交易</a></li>
-					<li id="header"><a href="">首页</a></li>
-				</ul>
+	<div class="header">
+		<div class="header-content">
+			<div class="logo">
+				<img src="../images/logo.png" width="222" height="40"
+					alt="餐广传媒-商家后台" title="餐广传媒-商家后台" />
 			</div>
+			<ul class="nav-box">
+				<li id="header"><a
+					href="<%=request.getContextPath()%>/admin/vipCustomer.action">会员</a></li>
+				<li id="header"><a
+					href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
+				<li id="header"><a
+					href="<%=request.getContextPath()%>/admin/verify.action">首页</a></li>
+			</ul>
 		</div>
+	</div>
+	<form action="showVerifyCustomer.action" method="post">
+		<table>
+			<tr>
+				<td>手机号码:<input type="text" name="phoneNumber" /></td>
+				<td><input type="submit" name="yanzheng" value="验证" /></td>
+			</tr>
+		</table>
 		<table border="0" cellpadding="0" cellspacing="0" class="table-a">
 			<tr>
-				<th>优惠编码</th>
 				<th>手机号码</th>
-				<th>消费门店</th>
 				<th>消费时间</th>
+				<th>消费门店</th>
+				<th>等级</th>
 				<th>消费特权</th>
 			</tr>
-			<!-- <c:forEach items="${customers}" var="customer">
+			<c:forEach items="${customerExchanges}" var="customer">
 				<tr>
 					<td>${customer.phoneNumber}</td>
 					<td>${customer.registerTime}</td>
 					<td>${customer.registerAddress}</td>
 					<td>${customer.level}</td>
+					<td>${customer.price}</td>
 				</tr>
-			</c:forEach>-->
+			</c:forEach>
 		</table>
-		<input type="hidden" id="header-nav-id" value="header-nav-
+	</form>
+	<input type="hidden" id="header-nav-id" value="header-nav-
 
 setup" />
 
-		<!--内容-->
-		<script
-			src="../js/jQuery-Validation-Engine-master/js/jquery.validationEngine.js"
-			type="text/javascript"></script>
-		<script type="text/javascript">
-			$("#updatePwdForm").validationEngine({
-				scroll : false,
-				maxErrorsPerField : 1,
-				promptPosition : "centerRight",
-				showOneMessage : true
-			});
-		</script>
-		<script src="../js/item.js"></script>
+	<!--内容-->
+	<script
+		src="../js/jQuery-Validation-Engine-master/js/jquery.validationEngine.js"
+		type="text/javascript"></script>
+	<script type="text/javascript">
+		$("#updatePwdForm").validationEngine({
+			scroll : false,
+			maxErrorsPerField : 1,
+			promptPosition : "centerRight",
+			showOneMessage : true
+		});
+	</script>
+	<script src="../js/item.js"></script>
 
-		<!--页脚-->
-		<div class="foot">
-			<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP 备13059473号</p>
-			<p>地址：深圳市福田区深南中路</p>
-		</div>
-	</form>
+	<!--页脚-->
+	<div class="foot">
+		<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP 备13059473号</p>
+		<p>地址：深圳市福田区深南中路</p>
+	</div>
 </body>
 </html>

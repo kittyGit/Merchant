@@ -65,23 +65,22 @@ master/css/jquery.treetable.theme.default.css"
 						alt="餐广传媒-商家后台" title="餐广传媒-商家后台" />
 				</div>
 				<ul class="nav-box">
-
 					<li id="header"><a
 						href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
 					<li id="header"><a
-						href="<%=request.getContextPath()%>/admin/vipCustomer.action"">会员</a></li>
+						href="<%=request.getContextPath()%>/admin/vipCustomer.action">会员</a></li>
 					<li id="header"><a href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
-					<li id="header"><a href="<%=request.getContextPath()%>/admin/login.action">首页</a></li>
+					<li id="header"><a href="<%=request.getContextPath()%>/admin/verify.action">首页</a></li>
 				</ul>
 			</div>
 		</div>
+		<form action="showVerifyCustomer.action" method="post">
 		<table>
 			<tr>
 				<td>手机号码:<input type="text" name="phoneNumber" /></td>
 				<td><input type="submit" name="yanzheng" value="验证" /></td>
 			</tr>
 		</table>
-		<form action="showVerifyCustomer.action" method="post">
 		<table border="0" cellpadding="0" cellspacing="0" class="table-a">
 			<tr>
 				<th>手机号码</th>

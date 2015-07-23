@@ -72,4 +72,5 @@ public class MerchantDao implements IMerchantDao {
 		return merchants;
 	}
 
+	
 }

@@ -36,4 +36,21 @@ public class AdminDao implements IAdminDao {
 		return admin;
 	}
 
+	@Override
+	public Admin updatePassword(String oldPwd, String newPwd, String confirmPwd, Integer merchantId) {
+		Session session = getCurrentSession();
+		Query query = null;
+		query = session.createQuery("from Admin where adminPwd= :oldPwd");
+		query.setString("oldPwd", oldPwd);
+		if (query != null) {
+			query = session.createQuery("update Admin set adminPwd= :newPwd where merchantId= :merchantId");
+			query.setString("oldPwd", oldPwd);
+			query.setString("newPwd", newPwd);
+			query.setString("confirmPwd", confirmPwd);
+			query.setInteger("merchantId", merchantId);
+		}
+		Admin admin = (Admin) query.uniqueResult();
+		return admin;
+	}
+
 }
