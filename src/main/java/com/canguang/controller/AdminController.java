@@ -26,7 +26,7 @@ public class AdminController {
 	private IAdminService adminService;
 	@Autowired
 	private ICustomerService customerService;
-  
+
 	@RequestMapping(method = RequestMethod.GET, value = "/loginInput.action")
 	ModelAndView loginInput() {
 		ModelAndView mvc = new ModelAndView("login");
