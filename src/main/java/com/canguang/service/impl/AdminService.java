@@ -25,10 +25,11 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public boolean updatePassword(String oldPwd, String newPwd, String confirmPwd, Integer merchantId) {
-		if (adminDao.updatePassword(oldPwd, newPwd, confirmPwd, merchantId) != null) {
-			return true;
+			
+			if(adminDao.updatePassword(oldPwd, newPwd, confirmPwd, merchantId)!=null){
+				return true;
 		}
+		
 		return false;
 	}
-
 }

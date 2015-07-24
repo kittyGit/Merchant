@@ -3,6 +3,8 @@ package com.canguang.dao;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.canguang.model.Customer;
 
 public interface ICustomerDao {
@@ -43,5 +45,5 @@ public interface ICustomerDao {
 	 * @return
 	 */
 	List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String address, Date registerTimeStart,
-			Date registerTimeEnd);
+			Date registerTimeEnd, HttpSession session);
 }

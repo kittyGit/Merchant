@@ -3,6 +3,8 @@ package com.canguang.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.canguang.model.Customer;
 
 public interface ICustomerService {
@@ -30,7 +32,7 @@ public interface ICustomerService {
 	 * @param phoneNumber
 	 * @return
 	 */
-	List<Customer> findByPhoneNumber(String phoneNumber);
+	List<Customer> findByPhoneNumber(String phoneNumber,HttpSession session);
 
 	/**
 	 * 通过名字，号码，注册时间查找商家
@@ -44,6 +46,6 @@ public interface ICustomerService {
 	 * @return
 	 */
 	List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String Address, Date registerTimeStart,
-			Date registerTimeEnd);
+			Date registerTimeEnd,HttpSession session);
 
 }

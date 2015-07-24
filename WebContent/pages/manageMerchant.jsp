@@ -28,7 +28,7 @@ master/css/jquery.treetable.theme.default.css"
 </head>
 
 <!--顶部-->
-	<form action="queryMerchant.action" method="post">
+
 		<div class="top">
 			<div class="top-content">
 				<div class="top-left">
@@ -52,12 +52,13 @@ master/css/jquery.treetable.theme.default.css"
 					<li id="header"><a
 						href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
 					<li id="header"><a
-						href="">会员</a></li>
+						href="<%=request.getContextPath()%>/admin/vipCustomer.action">会员</a></li>
 					<li id="header"><a href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
 					<li id="header"><a href="<%=request.getContextPath()%>/admin/verify.action">首页</a></li>
 				</ul>
 			</div>
 		</div>
+			<form action="addMerchant.action" method="post">
 		<table>
 				<tr>
 					<td>店名：<input type="text" name="name" /></td>
@@ -66,7 +67,7 @@ master/css/jquery.treetable.theme.default.css"
 						<input id="checked" type="radio" name="coupon" />否
 					</td>
 					<td>优惠价格：<input type="text" name="price" /></td>
-					<td><input type="submit" value="添加" /></td>
+					<td><input type="submit" name="add" value="添加" /></td>
 				</tr>
 			</table>
 
@@ -74,21 +75,21 @@ master/css/jquery.treetable.theme.default.css"
 
 	<div>
 		<form action="queryMerchant.action" method="post">
-			商家：<input type="text" name="name" /> <input type="submit" value="查询" />
+			商家：<input type="text" name="name" /> <input type="submit"  name="query" value="查询" />
 		</form>
 	</div>
 		<table border="0" cellpadding="0" cellspacing="0" class="table-a">
 			<tr>
 				<td>商家</td>
-				<td>优惠券</td>
-				<td>编码</td>
+				<td>优惠特权</td>
+				<td>联系方式</td>
 				<td>添加店面</td>
 			</tr>
 			<c:forEach items="${merchants}" var="merchant">
 				<tr>
 					<td>${merchant.merchantName}</td>
-					<td>${merchant.hasCoupon}</td>
-					<td>${merchant.code}</td>
+					<td>減免${merchant.price}元优惠</td>
+					<td>${merchant.phoneNumber}</td>
 					<td><a href="addStoreInput.action?merchantId=${merchant.merchantId}">添加店面</a></td>
 				</tr>
 			</c:forEach>

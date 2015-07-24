@@ -51,7 +51,7 @@ master/css/jquery.treetable.theme.default.css"
 			</div>
 			<div class="top-right">
 				<a
-					href="<%=request.getContextPath()%>/admin/editPwdInput.action?merchantId=${merchant.merchantId}">修改密码</a><a
+					href="<%=request.getContextPath()%>/admin/editPwdInput.action?merchantId=${merchantId}">修改密码</a><a
 					href="http://merchant.heshidai.com/logout.action">退出</a>
 			</div>
 		</div>
@@ -82,6 +82,7 @@ master/css/jquery.treetable.theme.default.css"
 			</tr>
 		</table>
 		<table border="0" cellpadding="0" cellspacing="0" class="table-a">
+
 			<tr>
 				<th>手机号码</th>
 				<th>消费时间</th>

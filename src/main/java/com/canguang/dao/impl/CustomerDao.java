@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.canguang.dao.ICustomerDao;
+import com.canguang.model.Admin;
 import com.canguang.model.Customer;
+import com.canguang.model.Merchant;
 
 @Repository
 public class CustomerDao implements ICustomerDao {
@@ -59,15 +63,20 @@ public class CustomerDao implements ICustomerDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String address, Date registerTimeStart,
-			Date registerTimeEnd) {
-		
+			Date registerTimeEnd, HttpSession httpSession) {
+
 		Session session = getCurrentSession();
+		// 获取已经登录商家的id
+
+		Admin admin = (Admin) httpSession.getAttribute("admin");
+	    Merchant merchantId=admin.getMerchant();
 		String hql = "FROM Customer WHERE 1 = 1";
 
 		Map<String, Object> paramMap = new HashMap<>();
 		if (StringUtils.isNotBlank(phoneNumber)) {
-			hql = hql + " AND phoneNumber LIKE :phoneNumber";
+			hql = hql + " AND phoneNumber LIKE :phoneNumber AND merchantId= :merchantId";
 			paramMap.put("phoneNumber", MessageFormat.format("%{0}%", phoneNumber));
+			paramMap.put("merchantId", MessageFormat.format("%{1}%", merchantId));
 		}
 
 		if (StringUtils.isNotBlank(address)) {

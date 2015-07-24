@@ -59,6 +59,9 @@ public class MerchantController {
 		if (coupon) {
 			newMerchant.setHasCoupon(true);
 			newMerchant.setPrice(price);
+		}else{
+			
+			newMerchant.setPrice("0");
 		}
 
 		if (merchantService.saveMerchant(newMerchant)) {

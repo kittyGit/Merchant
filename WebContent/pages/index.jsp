@@ -69,7 +69,7 @@ master/css/jquery.treetable.theme.default.css"
 					<li id="header"><a
 						href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
 					<li id="header"><a
-						href="<%=request.getContextPath()%>/admin/vipCustomer.action"">会员</a></li>
+						href="<%=request.getContextPath()%>/admin/vipCustomer.action">会员</a></li>
 					<li id="header"><a href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
 					<li id="header"><a href="<%=request.getContextPath()%>/admin/login.action">首页</a></li>
 				</ul>

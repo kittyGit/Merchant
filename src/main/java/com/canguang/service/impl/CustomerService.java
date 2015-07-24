@@ -3,6 +3,8 @@ package com.canguang.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,17 +61,16 @@ public class CustomerService implements ICustomerService {
 
 	@Override
 	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String address, Date registerTimeStart,
-			Date registerTimeEnd) {
+			Date registerTimeEnd, HttpSession session) {
 
 		List<Customer> customers = customerDao.findByNumerAndAddressAndTime(phoneNumber, address, registerTimeStart,
-				registerTimeEnd);
+				registerTimeEnd, session);
 		return customers;
 	}
 
 	@Override
-	public List<Customer> findByPhoneNumber(String phoneNumber) {
-		// List<Customer> customers=customerDao.findByPhoneNumber(phoneNumber);
-		List<Customer> customers = customerDao.findByNumerAndAddressAndTime(phoneNumber, null, null, null);
+	public List<Customer> findByPhoneNumber(String phoneNumber, HttpSession session) {
+		List<Customer> customers = customerDao.findByNumerAndAddressAndTime(phoneNumber, null, null, null, session);
 		return customers;
 	}
 

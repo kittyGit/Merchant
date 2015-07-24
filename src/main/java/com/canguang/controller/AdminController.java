@@ -26,7 +26,7 @@ public class AdminController {
 	private IAdminService adminService;
 	@Autowired
 	private ICustomerService customerService;
-
+  
 	@RequestMapping(method = RequestMethod.GET, value = "/loginInput.action")
 	ModelAndView loginInput() {
 		ModelAndView mvc = new ModelAndView("login");
@@ -67,9 +67,9 @@ public class AdminController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/showVerifyCustomer.action")
-	ModelAndView exchange(@RequestParam("phoneNumber") String phoneNumber) {
+	ModelAndView exchange(@RequestParam("phoneNumber") String phoneNumber, HttpSession session) {
 		ModelAndView mvc = new ModelAndView("canGuangAdmin");
-		List<Customer> customerExchanges = customerService.findByPhoneNumber(phoneNumber);
+		List<Customer> customerExchanges = customerService.findByPhoneNumber(phoneNumber, session);
 		mvc.addObject("customerExchanges", customerExchanges);
 		return mvc;
 	}
@@ -90,13 +90,16 @@ public class AdminController {
 	ModelAndView customersExchange(@RequestParam("phoneNumber") String phoneNumber,
 			@RequestParam("registerAddress") String registerAddress,
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeStart") Date registerTimeStart,
-			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeEnd") Date registerTimeEnd) {
+			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeEnd") Date registerTimeEnd,
+			HttpSession session) {
 
 		ModelAndView mvc = new ModelAndView("exchange");
+
 		List<Customer> customerExchanges = customerService.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
-				registerTimeStart, registerTimeEnd);
+				registerTimeStart, registerTimeEnd, session);
 
 		mvc.addObject("customerExchanges", customerExchanges);
+
 		return mvc;
 	}
 
@@ -117,11 +120,12 @@ public class AdminController {
 	ModelAndView showVip(@RequestParam("phoneNumber") String phoneNumber,
 			@RequestParam("registerAddress") String registerAddress,
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeStart") Date registerTimeStart,
-			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeEnd") Date registerTimeEnd) {
+			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeEnd") Date registerTimeEnd,
+			HttpSession session) {
 
 		ModelAndView mvc = new ModelAndView("vip");
 		List<Customer> customerVips = customerService.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
-				registerTimeStart, registerTimeEnd);
+				registerTimeStart, registerTimeEnd, session);
 		mvc.addObject("customerVips", customerVips);
 		return mvc;
 	}
@@ -133,6 +137,7 @@ public class AdminController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/editPwdInput.action")
 	ModelAndView editPwdInput(@RequestParam("merchantId") Integer merchantId) {
+
 		ModelAndView mvc = new ModelAndView("editPwd");
 		mvc.addObject("merchantId", merchantId);
 		return mvc;
