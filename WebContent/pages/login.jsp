@@ -5,10 +5,16 @@
 <html>
   <head>
     <title>管理登录平台</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
+	<link rel="shortcut icon" href='images/wxicon.ico'/>
+	<link rel="stylesheet" type="text/css" href="css/struct.css" />
+	<link rel="stylesheet" type="text/css" href="css/login.css" />
+	<script src="js/jquery/jquery-all.js" type="text/javascript"></script>
+	<script src="js/util.js" type="text/javascript"></script>	
+	<script src="js/login.js" type="text/javascript"></script>  
   </head>
   <body scroll="no" style="background:none;" >
         <input type="hidden" id="showMsg" value="${msg}"/>
@@ -44,7 +50,6 @@
                 </form>
             </div>
         </div>
-        <div class="copyright">2013-2015 WX.</div>
   </body>
 </html>
 
