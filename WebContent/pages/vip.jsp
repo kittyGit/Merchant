@@ -38,10 +38,69 @@ master/css/jquery.treetable.theme.default.css"
 <script src="../js/select.js"></script>
 <script src="../js/js-merchants-20141113008.js" type="text/javascript"></script>
 <script src="../js/pagination-20141119001.js" type="text/javascript"></script>
+<script type="text/javascript">
+	//页面加载完 执行ready（） 
+	$(document).ready(function() {
+		$("#frist").click(function(e) {
+
+			e.preventDefault();
+
+			$("#pageNo").val("1");
+			$("#perPageSize").val("5");
+			$("#showVipForm").submit();
+		});
+		$("#perv").click(function(e) {
+
+			e.preventDefault();
+
+			var pageNo = parseInt($("#pageNo").val());
+
+			var prevPageNo;
+			if (pageNo > 1) {
+				prevPageNo = pageNo - 1;
+			} else {
+				prevPageNo = pageNo;
+			}
+
+			$("#pageNo").val(prevPageNo);
+			$("#perPageSize").val("5");
+			$("#showVipForm").submit();
+		});
+		$("#next").click(function(e) {
+
+			e.preventDefault();
+
+			var pageNo = parseInt($("#pageNo").val());
+			var pageSize = $("#pageSizeId").val();
+			//如果当前是最后一页，下一页就是最后一页
+			var nextPage;
+			if (pageNo == pageSize) {
+				nextPage = pageSize;
+			} else {
+				nextPage = pageNo + 1;
+			}
+			$("#pageNo").val(nextPage);
+			$("#perPageSize").val("5");
+			$("#showVipForm").submit();
+		});
+		$("#last").click(function(e) {
+
+			e.preventDefault();
+			var pageSize = $("#pageSizeId").val();
+			$("#pageNo").val(pageSize);
+			$("#perPageSize").val("5");
+			$("#showVipForm").submit();
+		});
+	});
+</script>
 </head>
 <body>
 	<jsp:include page="adminHeader.jsp"></jsp:include>
-	<form action="showVip.action" method="post">
+	<form action="showVip.action" id="showVipForm" method="post">
+		<input type="hidden" id="pageNo" name="pageNo"
+			value="${pageNo == null ? 1 : pageNo}" /> <input type="hidden"
+			id="perPageSize" name="perPageSize" value="5" /> <input
+			type="hidden" id="pageSizeId" name="pageSize" value="${pageSize}" />
 		<table>
 			<tr>
 				<td>手机号码:<input type="text" name="phoneNumber" /></td>
@@ -60,18 +119,23 @@ master/css/jquery.treetable.theme.default.css"
 			<th>注册时间</th>
 			<th>等级</th>
 		</tr>
+
+		<c:forEach items="${customerVips}" var="customer">
+			<tr>
+				<td>${customer.phoneNumber}</td>
+				<td>${customer.registerAddress}</td>
+				<td>${customer.registerTime}</td>
+				<td>${customer.registerTime}</td>
+			</tr>
+		</c:forEach>
 	</table>
-	<c:forEach items="${customerVips}" var="customer">
-		<tr>
-			<td>${customer.phoneNumber}</td>
-			<td>${customer.registerAddress}</td>
-			<td>${customer.registerTime}</td>
-			<td>${customer.registerTime}</td>
-			<td>${customer.price}</td>
-		</tr>
-	</c:forEach>
-	<input type="hidden" id="header-nav-id" value="header-nav-
-setup" />
+	<a id="frist" href="">首页</a>
+	<a id="perv" href="">上一頁</a>
+	<a id="next" href="">下一頁</a>
+	<a id="last" href="">末页</a>
+	<span>共${pageSize}頁</span>
+
+	<input type="hidden" id="header-nav-id" value="header-nav-setup" />
 
 	<!--内容-->
 	<script

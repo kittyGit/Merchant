@@ -142,11 +142,36 @@ public class CustomerDao implements ICustomerDao {
 			query.setParameter(paramEntry.getKey(), paramEntry.getValue());
 		}
 		// 总记录数
-		long countPageSize =(long) query.uniqueResult();
+		long countPageSize = (long) query.uniqueResult();
 		// 总页数=（总记录数/每页记录数）+1
 		int pageSize = (int) ((countPageSize / perPageSize) + 1);
 
 		return pageSize;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Customer> findByPhoneNumber(String phoneNumber,
+			Merchant merchant) {
+
+		String hql = "FROM Customer WHERE merchant = :merchant";
+
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("merchant", merchant);
+
+		if (StringUtils.isNotBlank(phoneNumber)) {
+			hql = hql + " AND phoneNumber LIKE :phoneNumber";
+			paramMap.put("phoneNumber",
+					MessageFormat.format("%{0}%", phoneNumber));
+		}
+		Session session = getCurrentSession();
+		Query query = session.createQuery(hql);
+
+		for (Entry<String, Object> paramEntry : paramMap.entrySet()) {
+			query.setParameter(paramEntry.getKey(), paramEntry.getValue());
+		}
+		List<Customer> customers = query.list();
+		return customers;
+		
+	}
 }

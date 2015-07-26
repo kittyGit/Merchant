@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>修改密码</title>
 </head>
 <body>
 	<form action="editPwd.action" method="post">
-		<input type="hidden" name="merchantId" value="${merchantId}" />
 		<table>
 			<tr>
 				<td>原密码:<input type="password" name="oldPwd" /></td>

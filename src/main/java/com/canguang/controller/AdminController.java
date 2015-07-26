@@ -138,10 +138,18 @@ public class AdminController {
 
 		ModelAndView mvc = new ModelAndView("vip");
 		Admin admin = (Admin) session.getAttribute("admin");
+
 		List<Customer> customerVips = customerService
 				.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
 						registerTimeStart, registerTimeEnd,
 						admin.getMerchant(), pageNo, perPageSize);
+
+		int pageSize = customerService.countPageSize(phoneNumber,
+				registerAddress, registerTimeStart, registerTimeEnd,
+				admin.getMerchant(), perPageSize);
+
+		mvc.addObject("pageNo", pageNo);
+		mvc.addObject("pageSize", pageSize);
 		mvc.addObject("customerVips", customerVips);
 		return mvc;
 	}
@@ -152,24 +160,24 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/editPwdInput.action")
-	ModelAndView editPwdInput(@RequestParam("merchantId") Integer merchantId) {
+	ModelAndView editPwdInput() {
 
 		ModelAndView mvc = new ModelAndView("editPwd");
-		mvc.addObject("merchantId", merchantId);
 		return mvc;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/editPwd.action")
 	ModelAndView editPwd(@RequestParam("oldPwd") String oldPwd,
 			@RequestParam("newPwd") String newPwd,
-			@RequestParam("confirmPwd") String confirmPwd,
-			@RequestParam("merchantId") Integer merchantId) {
+			@RequestParam("confirmPwd") String confirmPwd, HttpSession session) {
 
 		ModelAndView mvc = null;
-		if (adminService.updatePassword(oldPwd, newPwd, confirmPwd, merchantId)) {
-			mvc = new ModelAndView("editPwd");
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (newPwd.equals(confirmPwd)) {
+			if (adminService.updatePassword(newPwd, admin.getMerchant())) {
+				mvc = new ModelAndView("editResult");
+			}
 		}
-
 		return mvc;
 	}
 }

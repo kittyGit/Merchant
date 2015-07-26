@@ -31,25 +31,33 @@ public interface ICustomerDao {
 	 * @return
 	 */
 	List<Customer> findAll();
+
 	/**
 	 * 通过名字，号码，注册时间 查找用户信息
 	 * 
 	 * @param phoneNumber
-	 *            手机号码
-	 * @param name
-	 *            店面名字
-	 * @param registerTime
+	 *            电话号码
+	 * @param address
+	 *            店面
+	 * @param registerTimeStart
 	 *            注册时间
-	 * @param pageNo 页数
-	 * @param pageSize 每页几条记录数
+	 * @param registerTimeEnd
+	 *            注册时间
+	 * @param merchant
+	 *            对应商家
+	 * @param pageNo
+	 *            页数
+	 * @param perPageSize
+	 *            每页显示多少行
 	 * @return
 	 */
+	List<Customer> findByNumerAndAddressAndTime(String phoneNumber,
+			String address, Date registerTimeStart, Date registerTimeEnd,
+			Merchant merchant, int pageNo, int perPageSize);
 
-	List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String address, Date registerTimeStart,
-			Date registerTimeEnd, Merchant merchant,int pageNo,int perPageSize);
-	
 	/**
 	 * 计算总页数
+	 * 
 	 * @param phoneNumber
 	 * @param address
 	 * @param registerTimeStart
@@ -59,7 +67,16 @@ public interface ICustomerDao {
 	 * @param perPageSize
 	 * @return
 	 */
-	int countPageSize(String phoneNumber, String address, Date registerTimeStart,
-			Date registerTimeEnd, Merchant merchant,int perPageSize);
-	
+	int countPageSize(String phoneNumber, String address,
+			Date registerTimeStart, Date registerTimeEnd, Merchant merchant,
+			int perPageSize);
+
+	/**
+	 * 通过电话号码查找用户信息
+	 * @param phoneNumber
+	 * @param merchant
+	 * @return
+	 */
+	List<Customer> findByPhoneNumber(String phoneNumber, Merchant merchant);
+
 }

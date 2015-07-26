@@ -65,7 +65,7 @@ master/css/jquery.treetable.theme.default.css"
 					<td>${customer.registerTime}</td>
 					<td>${customer.registerAddress}</td>
 					<td>${customer.level}</td>
-					<td>${customer.price}</td>
+					<td>减免${customer.price}元特权</td>
 				</tr>
 			</c:forEach>
 		</table>

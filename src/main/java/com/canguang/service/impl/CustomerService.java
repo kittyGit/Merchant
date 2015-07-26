@@ -71,7 +71,9 @@ public class CustomerService implements ICustomerService {
 	@Override
 	public List<Customer> findByPhoneNumber(String phoneNumber,
 			Merchant merchant) {
-		return null;
+		List<Customer> cutomers = customerDao.findByPhoneNumber(phoneNumber,
+				merchant);
+		return cutomers;
 	}
 
 	@Override
