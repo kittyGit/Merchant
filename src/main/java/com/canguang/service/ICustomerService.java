@@ -3,9 +3,8 @@ package com.canguang.service;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import com.canguang.model.Customer;
+import com.canguang.model.Merchant;
 
 public interface ICustomerService {
 
@@ -32,7 +31,7 @@ public interface ICustomerService {
 	 * @param phoneNumber
 	 * @return
 	 */
-	List<Customer> findByPhoneNumber(String phoneNumber,HttpSession session);
+	List<Customer> findByPhoneNumber(String phoneNumber,Merchant merchant);
 
 	/**
 	 * 通过名字，号码，注册时间查找商家
@@ -46,6 +45,19 @@ public interface ICustomerService {
 	 * @return
 	 */
 	List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String Address, Date registerTimeStart,
-			Date registerTimeEnd,HttpSession session);
+			Date registerTimeEnd,Merchant merchant,int pageNo,int perPageSize);
+	/**
+	 *计算总页数
+	 * @param phoneNumber
+	 * @param Address
+	 * @param registerTimeStart
+	 * @param registerTimeEnd
+	 * @param merchant
+	 * @param pageNo
+	 * @param perPageSize
+	 * @return
+	 */
+	int countPageSize(String phoneNumber, String address, Date registerTimeStart,
+			Date registerTimeEnd,Merchant merchant,int perPageSize);
 
 }

@@ -39,41 +39,70 @@ master/css/jquery.treetable.theme.default.css"
 <script src="../js/select.js"></script>
 <script src="../js/js-merchants-20141113008.js" type="text/javascript"></script>
 <script src="../js/pagination-20141119001.js" type="text/javascript"></script>
+<script type="text/javascript">
+	//页面加载完 执行ready（） 
+	$(document).ready(function() {
+		$("#frist").click(function(e) {
+
+			e.preventDefault();
+
+			$("#pageNo").val("1");
+			$("#perPageSize").val("5");
+			$("#showExchangeForm").submit();
+		});
+		$("#perv").click(function(e) {
+
+			e.preventDefault();
+
+			var pageNo = parseInt($("#pageNo").val());
+
+			var prevPageNo;
+			if (pageNo > 1) {
+				prevPageNo = pageNo - 1;
+			} else {
+				prevPageNo = pageNo;
+			}
+
+			$("#pageNo").val(prevPageNo);
+			$("#perPageSize").val("5");
+			$("#showExchangeForm").submit();
+		});
+		$("#next").click(function(e) {
+
+			e.preventDefault();
+
+			var pageNo = parseInt($("#pageNo").val());
+			var pageSize = $("#pageSizeId").val();
+			//如果当前是最后一页，下一页就是最后一页
+			var nextPage;
+			if (pageNo == pageSize) {
+				nextPage = pageSize;
+			} else {
+				nextPage = pageNo + 1;
+			}
+			$("#pageNo").val(nextPage);
+			$("#perPageSize").val("5");
+			$("#showExchangeForm").submit();
+		});
+		$("#last").click(function(e) {
+
+			e.preventDefault();
+			var pageSize = $("#pageSizeId").val();
+			$("#pageNo").val(pageSize);
+			$("#perPageSize").val("5");
+			$("#showExchangeForm").submit();
+		});
+	});
+</script>
+
 </head>
 <body>
-
-	<div class="top">
-		<div class="top-content">
-			<div class="top-left">
-				<a href="http://www.heshidai.com/">餐 广传媒欢迎你</a>
-			</div>
-			<div class="top-right">
-				<a href="sysuser_updatePwdInit.action.html">修改密码</a><a
-					href="http://merchant.heshidai.com/logout.action">退出</a>
-			</div>
-		</div>
-	</div>
-	<!--页头-->
-
-	<div class="header">
-		<div class="header-content">
-			<div class="logo">
-				<img src="../images/logo.png" width="222" height="40"
-					alt="餐广传媒-商家后台" title="餐广传媒-商家后台" />
-			</div>
-			<ul class="nav-box">
-				<li id="header"><a
-					href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
-				<li id="header"><a
-					href="<%=request.getContextPath()%>/admin/vipCustomer.action">会员</a></li>
-				<li id="header"><a
-					href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
-				<li id="header"><a
-					href="<%=request.getContextPath()%>/admin/verify.action">首页</a></li>
-			</ul>
-		</div>
-	</div>
-	<form action="showExchange.action" method="post">
+	<jsp:include page="adminHeader.jsp"></jsp:include>
+	<form action="showExchange.action" id="showExchangeForm" method="post">
+		<input type="hidden" id="pageNo" name="pageNo"
+			value="${pageNo == null ? 1 : pageNo}" /> <input type="hidden"
+			id="perPageSize" name="perPageSize" value="5" /> <input
+			type="hidden" id="pageSizeId" name="pageSize" value="${pageSize}" />
 		<table>
 			<tr>
 				<td>手机号码:<input type="text" name="phoneNumber" /></td>
@@ -93,21 +122,24 @@ master/css/jquery.treetable.theme.default.css"
 			<th>注册时间</th>
 			<th>消费特权</th>
 		</tr>
+
+		<c:forEach items="${customerExchanges}" var="customer">
+			<tr>
+				<td>${customer.phoneNumber}</td>
+				<td>${customer.registerAddress}</td>
+				<td>${customer.registerTime}</td>
+				<td>${customer.registerTime}</td>
+				<td>减免${customer.price}元特权</td>
+			</tr>
+		</c:forEach>
 	</table>
-	<c:forEach items="${customerExchanges}" var="customer">
-		<tr>
-			<td>${customer.phoneNumber}</td>
-			<td>${customer.registerAddress}</td>
-			<td>${customer.registerTime}</td>
-			<td>${customer.registerTime}</td>
-			<td>${customer.price}</td>
-		</tr>
-	</c:forEach>
-	<a href="">首页</a>
-	<a href="${current > 1 ? current - 1 : 1}">上一頁</a>
-	<a
-		href="${current == countPage ? countPage : current + 1}">下一頁</a>
-	<a href="${countPage}">末页</a>
+
+	<a id="frist" href="">首页</a>
+	<a id="perv" href="">上一頁</a>
+	<a id="next" href="">下一頁</a>
+	<a id="last" href="">末页</a>
+	<span>共${pageSize}頁</span>
+
 	<input type="hidden" id="header-nav-id" value="header-nav-
 setup" />
 
