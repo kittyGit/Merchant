@@ -41,10 +41,10 @@ public class Merchant {
 
 	@Column(nullable = false)
 	private Date creationTime;
-	
-	@OneToMany(mappedBy="merchant")
+
+	@OneToMany(mappedBy = "merchant")
 	private List<Store> stores;
-	
+
 	public List<Store> getStores() {
 		return stores;
 	}
@@ -100,6 +100,7 @@ public class Merchant {
 	public void setCreationTime(Date creationTime) {
 		this.creationTime = creationTime;
 	}
+
 	public boolean isHasCoupon() {
 		return hasCoupon;
 	}

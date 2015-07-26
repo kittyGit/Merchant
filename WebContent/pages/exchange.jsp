@@ -1,44 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="keywords" content="合时代-商家后台" />
-<meta name="description"
-	content="合时代(www.heshidai.com)-网络投资专业首选,是国内首批
-
-由第三方做资金托管账户的P2P网络金融平台,提供网络借贷、小额贷款等线上
-
-投资理财,方便快捷,高收益低风险,100%本金利息担保." />
-<meta http-equiv="Cache-Control" content="no-store" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
-<title>餐广传媒-商家后台-交易</title>
-<link href="https://www.heshidai.com/favicon.ico" type="image/x-icon"
-	rel="shortcut icon" />
-<link rel="stylesheet" type="text/css" href="../css/common.css" />
-<link type="text/css" href="../css/merchants-20141224001024.css"
-	rel="stylesheet" />
-<link type="text/css"
-	href="../js/jquery-ui-1.11.2.custom/jquery-
-
-ui.css" rel="stylesheet" />
-<link href="../js/jquery-treetable-master/css/jquery.treetable.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="../js/jquery-treetable-
-
-master/css/jquery.treetable.theme.default.css"
-	rel="stylesheet" type="text/css" />
-<script src="../js/jquery-1.11.1.min.js" type="text/javascript"></script>
-<script src="../js/select.js"></script>
-<script src="../js/js-merchants-20141113008.js" type="text/javascript"></script>
-<script src="../js/pagination-20141119001.js" type="text/javascript"></script>
+<jsp:include page="adminHeader1.jsp"></jsp:include>
 <script type="text/javascript">
 	//页面加载完 执行ready（） 
 	$(document).ready(function() {
@@ -97,7 +62,7 @@ master/css/jquery.treetable.theme.default.css"
 
 </head>
 <body>
-	<jsp:include page="adminHeader.jsp"></jsp:include>
+	<jsp:include page="adminHeader2.jsp"></jsp:include>
 	<form action="showExchange.action" id="showExchangeForm" method="post">
 		<input type="hidden" id="pageNo" name="pageNo"
 			value="${pageNo == null ? 1 : pageNo}" /> <input type="hidden"

@@ -24,11 +24,10 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer customerId;
-	
-	@ManyToOne 
-	@JoinColumn(name="merchantId", nullable=false)
+
+	@ManyToOne
+	@JoinColumn(name = "merchantId", nullable = false)
 	private Merchant merchant;
-	
 
 	@Column(nullable = false)
 	private String customerName;
@@ -59,12 +58,14 @@ public class Customer {
 
 	@Column(nullable = false)
 	private boolean isValidated;
-	
-	public Customer() {}
-	
-	public Customer(String customerName, String customerPwd, String phoneNumber, Date registerTime,
-			String registerAddress, Integer level, Integer coupon, String price, CouponStatus couponStatus,
-			boolean isValidated) {
+
+	public Customer() {
+	}
+
+	public Customer(String customerName, String customerPwd,
+			String phoneNumber, Date registerTime, String registerAddress,
+			Integer level, Integer coupon, String price,
+			CouponStatus couponStatus, boolean isValidated) {
 		this.customerName = customerName;
 		this.customerPwd = customerPwd;
 		this.phoneNumber = phoneNumber;
@@ -77,7 +78,6 @@ public class Customer {
 		this.isValidated = isValidated;
 	}
 
-	
 	public Integer getCustomerId() {
 		return customerId;
 	}

@@ -26,12 +26,14 @@ public interface ICustomerService {
 	 * @return
 	 */
 	List<Customer> findAll();
+
 	/**
 	 * 通过手机号码验证
+	 * 
 	 * @param phoneNumber
 	 * @return
 	 */
-	List<Customer> findByPhoneNumber(String phoneNumber,Merchant merchant);
+	List<Customer> findByPhoneNumber(String phoneNumber, Merchant merchant);
 
 	/**
 	 * 通过名字，号码，注册时间查找商家
@@ -44,10 +46,13 @@ public interface ICustomerService {
 	 *            注册时间
 	 * @return
 	 */
-	List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String Address, Date registerTimeStart,
-			Date registerTimeEnd,Merchant merchant,int pageNo,int perPageSize);
+	List<Customer> findByNumerAndAddressAndTime(String phoneNumber,
+			String Address, Date registerTimeStart, Date registerTimeEnd,
+			Merchant merchant, int pageNo, int perPageSize);
+
 	/**
-	 *计算总页数
+	 * 计算总页数
+	 * 
 	 * @param phoneNumber
 	 * @param Address
 	 * @param registerTimeStart
@@ -57,7 +62,8 @@ public interface ICustomerService {
 	 * @param perPageSize
 	 * @return
 	 */
-	int countPageSize(String phoneNumber, String address, Date registerTimeStart,
-			Date registerTimeEnd,Merchant merchant,int perPageSize);
+	int countPageSize(String phoneNumber, String address,
+			Date registerTimeStart, Date registerTimeEnd, Merchant merchant,
+			int perPageSize);
 
 }

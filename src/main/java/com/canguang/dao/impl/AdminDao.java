@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.canguang.dao.IAdminDao;
 import com.canguang.model.Admin;
-import com.canguang.model.Merchant;
 
 @Repository
 public class AdminDao implements IAdminDao {
@@ -32,7 +31,7 @@ public class AdminDao implements IAdminDao {
 	}
 
 	@Override
-	public Admin login(String adminName, String adminPwd) {
+	public Admin findByNameAndPassword(String adminName, String adminPwd) {
 		Session session = getCurrentSession();
 		Query query = session
 				.createQuery("from Admin where adminName=:adminName and adminPwd=:adminPwd");
@@ -43,26 +42,31 @@ public class AdminDao implements IAdminDao {
 	}
 
 	@Override
-	public boolean updatePassword( String newPwd, Merchant merchant) {
+	public boolean updatePassword(String newPwd, Admin admin) {
 
 		Session session = getCurrentSession();
 		Query query = session
-				.createQuery("update Admin set adminPwd = :newPwd  where merchant= :merchant");
+				.createQuery("update Admin set adminPwd = :newPwd where adminId= :adminId");
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("newPwd", newPwd);
-		paramMap.put("merchant", merchant);
+		paramMap.put("adminId", admin.getAdminId());
 		for (Entry<String, Object> paramEntry : paramMap.entrySet()) {
 			query.setParameter(paramEntry.getKey(), paramEntry.getValue());
 		}
-		
+
 		int updatedRows = query.executeUpdate();
-		
+
 		/*
 		 * 如果受影响的记录大于1，表示更新成功
 		 */
-		if (updatedRows >=1) {
+		if (updatedRows >= 1) {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public void save(Admin admin) {
+		getCurrentSession().save(admin);
 	}
 }

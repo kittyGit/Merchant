@@ -172,6 +172,6 @@ public class CustomerDao implements ICustomerDao {
 		}
 		List<Customer> customers = query.list();
 		return customers;
-		
+
 	}
 }

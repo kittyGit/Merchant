@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.canguang.dao.IAdminDao;
 import com.canguang.model.Admin;
-import com.canguang.model.Merchant;
 import com.canguang.service.IAdminService;
 
 @Service
@@ -19,15 +18,14 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public Admin login(String adminName, String adminPwd) {
-
-		Admin admin = adminDao.login(adminName, adminPwd);
+		Admin admin = adminDao.findByNameAndPassword(adminName, adminPwd);
 		return admin;
 	}
 
 	@Override
-	public boolean updatePassword(String newPwd, Merchant merchant) {
+	public boolean updatePassword(String newPwd, Admin admin) {
 
-		if (adminDao.updatePassword(newPwd, merchant)) {
+		if (adminDao.updatePassword(newPwd, admin)) {
 			return true;
 		}
 

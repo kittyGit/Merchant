@@ -1,18 +1,19 @@
 package com.canguang.dao;
 
 import com.canguang.model.Admin;
-import com.canguang.model.Merchant;
 
 public interface IAdminDao {
 
 	/**
-	 * 管理员登录
+	 * 根据用户名和密码查找
 	 * 
 	 * @param adminName
+	 *            用户名
 	 * @param adminPwd
+	 *            密码
 	 * @return
 	 */
-	Admin login(String adminName, String adminpwd);
+	Admin findByNameAndPassword(String adminName, String adminpwd);
 
 	/**
 	 * 修改密码
@@ -22,5 +23,7 @@ public interface IAdminDao {
 	 * @param confirmPwd
 	 * @return
 	 */
-	boolean updatePassword(String newPwd, Merchant merchant);
+	boolean updatePassword(String newPwd, Admin admin);
+
+	void save(Admin admin);
 }

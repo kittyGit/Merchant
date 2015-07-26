@@ -10,17 +10,17 @@ import com.canguang.model.Store;
 
 @Repository
 public class StoreDao implements IStoreDao {
-	
+
 	@Autowired
 	private SessionFactory factory;
-	
-	protected Session getCurrentSession(){
+
+	protected Session getCurrentSession() {
 		return factory.getCurrentSession();
 	}
 
 	@Override
 	public Integer saveStore(Store store) {
-		Session session=getCurrentSession();
+		Session session = getCurrentSession();
 		return (Integer) session.save(store);
 	}
 

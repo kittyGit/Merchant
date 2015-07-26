@@ -73,6 +73,7 @@ public interface ICustomerDao {
 
 	/**
 	 * 通过电话号码查找用户信息
+	 * 
 	 * @param phoneNumber
 	 * @param merchant
 	 * @return

@@ -44,7 +44,7 @@ public class UserDao implements IUserDao {
 		query.setString("username", username);
 
 		User user = (User) query.uniqueResult();
-		
+
 		return user;
 	}
 }

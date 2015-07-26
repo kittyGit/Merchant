@@ -68,9 +68,8 @@ public class MerchantDao implements IMerchantDao {
 	public List<Merchant> findAll() {
 		Session session = getCurrentSession();
 		Query query = session.createQuery("from Merchant ");
-		List<Merchant> merchants =query.list();
+		List<Merchant> merchants = query.list();
 		return merchants;
 	}
 
-	
 }

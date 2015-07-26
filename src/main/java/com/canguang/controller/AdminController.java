@@ -37,9 +37,9 @@ public class AdminController {
 	ModelAndView login(@RequestParam("adminName") String adminName,
 			@RequestParam("adminPwd") String adminPwd, HttpSession session) {
 
-		ModelAndView mvc = null;
-
 		Admin admin = adminService.login(adminName, adminPwd);
+
+		ModelAndView mvc = null;
 		if (admin != null) {
 			mvc = new ModelAndView("merchantAdmin");
 			session.setAttribute("admin", admin);
@@ -115,7 +115,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 查寻会员（会员页面）
+	 * 查询会员（会员页面）
 	 * 
 	 * @return
 	 */
@@ -155,29 +155,42 @@ public class AdminController {
 	}
 
 	/**
-	 * 修改密码
+	 * 修改密码（显示界面）
 	 * 
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/editPwdInput.action")
 	ModelAndView editPwdInput() {
-
 		ModelAndView mvc = new ModelAndView("editPwd");
 		return mvc;
 	}
 
+	/**
+	 * 修改密码（提交）
+	 * 
+	 * @param oldPwd
+	 * @param newPwd
+	 * @param confirmPwd
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST, value = "/editPwd.action")
 	ModelAndView editPwd(@RequestParam("oldPwd") String oldPwd,
 			@RequestParam("newPwd") String newPwd,
 			@RequestParam("confirmPwd") String confirmPwd, HttpSession session) {
 
-		ModelAndView mvc = null;
+		/*
+		 * 失败返回修改页面
+		 */
+		ModelAndView mvc = new ModelAndView("editPwd");
+
 		Admin admin = (Admin) session.getAttribute("admin");
 		if (newPwd.equals(confirmPwd)) {
-			if (adminService.updatePassword(newPwd, admin.getMerchant())) {
+			if (adminService.updatePassword(newPwd, admin)) {
 				mvc = new ModelAndView("editResult");
 			}
 		}
+
 		return mvc;
 	}
 }

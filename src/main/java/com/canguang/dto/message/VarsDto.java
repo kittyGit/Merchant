@@ -3,7 +3,7 @@ package com.canguang.dto.message;
 public class VarsDto {
 
 	private String username;
-	
+
 	private String vCode;
 
 	public String getUsername() {

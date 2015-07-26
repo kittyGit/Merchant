@@ -1,4 +1,4 @@
-package com.canguang.message.dto;
+package com.canguang.dto.message;
 
 import org.hamcrest.core.IsEqual;
 import org.hamcrest.core.IsNull;

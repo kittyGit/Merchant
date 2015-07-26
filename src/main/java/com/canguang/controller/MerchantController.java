@@ -59,8 +59,8 @@ public class MerchantController {
 		if (coupon) {
 			newMerchant.setHasCoupon(true);
 			newMerchant.setPrice(price);
-		}else{
-			
+		} else {
+
 			newMerchant.setPrice("0");
 		}
 
@@ -108,11 +108,11 @@ public class MerchantController {
 		ModelAndView mvc = null;
 		Store store = new Store();
 		store.setStoreName(storeName);
-		
+
 		if (storeService.saveStore(store, merchantId)) {
 			mvc = new ModelAndView("manageMerchant");
-		}else{
-			mvc=new ModelAndView("addStore");
+		} else {
+			mvc = new ModelAndView("addStore");
 		}
 
 		return mvc;

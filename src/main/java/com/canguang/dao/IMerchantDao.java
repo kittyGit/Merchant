@@ -44,6 +44,5 @@ public interface IMerchantDao {
 	 * @return
 	 */
 	List<Merchant> findAll();
-	
-	
+
 }

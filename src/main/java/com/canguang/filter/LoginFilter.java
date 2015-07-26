@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class LoginFilter implements Filter {
-	
+
 	public void init(FilterConfig filterConfig) throws ServletException {
 	}
 
@@ -29,19 +29,17 @@ public class LoginFilter implements Filter {
 		 */
 		String requestUri = httpRequest.getRequestURI();
 		if (session.getAttribute("admin") != null
-				|| requestUri.equals(
-						httpRequest.getContextPath()
-								+ "/admin/loginInput.action")
-				|| requestUri.equals(
-						httpRequest.getContextPath() + "/admin/login.action")
-				|| requestUri.startsWith(
-						httpRequest.getContextPath() + "/customer")
-				|| requestUri.startsWith(
-						httpRequest.getContextPath() + "/css/")
-				|| requestUri.startsWith(
-						httpRequest.getContextPath() + "/images/")
-				|| requestUri.startsWith(
-						httpRequest.getContextPath() + "/js/")) {
+				|| requestUri.equals(httpRequest.getContextPath()
+						+ "/admin/loginInput.action")
+				|| requestUri.equals(httpRequest.getContextPath()
+						+ "/admin/login.action")
+				|| requestUri.startsWith(httpRequest.getContextPath()
+						+ "/customer")
+				|| requestUri
+						.startsWith(httpRequest.getContextPath() + "/css/")
+				|| requestUri.startsWith(httpRequest.getContextPath()
+						+ "/images/")
+				|| requestUri.startsWith(httpRequest.getContextPath() + "/js/")) {
 			filter.doFilter(request, response);
 		} else {
 			/*
