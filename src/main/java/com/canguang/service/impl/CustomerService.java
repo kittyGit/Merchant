@@ -3,8 +3,6 @@ package com.canguang.service.impl;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,20 +61,27 @@ public class CustomerService implements ICustomerService {
 	@Override
 	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber,
 			String address, Date registerTimeStart, Date registerTimeEnd,
-			HttpSession session) {
-
+			Merchant merchant, int pageNo, int perPageSize) {
 		List<Customer> customers = customerDao.findByNumerAndAddressAndTime(
 				phoneNumber, address, registerTimeStart, registerTimeEnd,
-				session);
+				merchant, pageNo, perPageSize);
 		return customers;
 	}
 
 	@Override
 	public List<Customer> findByPhoneNumber(String phoneNumber,
-			HttpSession session) {
-		List<Customer> customers = customerDao.findByNumerAndAddressAndTime(
-				phoneNumber, null, null, null, session);
-		return customers;
+			Merchant merchant) {
+		List<Customer> cutomers = customerDao.findByPhoneNumber(phoneNumber,
+				merchant);
+		return cutomers;
 	}
 
+	@Override
+	public int countPageSize(String phoneNumber, String address,
+			Date registerTimeStart, Date registerTimeEnd, Merchant merchant,
+			int perPageSize) {
+		int pageSize = customerDao.countPageSize(phoneNumber, address,
+				registerTimeStart, registerTimeEnd, merchant, perPageSize);
+		return pageSize;
+	}
 }

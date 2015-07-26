@@ -99,7 +99,7 @@ body {
 					<section class="idealsteps-step">
 
 						<div class="field">
-							<label class="main">手机号码:</label> <input name="phone" type="text">
+							<label class="main">手机号码:</label> <input name="phoneNumber" type="text">
 							<span class="error"></span>
 						</div>
 
@@ -184,8 +184,7 @@ body {
 						"customerPwd" : "required",
 						"phoneNumber" : "required",
 						"captcha" : "required ajax",
-						"
-		phoneCode" : "required ajax"
+						"phoneCode" : "required ajax"
 					},
 
 					errors : {

@@ -1,6 +1,7 @@
 package com.canguang.dao;
 
 import com.canguang.model.Admin;
+import com.canguang.model.Merchant;
 
 public interface IAdminDao {
 
@@ -21,5 +22,5 @@ public interface IAdminDao {
 	 * @param confirmPwd
 	 * @return
 	 */
-	Admin updatePassword(String oldPwd, String newPwd, String confirmPwd, Integer merchantId);
+	boolean updatePassword(String newPwd, Merchant merchant);
 }

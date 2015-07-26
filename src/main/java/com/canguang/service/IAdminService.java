@@ -1,6 +1,7 @@
 package com.canguang.service;
 
 import com.canguang.model.Admin;
+import com.canguang.model.Merchant;
 
 public interface IAdminService {
 
@@ -27,6 +28,6 @@ public interface IAdminService {
 	 *            绑定管理员
 	 * @return
 	 */
-	boolean updatePassword(String oldPwd, String newPwd, String confirmPwd,Integer merchantId);
+	boolean updatePassword(String newPwd,Merchant merchant);
 
 }

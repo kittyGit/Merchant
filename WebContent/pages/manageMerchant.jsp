@@ -27,37 +27,7 @@ master/css/jquery.treetable.theme.default.css"
 <script src="../js/pagination-20141119001.js" type="text/javascript"></script>
 </head>
 
-<!--顶部-->
-
-		<div class="top">
-			<div class="top-content">
-				<div class="top-left">
-					<a href="http://www.heshidai.com/">餐 广传媒欢迎你</a>
-				</div>
-				<div class="top-right">
-					<a href="sysuser_updatePwdInit.action.html">修改密码</a><a
-						href="http://merchant.heshidai.com/logout.action">退出</a>
-				</div>
-			</div>
-		</div>
-		<!--页头-->
-		<div class="header">
-			<div class="header-content">
-				<div class="logo">
-					<img src="../images/logo.png" width="222" height="40"
-						alt="餐广传媒-商家后台" title="餐广传媒-商家后台" />
-				</div>
-				<ul class="nav-box">
-
-					<li id="header"><a
-						href="<%=request.getContextPath()%>/merchant/manageMerchant.action">商家管理</a></li>
-					<li id="header"><a
-						href="<%=request.getContextPath()%>/admin/vipCustomer.action">会员</a></li>
-					<li id="header"><a href="<%=request.getContextPath()%>/admin/customerExchange.action">交易</a></li>
-					<li id="header"><a href="<%=request.getContextPath()%>/admin/verify.action">首页</a></li>
-				</ul>
-			</div>
-		</div>
+	<jsp:include page="adminHeader.jsp"></jsp:include>
 			<form action="addMerchant.action" method="post">
 		<table>
 				<tr>

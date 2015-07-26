@@ -34,18 +34,14 @@ public class AdminController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/login.action")
-	ModelAndView login(@RequestParam("adminName") String adminName, @RequestParam("adminPwd") String adminPwd,
-			HttpSession session) {
+	ModelAndView login(@RequestParam("adminName") String adminName,
+			@RequestParam("adminPwd") String adminPwd, HttpSession session) {
 
 		ModelAndView mvc = null;
 
 		Admin admin = adminService.login(adminName, adminPwd);
 		if (admin != null) {
-			if (admin.getMerchant() != null) {
-				mvc = new ModelAndView("merchantAdmin");
-			} else {
-				mvc = new ModelAndView("canGuangAdmin");
-			}
+			mvc = new ModelAndView("merchantAdmin");
 			session.setAttribute("admin", admin);
 		} else {
 			mvc = new ModelAndView("login");
@@ -62,14 +58,19 @@ public class AdminController {
 	@RequestMapping(method = RequestMethod.GET, value = "/verify.action")
 	ModelAndView verify() {
 
-		ModelAndView mvc = new ModelAndView("canGuangAdmin");
+		ModelAndView mvc = new ModelAndView("merchantAdmin");
 		return mvc;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/showVerifyCustomer.action")
-	ModelAndView exchange(@RequestParam("phoneNumber") String phoneNumber, HttpSession session) {
-		ModelAndView mvc = new ModelAndView("canGuangAdmin");
-		List<Customer> customerExchanges = customerService.findByPhoneNumber(phoneNumber, session);
+	ModelAndView exchange(@RequestParam("phoneNumber") String phoneNumber,
+			HttpSession session) {
+		ModelAndView mvc = new ModelAndView("merchantAdmin");
+
+		// 获取已登录商家ID
+		Admin admin = (Admin) session.getAttribute("admin");
+		List<Customer> customerExchanges = customerService.findByPhoneNumber(
+				phoneNumber, admin.getMerchant());
 		mvc.addObject("customerExchanges", customerExchanges);
 		return mvc;
 	}
@@ -87,18 +88,28 @@ public class AdminController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/showExchange.action")
-	ModelAndView customersExchange(@RequestParam("phoneNumber") String phoneNumber,
+	ModelAndView customersExchange(
+			@RequestParam("phoneNumber") String phoneNumber,
 			@RequestParam("registerAddress") String registerAddress,
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeStart") Date registerTimeStart,
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeEnd") Date registerTimeEnd,
-			HttpSession session) {
+			@RequestParam("pageNo") int pageNo,
+			@RequestParam("perPageSize") int perPageSize, HttpSession session) {
 
 		ModelAndView mvc = new ModelAndView("exchange");
 
-		List<Customer> customerExchanges = customerService.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
-				registerTimeStart, registerTimeEnd, session);
+		Admin admin = (Admin) session.getAttribute("admin");
+		List<Customer> customerExchanges = customerService
+				.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
+						registerTimeStart, registerTimeEnd,
+						admin.getMerchant(), pageNo, perPageSize);
 
 		mvc.addObject("customerExchanges", customerExchanges);
+		mvc.addObject("pageNo", pageNo);
+		int pageSize = customerService.countPageSize(phoneNumber,
+				registerAddress, registerTimeStart, registerTimeEnd,
+				admin.getMerchant(), perPageSize);
+		mvc.addObject("pageSize", pageSize);
 
 		return mvc;
 	}
@@ -117,15 +128,28 @@ public class AdminController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/showVip.action")
-	ModelAndView showVip(@RequestParam("phoneNumber") String phoneNumber,
+	ModelAndView showVip(
+			@RequestParam("phoneNumber") String phoneNumber,
 			@RequestParam("registerAddress") String registerAddress,
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeStart") Date registerTimeStart,
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") @RequestParam("registerTimeEnd") Date registerTimeEnd,
-			HttpSession session) {
+			@RequestParam("pageNo") int pageNo,
+			@RequestParam("perPageSize") int perPageSize, HttpSession session) {
 
 		ModelAndView mvc = new ModelAndView("vip");
-		List<Customer> customerVips = customerService.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
-				registerTimeStart, registerTimeEnd, session);
+		Admin admin = (Admin) session.getAttribute("admin");
+
+		List<Customer> customerVips = customerService
+				.findByNumerAndAddressAndTime(phoneNumber, registerAddress,
+						registerTimeStart, registerTimeEnd,
+						admin.getMerchant(), pageNo, perPageSize);
+
+		int pageSize = customerService.countPageSize(phoneNumber,
+				registerAddress, registerTimeStart, registerTimeEnd,
+				admin.getMerchant(), perPageSize);
+
+		mvc.addObject("pageNo", pageNo);
+		mvc.addObject("pageSize", pageSize);
 		mvc.addObject("customerVips", customerVips);
 		return mvc;
 	}
@@ -136,22 +160,24 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/editPwdInput.action")
-	ModelAndView editPwdInput(@RequestParam("merchantId") Integer merchantId) {
+	ModelAndView editPwdInput() {
 
 		ModelAndView mvc = new ModelAndView("editPwd");
-		mvc.addObject("merchantId", merchantId);
 		return mvc;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/editPwd.action")
-	ModelAndView editPwd(@RequestParam("oldPwd") String oldPwd, @RequestParam("newPwd") String newPwd,
-			@RequestParam("confirmPwd") String confirmPwd, @RequestParam("merchantId") Integer merchantId) {
+	ModelAndView editPwd(@RequestParam("oldPwd") String oldPwd,
+			@RequestParam("newPwd") String newPwd,
+			@RequestParam("confirmPwd") String confirmPwd, HttpSession session) {
 
 		ModelAndView mvc = null;
-		if (adminService.updatePassword(oldPwd, newPwd, confirmPwd, merchantId)) {
-			mvc = new ModelAndView("editPwd");
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (newPwd.equals(confirmPwd)) {
+			if (adminService.updatePassword(newPwd, admin.getMerchant())) {
+				mvc = new ModelAndView("editResult");
+			}
 		}
-
 		return mvc;
 	}
 }
