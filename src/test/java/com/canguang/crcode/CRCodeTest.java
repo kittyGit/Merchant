@@ -21,7 +21,7 @@ public class CRCodeTest {
 	public void testGenerate() throws Exception {
 
 		FileOutputStream fos = new FileOutputStream(
-				"src/test/resources/generate/canguang.png");
+				"src/test/resources/generate/二维码.png");
 
 		QRCode.from(
 				MessageFormat

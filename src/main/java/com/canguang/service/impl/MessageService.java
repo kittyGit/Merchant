@@ -5,10 +5,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.canguang.message.IMessageSender;
-import com.canguang.message.dto.Result;
-import com.canguang.message.dto.VarsDto;
+import com.canguang.dto.message.Result;
+import com.canguang.dto.message.VarsDto;
 import com.canguang.service.IMessageService;
+import com.canguang.service.message.IMessageSender;
 
 @Service
 public class MessageService implements IMessageService {

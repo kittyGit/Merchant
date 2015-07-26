@@ -1,4 +1,4 @@
-package com.canguang.message;
+package com.canguang.service.message;
 
 /**
  * 短信配置类

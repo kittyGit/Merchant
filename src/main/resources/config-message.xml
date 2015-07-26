@@ -9,7 +9,7 @@
 	<!-- 引用property文件 -->
 	<context:property-placeholder location="classpath:message.properties" ignore-unresolvable="true" />
 
-	<bean id="config" class="com.canguang.message.SendMessageConfig">
+	<bean id="config" class="com.canguang.service.message.SendMessageConfig">
 		<property name="getTimestampUrl" value="${getTimestampUrl}" />
 		<property name="sendMessageUrl" value="${sendMessageUrl}" />
 
@@ -21,7 +21,7 @@
 
 	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"></bean>
 
-	<bean id="messageSender" class="com.canguang.message.MessageSender" init-method="init" destroy-method="close">
+	<bean id="messageSender" class="com.canguang.service.message.MessageSender" init-method="init" destroy-method="close">
 		<property name="config" ref="config" />
 		<property name="objectMapper" ref="objectMapper" />
 	</bean>

@@ -1,4 +1,4 @@
-package com.canguang.message.dto;
+package com.canguang.dto.message;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

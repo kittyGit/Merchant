@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.canguang.dto.message.Result;
+import com.canguang.dto.message.VarsDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonConversionTest {

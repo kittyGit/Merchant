@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+	<!-- 引用property文件 -->
+	<context:property-placeholder location="classpath:captcha.properties"
+		ignore-unresolvable="true" />
+
+	<bean id="captchaGenerator"
+		class="com.octo.captcha.service.multitype.GenericManageableCaptchaService">
+		<constructor-arg index="0" ref="captchaEngine" />
+		<constructor-arg type="int" index="1" value="180" />
+		<constructor-arg type="int" index="2" value="180000" />
+		<constructor-arg type="int" index="3" value="75000" />
+	</bean>
+
+	<bean id="captchaEngine" class="com.octo.captcha.engine.GenericCaptchaEngine">
+		<constructor-arg index="0">
+			<list>
+				<ref bean="captchaFactory" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="captchaFactory" class="com.octo.captcha.image.gimpy.GimpyFactory">
+		<constructor-arg ref="wordGen" />
+		<constructor-arg ref="wordToImage" />
+	</bean>
+
+
+	<bean id="wordToImage"
+		class="com.octo.captcha.component.image.wordtoimage.ComposedWordToImage">
+		<constructor-arg index="0" ref="fontGenRandom" />
+		<constructor-arg index="1" ref="backGenUni" />
+		<constructor-arg index="2" ref="simpleWhitePaster" />
+	</bean>
+
+	<!-- 设置图片大小 -->
+	<bean id="backGenUni"
+		class="com.octo.captcha.component.image.backgroundgenerator.GradientBackgroundGenerator">
+		<!--背景图片宽度 -->
+		<constructor-arg index="0" type="java.lang.Integer"
+			value="65" />
+		<!--背景图片高度 -->
+		<constructor-arg index="1" type="java.lang.Integer"
+			value="22" />
+		<constructor-arg type="java.awt.Color" index="2"
+			ref="colorGrey" />
+		<constructor-arg type="java.awt.Color" index="3"
+			ref="colorGreen" />
+	</bean>
+	<!-- 设置字体大写 -->
+	<bean id="fontGenRandom"
+		class="com.octo.captcha.component.image.fontgenerator.RandomFontGenerator">
+		<!--字体最小尺寸 -->
+		<constructor-arg index="0" type="java.lang.Integer"
+			value="20" />
+		<!--字体最大尺寸 -->
+		<constructor-arg index="1" type="java.lang.Integer"
+			value="23" />
+	</bean>
+
+	<!-- 设置字数 -->
+	<bean id="simpleWhitePaster"
+		class="com.octo.captcha.component.image.textpaster.SimpleTextPaster">
+		<!--字符最少个数 -->
+		<constructor-arg index="0" type="java.lang.Integer"
+			value="4" />
+		<!--字符最多个数 -->
+		<constructor-arg index="1" type="java.lang.Integer"
+			value="4" />
+		<constructor-arg index="2" ref="colorFont" />
+	</bean>
+
+	<bean id="colorGrey" class="java.awt.Color">
+		<constructor-arg index="0" type="int" value="200" />
+		<constructor-arg index="1" type="int" value="255" />
+		<constructor-arg index="2" type="int" value="200" />
+	</bean>
+	<bean id="colorGreen" class="java.awt.Color">
+		<constructor-arg index="0" type="int" value="110" />
+		<constructor-arg index="1" type="int" value="120" />
+		<constructor-arg index="2" type="int" value="200" />
+	</bean>
+	<bean id="colorFont" class="java.awt.Color">
+		<constructor-arg index="0" type="int" value="60" />
+		<constructor-arg index="1" type="int" value="60" />
+		<constructor-arg index="2" type="int" value="60" />
+	</bean>
+
+	<!-- 文字生成器 -->
+	<bean id="wordGen"
+		class="com.octo.captcha.component.word.wordgenerator.DictionaryWordGenerator">
+		<constructor-arg>
+			<ref bean="fileDict" />
+		</constructor-arg>
+	</bean>
+
+	<!-- 未知 -->
+	<bean id="fileDict" class="com.octo.captcha.component.word.FileDictionary">
+		<constructor-arg index="0">
+			<value>toddlist</value>
+		</constructor-arg>
+	</bean>
+</beans>

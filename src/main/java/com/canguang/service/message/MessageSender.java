@@ -1,4 +1,4 @@
-package com.canguang.message;
+package com.canguang.service.message;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -20,8 +20,8 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.canguang.message.dto.Result;
-import com.canguang.message.dto.VarsDto;
+import com.canguang.dto.message.Result;
+import com.canguang.dto.message.VarsDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
