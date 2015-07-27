@@ -1,55 +1,38 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
-
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>管理登录平台</title>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<link rel="shortcut icon" href='images/wxicon.ico'/>
-	<link rel="stylesheet" type="text/css" href="css/struct.css" />
-	<link rel="stylesheet" type="text/css" href="css/login.css" />
-	<script src="js/jquery/jquery-all.js" type="text/javascript"></script>
-	<script src="js/util.js" type="text/javascript"></script>	
-	<script src="js/login.js" type="text/javascript"></script>  
-  </head>
-  <body scroll="no" style="background:none;" >
-        <input type="hidden" id="showMsg" value="${msg}"/>
-        <script type="text/javascript">WX_DIALOG.pageInit();</script>
-        <div class="header">
-            <div class="logo">管理中心</div>
-            <div class="nav"></div>
-            <div class="logininfo"></div>
-        </div>
-        <div class="main loginmain" id="main">
-            <div class="mainC">
-                 <h1>管理中心</h1>
-                 <p>介绍内容</p>
-            </div>
-            <div class="mainD" id="mainD">
-                <form method="post"  id="loginform" action="login.action">
-                    <div class="msg"></div>
-                    <table border="0" cellpadding="0" cellspacing="0">
-                        <tr>
-                        <input type="hidden" name="opr" value="login"  />
-                            <th width="60" height="36px">用户名</th>
-                            <td colspan="2"><input id="loginName" type="text" name="adminName"  class="txt" style="width:150px;" maxlength="18" date-lable="用户名" data-validator="required" /></td>
-                        </tr>
-                        <tr>
-                            <th height="36px">密  码</th>
-                            <td colspan="2"><input id="loginPwd"  type="password" name="adminPwd" class="txt" style="width:150px;"  maxlength="18" date-lable="用户密码" data-validator="required" /></td>
-                        </tr>
-                        <tr>
-                            <td height="46" valign="bottom"></td>
-                            <td><input value="登录"  tabindex="4" type="submit" class="loginBtn"/></td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
-        </div>
-  </body>
+<!DOCTYPE html>
+<html>	
+<head>
+<title>登录页面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords" content="Kipy Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
+<link href="WebContent/css/style.css" rel='stylesheet' type='text/css' />
+<!--webfonts-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Marvel:400,700' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+</head>
+<body>
+<h1>Kipy Login Form</h1>
+	<div class="login-form">
+		<h2>User Login</h2>
+			<div class="form-info">
+					<form>
+							<input type="text" class="email" placeholder="Email Address" required=""/>
+							<input type="password" class="password" placeholder="Password" required=""/>
+							<p><a href="#">Forgot password?</a></p>
+						<ul class="login-buttons">
+							<li><input type="submit" value="LOGIN"/></li>
+							<li><a href="#" class="hvr-sweep-to-left">REGISTER</a></li>
+							<div class="clear"> </div>
+						</ul>
+					</form>
+			</div>
+	</div>
+<!--copyrights-->
+<div class="copyrights">
+	<p>Template by <a href="http://w3layouts.com">w3layouts</a></p>
+</div>
+<!--/copyrights-->
+</body>
 </html>
-
