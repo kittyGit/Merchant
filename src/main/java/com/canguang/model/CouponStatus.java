@@ -8,19 +8,28 @@ package com.canguang.model;
  */
 public enum CouponStatus {
 
-	USED("已使用"), UNUSED("未使用");
+	USED(1), UNUSED(2);
 
-	private String description;
+	private int _nCode;
 
-	private CouponStatus(String description) {
-		this.description = description;
+	private CouponStatus(int _nCode) {
+		this._nCode=_nCode;
 	}
 
-	public String getDescription() {
-		return description;
+	@Override
+
+	public String toString() {
+
+		return String.valueOf(this._nCode);
+
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public int get_nCode() {
+		return _nCode;
 	}
+
+	public void set_nCode(int _nCode) {
+		this._nCode = _nCode;
+	}
+
 }

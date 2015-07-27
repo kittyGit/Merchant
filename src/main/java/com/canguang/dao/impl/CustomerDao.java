@@ -59,9 +59,8 @@ public class CustomerDao implements ICustomerDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber,
-			String address, Date registerTimeStart, Date registerTimeEnd,
-			Merchant merchant, int pageNo, int perPageSize) {
+	public List<Customer> findByNumerAndAddressAndTime(String phoneNumber, String address, Date registerTimeStart,
+			Date registerTimeEnd, Merchant merchant, int pageNo, int perPageSize) {
 
 		String hql = "FROM Customer WHERE merchant = :merchant";
 
@@ -70,8 +69,7 @@ public class CustomerDao implements ICustomerDao {
 
 		if (StringUtils.isNotBlank(phoneNumber)) {
 			hql = hql + " AND phoneNumber LIKE :phoneNumber";
-			paramMap.put("phoneNumber",
-					MessageFormat.format("%{0}%", phoneNumber));
+			paramMap.put("phoneNumber", MessageFormat.format("%{0}%", phoneNumber));
 		}
 
 		if (StringUtils.isNotBlank(address)) {
@@ -106,9 +104,8 @@ public class CustomerDao implements ICustomerDao {
 	}
 
 	@Override
-	public int countPageSize(String phoneNumber, String address,
-			Date registerTimeStart, Date registerTimeEnd, Merchant merchant,
-			int perPageSize) {
+	public int countPageSize(String phoneNumber, String address, Date registerTimeStart, Date registerTimeEnd,
+			Merchant merchant, int perPageSize) {
 		String hql = "SELECT COUNT(*) FROM Customer WHERE merchant = :merchant";
 
 		Map<String, Object> paramMap = new HashMap<>();
@@ -116,8 +113,7 @@ public class CustomerDao implements ICustomerDao {
 
 		if (StringUtils.isNotBlank(phoneNumber)) {
 			hql = hql + " AND phoneNumber LIKE :phoneNumber";
-			paramMap.put("phoneNumber",
-					MessageFormat.format("%{0}%", phoneNumber));
+			paramMap.put("phoneNumber", MessageFormat.format("%{0}%", phoneNumber));
 		}
 
 		if (StringUtils.isNotBlank(address)) {
@@ -147,31 +143,5 @@ public class CustomerDao implements ICustomerDao {
 		int pageSize = (int) ((countPageSize / perPageSize) + 1);
 
 		return pageSize;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Customer> findByPhoneNumber(String phoneNumber,
-			Merchant merchant) {
-
-		String hql = "FROM Customer WHERE merchant = :merchant";
-
-		Map<String, Object> paramMap = new HashMap<>();
-		paramMap.put("merchant", merchant);
-
-		if (StringUtils.isNotBlank(phoneNumber)) {
-			hql = hql + " AND phoneNumber LIKE :phoneNumber";
-			paramMap.put("phoneNumber",
-					MessageFormat.format("%{0}%", phoneNumber));
-		}
-		Session session = getCurrentSession();
-		Query query = session.createQuery(hql);
-
-		for (Entry<String, Object> paramEntry : paramMap.entrySet()) {
-			query.setParameter(paramEntry.getKey(), paramEntry.getValue());
-		}
-		List<Customer> customers = query.list();
-		return customers;
-
 	}
 }

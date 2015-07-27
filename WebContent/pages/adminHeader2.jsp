@@ -9,14 +9,13 @@
 			<a href="http://www.canguang.com/">餐广传媒-为您创造更多价值！</a>
 		</div>
 		<div class="top-right">
-			你好，<span>吴桥良</span><a
+			你好，<span></span><a
 				href="${context}/admin/editPwdInput.action?merchantId=${merchantId}">修改密码</a><a
-				href="${context}/admin/logout.action">退出</a>
+				href="${context}/admin/loginOut.action">退出</a>
 		</div>
 	</div>
 </div>
 <!--页头-->
-
 <div class="header">
 	<div class="header-content">
 		<div class="logo">
@@ -33,8 +32,6 @@
 				href="${context}/admin/vipCustomer.action">会员</a></li>
 			<li id="header-nav-couponlist"><a
 				href="${context}/admin/customerExchange.action">交易</a></li>
-			<li id="header-nav-index"><a
-				href="${context}/admin/verify.action">首页</a></li>
 		</ul>
 	</div>
 </div>

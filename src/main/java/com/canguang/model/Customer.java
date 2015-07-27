@@ -54,7 +54,8 @@ public class Customer {
 	private String price;
 
 	@Column(nullable = false)
-	private CouponStatus couponStatus;
+	
+	private Integer couponStatus;//0.未使用1.已使用2.。。。自己扩展
 
 	@Column(nullable = false)
 	private boolean isValidated;
@@ -65,7 +66,7 @@ public class Customer {
 	public Customer(String customerName, String customerPwd,
 			String phoneNumber, Date registerTime, String registerAddress,
 			Integer level, Integer coupon, String price,
-			CouponStatus couponStatus, boolean isValidated) {
+			Integer couponStatus, boolean isValidated) {
 		this.customerName = customerName;
 		this.customerPwd = customerPwd;
 		this.phoneNumber = phoneNumber;
@@ -77,7 +78,13 @@ public class Customer {
 		this.couponStatus = couponStatus;
 		this.isValidated = isValidated;
 	}
+	public Integer getCouponStatus() {
+		return couponStatus;
+	}
 
+	public void setCouponStatus(Integer couponStatus) {
+		this.couponStatus = couponStatus;
+	}
 	public Integer getCustomerId() {
 		return customerId;
 	}
@@ -156,14 +163,6 @@ public class Customer {
 
 	public void setPrice(String price) {
 		this.price = price;
-	}
-
-	public CouponStatus getCouponStatus() {
-		return couponStatus;
-	}
-
-	public void setCouponStatus(CouponStatus couponStatus) {
-		this.couponStatus = couponStatus;
 	}
 
 	public boolean isValidated() {

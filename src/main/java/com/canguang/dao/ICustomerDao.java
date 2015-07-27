@@ -71,13 +71,4 @@ public interface ICustomerDao {
 			Date registerTimeStart, Date registerTimeEnd, Merchant merchant,
 			int perPageSize);
 
-	/**
-	 * 通过电话号码查找用户信息
-	 * 
-	 * @param phoneNumber
-	 * @param merchant
-	 * @return
-	 */
-	List<Customer> findByPhoneNumber(String phoneNumber, Merchant merchant);
-
 }

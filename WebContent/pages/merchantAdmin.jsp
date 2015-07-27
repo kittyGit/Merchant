@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,6 @@
 		</table>
 	</form>
 	<input type="hidden" id="header-nav-id" value="header-nav-
-
 setup" />
 
 	<!--内容-->
@@ -54,7 +54,7 @@ setup" />
 
 	<!--页脚-->
 	<div class="foot">
-		<p>版权所有：深圳餐广传媒有限公司 Heshidai.com 粤ICP 备13059473号</p>
+		<p>版权所有：深圳餐广传媒有限公司 </p>
 		<p>地址：深圳市福田区深南中路</p>
 	</div>
 </body>

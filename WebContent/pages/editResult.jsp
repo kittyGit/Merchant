@@ -9,7 +9,7 @@
 	function delayURL(url, time) {
 		setTimeout("top.location.href='" + url + "'", time);
 	}
-	delayURL("<%=request.getContextPath()%>/admin/loginInput.action", 20000);
+	delayURL("<%=request.getContextPath()%>/admin/loginInput.action", 3000);
 </script>
 </head>
 <body>

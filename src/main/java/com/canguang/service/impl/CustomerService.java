@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.canguang.dao.ICustomerDao;
 import com.canguang.dao.IMerchantDao;
-import com.canguang.model.CouponStatus;
 import com.canguang.model.Customer;
 import com.canguang.model.Merchant;
 import com.canguang.service.ICustomerService;
@@ -39,9 +38,8 @@ public class CustomerService implements ICustomerService {
 			if (merchant.isHasCoupon()) {
 				customer.setCoupon(0);
 				customer.setPrice(merchant.getPrice());
-				customer.setCouponStatus(CouponStatus.UNUSED);
+				customer.setCoupon(2);
 			}
-
 			Integer id = customerDao.saveCustomer(customer);
 			if (id != null && id > 0) {
 				return true;
@@ -66,14 +64,6 @@ public class CustomerService implements ICustomerService {
 				phoneNumber, address, registerTimeStart, registerTimeEnd,
 				merchant, pageNo, perPageSize);
 		return customers;
-	}
-
-	@Override
-	public List<Customer> findByPhoneNumber(String phoneNumber,
-			Merchant merchant) {
-		List<Customer> cutomers = customerDao.findByPhoneNumber(phoneNumber,
-				merchant);
-		return cutomers;
 	}
 
 	@Override

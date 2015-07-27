@@ -28,14 +28,6 @@ public interface ICustomerService {
 	List<Customer> findAll();
 
 	/**
-	 * 通过手机号码验证
-	 * 
-	 * @param phoneNumber
-	 * @return
-	 */
-	List<Customer> findByPhoneNumber(String phoneNumber, Merchant merchant);
-
-	/**
 	 * 通过名字，号码，注册时间查找商家
 	 * 
 	 * @param phoneNumber

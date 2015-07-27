@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,9 +84,9 @@
 		<tr>
 			<th>手机号码</th>
 			<th>消费门店</th>
-			<th>消费时间</th>
 			<th>注册时间</th>
 			<th>消费特权</th>
+			<th>使用状态</th>
 		</tr>
 
 		<c:forEach items="${customerExchanges}" var="customer">
@@ -93,9 +94,18 @@
 				<td>${customer.phoneNumber}</td>
 				<td>${customer.registerAddress}</td>
 				<td>${customer.registerTime}</td>
-				<td>${customer.registerTime}</td>
 				<td>减免${customer.price}元特权</td>
+				<td><select>
+						<option value="1" <c:if
+								test="${customer.couponStatus==1}"></c:if>>已使用
+						</option>
+						<option value="2" <c:if
+								test="${customer.couponStatus==2}"></c:if>>未使用
+						</option>
+				</select></td>
 			</tr>
+
+
 		</c:forEach>
 	</table>
 

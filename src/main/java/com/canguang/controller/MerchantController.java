@@ -65,7 +65,7 @@ public class MerchantController {
 		}
 
 		if (merchantService.saveMerchant(newMerchant)) {
-			mvc = new ModelAndView("index");
+			mvc = new ModelAndView("addMerchantResult");
 		} else {
 			mvc = new ModelAndView("manageMerchant");
 
