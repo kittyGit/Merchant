@@ -107,10 +107,17 @@
 			</ul>
 		</div>
 	</div>
+	<!-- 交易页面 -->
 	<div class="main">
 		<iframe name="right" id="rightMain"
 			src="${context}/pages/exchange.jsp" frameborder="no" scrolling="auto"
 			width="100%" height="auto" allowtransparency="true"></iframe>
+	</div>
+	<!-- 会员页面 
+	<div class="main">
+		<iframe name="rightVip" id="rightMain" src="${context}/pages/vip.jsp"
+			frameborder="no" scrolling="auto" width="100%" height="auto"
+			allowtransparency="true"></iframe>-->
 	</div>
 	<div class="bottom">
 		<div id="bottom_bg">版权</div>

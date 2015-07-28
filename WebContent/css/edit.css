@@ -1,0 +1,23 @@
+@charset "utf-8";
+@import url("struct.css");
+
+/*编辑页面*/
+body{text-align: left;}
+.editorTitle2{text-align: left;font-size: 15px;padding: 5px 0 0 20px;background-color: #EDF5FA;height:25px;border-bottom: 1px solid #C8DDE9;}
+.editorContentPanel{text-align: left;padding: 10px 0 0 20px;width: 680px;}
+.editorBottom{text-align: right;background-color: #EDF5FA;height: 30px;border-top: 1px solid #C8DDE9;}
+.editorBottom input{margin: 3px 2px;}
+.ItemOdd{background-color:#F7F7F7;}
+.editorTab tr{height:32px;}
+.editorTab tr:hover{background-color:#E9F6FE;}
+.tdLabelTitle{text-align: right;}
+.querySelect{height:23px;width:120px;}
+.showMsg{color: red;}
+
+
+
+
+
+
+
+
